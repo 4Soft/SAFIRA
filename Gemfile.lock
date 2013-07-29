@@ -29,6 +29,10 @@ GEM
       i18n (= 0.6.1)
       multi_json (~> 1.0)
     arel (3.0.2)
+    bcrypt-ruby (3.1.1)
+    bourbon (3.1.6)
+      sass (>= 3.2.0)
+      thor
     builder (3.0.4)
     capybara (2.0.3)
       mime-types (>= 1.16)
@@ -46,10 +50,30 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.6.3)
+    cucumber (1.3.5)
+      builder (>= 2.1.2)
+      diff-lcs (>= 1.1.3)
+      gherkin (~> 2.12.0)
+      multi_json (~> 1.7.5)
+      multi_test (>= 0.0.2)
+    cucumber-rails (1.3.1)
+      capybara (>= 1.1.2)
+      cucumber (>= 1.2.0)
+      nokogiri (>= 1.5.0)
+      rails (~> 3.0)
+    database_cleaner (1.0.1)
+    devise (3.0.0)
+      bcrypt-ruby (~> 3.0)
+      orm_adapter (~> 0.1)
+      railties (>= 3.2.6, < 5)
+      warden (~> 1.2.3)
+    diff-lcs (1.2.4)
     erubis (2.7.0)
     execjs (1.4.0)
       multi_json (~> 1.0)
     ffi (1.9.0)
+    gherkin (2.12.0)
+      multi_json (~> 1.3)
     hike (1.2.3)
     i18n (0.6.1)
     journey (1.0.4)
@@ -62,7 +86,12 @@ GEM
       treetop (~> 1.4.8)
     mime-types (1.23)
     multi_json (1.7.7)
+    multi_test (0.0.2)
+    neat (1.3.0)
+      bourbon (>= 2.1)
+      sass (>= 3.2)
     nokogiri (1.5.10)
+    orm_adapter (0.4.0)
     pg (0.15.1)
     polyglot (0.3.3)
     rack (1.4.5)
@@ -90,6 +119,14 @@ GEM
     rake (10.1.0)
     rdoc (3.12.2)
       json (~> 1.4)
+    rspec (2.14.1)
+      rspec-core (~> 2.14.0)
+      rspec-expectations (~> 2.14.0)
+      rspec-mocks (~> 2.14.0)
+    rspec-core (2.14.4)
+    rspec-expectations (2.14.0)
+      diff-lcs (>= 1.1.3, < 2.0)
+    rspec-mocks (2.14.1)
     rubyzip (0.9.9)
     sass (3.2.9)
     sass-rails (3.2.6)
@@ -101,6 +138,9 @@ GEM
       multi_json (~> 1.0)
       rubyzip
       websocket (~> 1.0.4)
+    simple_form (2.1.0)
+      actionpack (~> 3.0)
+      activemodel (~> 3.0)
     simplecov (0.7.1)
       multi_json (~> 1.0)
       simplecov-html (~> 0.7.1)
@@ -120,6 +160,8 @@ GEM
     uglifier (2.1.2)
       execjs (>= 0.3.0)
       multi_json (~> 1.0, >= 1.0.2)
+    warden (1.2.3)
+      rack (>= 1.0)
     websocket (1.0.7)
     xpath (1.0.0)
       nokogiri (~> 1.3)
@@ -128,12 +170,19 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  bourbon
   capybara
   coffee-rails (~> 3.2.1)
+  cucumber-rails
+  database_cleaner
+  devise
   jquery-rails
+  neat
   pg
   rails (= 3.2.13)
+  rspec
   sass-rails (~> 3.2.3)
+  simple_form
   simplecov
   sqlite3
   uglifier (>= 1.0.3)
