@@ -41,3 +41,25 @@ When(/^I sign in with a wrong password$/) do
   fill_in "user_password", :with => "wrong_password"
   click_button "ENTRAR"
 end
+
+Given(/^I exist as an user and I'm signed in$/) do
+  create_user
+  sign_in
+end
+
+When(/^I sign out$/) do
+  click_link "Fechar Sessão"
+end
+
+Then(/^I should see a signed out message$/) do
+  page.should have_content "Saiu com sucesso."
+end
+
+When(/^I return to the application$/) do
+  visit "/"
+end
+
+Then(/^I should be signed out$/) do
+  page.should have_content "Login"
+  page.should_not have_content "Fechar Sessão"
+end
