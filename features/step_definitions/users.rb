@@ -22,7 +22,8 @@ Given(/^I exist as an user$/) do
 end
 
 Then(/^I should be signed in$/) do
-  pending # express the regexp above with the code you wish you had
+  page.should have_content @user[:email]
+  page.should have_content "Fechar Sessão"
 end
 
 When(/^I sign in with a wrong email$/) do

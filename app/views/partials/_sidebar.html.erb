@@ -1,0 +1,21 @@
+<asideb class="sidebar">
+	<div class="session">
+		<div class="session__avatar"></div>
+		<div class="session__user">
+			<%= current_user.email %>
+		</div>
+		<div class="session__email">
+			<a href="#">Minha Conta</a>
+			<%= link_to "Fechar Sessão", destroy_user_session_path, :method=> "delete" %>
+		</div>
+	</div>
+	<ul>
+		<li class="heading">Profile</li>
+		<li class="active"><a href="tables.html"> Inbox</a></li>
+		<li><a href="_forms.html"> Settings</a></li>
+		<li class="heading">Projects</li>
+		<li><a href="#">Portfolio</a></li>
+		<li><a href="#">Opened projects</a></li>
+		<li><a href="#">Closed projects</a></li>
+	</ul>
+</aside>

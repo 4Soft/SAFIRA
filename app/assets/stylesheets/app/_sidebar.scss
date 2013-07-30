@@ -1,0 +1,46 @@
+.sidebar {
+	@include sidebar;
+}
+
+.sidebar__header {
+	height: 4em;
+	line-height: 4em;
+	h1 {
+		margin: 0;
+		font-size: 1.5em;
+		font-weight: 600;
+		color: #18191a;
+	}
+}
+
+.session {
+	margin: 0 -1em;
+	padding: 1em;
+	background: #18191a;
+	font-weight: 100;
+	&:after {
+		content: "";
+		clear: both;
+		display: table;
+	}
+}
+
+	.session__avatar {
+		float: left;
+		border: 2px solid #fff;
+		margin-right: 0.5em;
+		width: 3em;
+		height: 3em;
+		border-radius: 50%;
+		background: url(http://www.nerdice.com/wp-content/uploads/2013/05/Scarlett-Johansson-6.jpg);
+		background-size: auto 100%;
+	}
+
+	.session__user {
+		margin-top: 0.2em;
+		font-size: em(14);
+	}
+
+	.session__email {
+		font-size: em(12);
+	}
