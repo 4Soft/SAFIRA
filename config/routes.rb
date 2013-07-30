@@ -4,7 +4,9 @@ SIG::Application.routes.draw do
 
   get "users/dashboard" => "users#dashboard"
 
-  root :to => "users#dashboard"
+  devise_scope :user do
+    root :to => "devise/sessions#new"
+  end
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
