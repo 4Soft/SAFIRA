@@ -2,6 +2,10 @@ SIG::Application.routes.draw do
 
   devise_for :users
 
+  get "users/dashboard" => "users#dashboard"
+
+  root :to => "users#dashboard"
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
