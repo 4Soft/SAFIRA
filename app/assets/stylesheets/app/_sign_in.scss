@@ -10,8 +10,26 @@
 		padding: 0 1em;
 		border: 0;
 		font-size: 16px;
+		font-weight: 200;
+		color: #fff;
 		border-radius: 2px;
 		background: tint($dark-color, 15%);
+		::-webkit-input-placeholder {
+		   color: tint($dark-color, 35%);
+		   font-style: italic;
+		}
+		:-moz-placeholder { /* Firefox 18- */
+		 	color: tint($dark-color, 35%);
+		   font-style: italic;
+		}
+		::-moz-placeholder {  /* Firefox 19+ */
+		  color: tint($dark-color, 35%);
+	   font-style: italic;
+		}
+		:-ms-input-placeholder {  
+	   color: tint($dark-color, 35%);
+	   font-style: italic;
+		}
 	}
 	input[type="submit"] {
 		@extend .button-primary;
@@ -23,3 +41,12 @@
 		margin-bottom: 16px;
 		font-size: em(14);
 	}
+
+.footer-notes {
+	margin-top: 1em;
+	text-align: center;
+	.copyright {
+		font-size: 0.8em;
+		opacity: 0.6;
+	}
+}

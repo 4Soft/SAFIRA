@@ -1,0 +1,13 @@
+.topbar {
+	height: 4em;
+	line-height: 4em;
+	background: $primary-color;
+	.topbar__logo {
+		font-size: 1.5em;
+		color: #fff;
+	}
+}
+
+	.topbar--centered {
+		text-align: center;
+	}

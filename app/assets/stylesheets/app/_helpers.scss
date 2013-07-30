@@ -1,3 +1,8 @@
+.wrapper {
+	@include outer-container;
+	padding: 0 1em;
+}
+
 .push-to-right {
 	display: inline-block;
 	float: right;
