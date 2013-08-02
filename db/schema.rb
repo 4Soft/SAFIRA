@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130802164253) do
+ActiveRecord::Schema.define(:version => 20130802175637) do
 
   create_table "admins", :force => true do |t|
     t.datetime "created_at", :null => false
@@ -27,6 +27,7 @@ ActiveRecord::Schema.define(:version => 20130802164253) do
     t.datetime "curriculum_updated_at"
     t.string   "email"
     t.string   "course"
+    t.integer  "selection_process_id"
     t.datetime "created_at",              :null => false
     t.datetime "updated_at",              :null => false
   end
@@ -49,6 +50,18 @@ ActiveRecord::Schema.define(:version => 20130802164253) do
     t.datetime "updated_at", :null => false
   end
 
+  create_table "feedbacks", :force => true do |t|
+    t.text     "public"
+    t.text     "private"
+    t.integer  "candidate_id"
+    t.integer  "process_step_id"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
+  end
+
+  add_index "feedbacks", ["candidate_id"], :name => "index_feedbacks_on_candidate_id"
+  add_index "feedbacks", ["process_step_id"], :name => "index_feedbacks_on_process_step_id"
+
   create_table "phones", :force => true do |t|
     t.string   "number"
     t.integer  "user_id"
@@ -61,8 +74,9 @@ ActiveRecord::Schema.define(:version => 20130802164253) do
     t.string   "name"
     t.datetime "open_date"
     t.datetime "close_date"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.integer  "selection_process_id"
+    t.datetime "created_at",           :null => false
+    t.datetime "updated_at",           :null => false
   end
 
   create_table "selection_processes", :force => true do |t|

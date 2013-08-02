@@ -6,6 +6,7 @@ class CreateCandidates < ActiveRecord::Migration
       t.attachment :curriculum
       t.string :email
       t.string :course
+      t.references :selection_process
 
       t.timestamps
     end
