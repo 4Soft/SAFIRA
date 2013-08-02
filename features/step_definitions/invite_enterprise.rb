@@ -1,1 +1,0 @@
-invite_enterprise.rb
