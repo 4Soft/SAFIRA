@@ -7,6 +7,7 @@ class CreateSelectionProcesses < ActiveRecord::Migration
       t.attachment :edict
       t.datetime :open_date
       t.datetime :close_date
+      t.references :enterprise
 
       t.timestamps
     end
