@@ -1,0 +1,3 @@
+class SelectionProcessesController < ApplicationController 
+
+end

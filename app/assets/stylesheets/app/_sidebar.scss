@@ -23,6 +23,9 @@
 		clear: both;
 		display: table;
 	}
+	@include media($tablet) {
+		display: none;
+	}
 }
 
 	.session__avatar {

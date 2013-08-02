@@ -1,9 +1,13 @@
-<header class="topbar topbar--centered">
-	<% unless user_signed_in? %>
-		<div class="topbar__logo">
-			Apptitle
-		</div>
-	<% else %>
-
+<header class="topbar <%= "topbar--centered" unless user_signed_in? %>">
+	<div class="topbar__logo">
+		Nameless App
+	</div>
+	<% if user_signed_in? %>
+		<div class="topbar__session push-to-right">
+			<input type="text" class="topbar__search" placeholder="Pesquisar...">
+			<%= gravatar_image_tag(current_user.email.gsub("spam","mdeering"), :class => "avatar") %>
+			<span class="username"><%= current_user.name %></span>
+			<div class="arrow-down"></div>
+		</div>	
 	<% end %>
 </header>

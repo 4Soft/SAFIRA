@@ -20,6 +20,8 @@ gem 'brazilian-rails'
 
 gem 'paperclip'
 
+gem 'gravatar_image_tag'
+
 group :test do
   gem 'simplecov'
   gem 'sqlite3'

@@ -1,7 +1,7 @@
 #encoding: UTF-8
 
 def create_visitor
-  @visitor ||= {:email => "example@example.com", :password => "changeme", :password_confirmation => "changeme" }
+  @visitor ||= {:email => "example@example.com", :password => "changeme", :password_confirmation => "changeme", :name => "example" }
 end
 
 def create_user
