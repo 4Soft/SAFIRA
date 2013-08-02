@@ -1,3 +1,5 @@
-class Enterprise < ActiveRecord::Base
-  # attr_accessible :title, :body
+class Enterprise < User
+  attr_accessible :corporate_name
+
+  usar_como_cnpj :cnpj
 end

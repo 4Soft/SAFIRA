@@ -1,3 +1,3 @@
-class Employee < ActiveRecord::Base
-  # attr_accessible :title, :body
+class Employee < User
+  usar_como_cpf :cpf
 end

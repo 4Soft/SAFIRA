@@ -13,6 +13,10 @@ end
 
 gem 'devise'
 gem 'simple_form'
+gem 'cancan'
+gem 'acts-as-taggable-on'
+
+gem 'brazilian-rails'
 
 group :test do
   gem 'simplecov'
