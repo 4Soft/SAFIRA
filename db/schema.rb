@@ -11,12 +11,33 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130802155154) do
+ActiveRecord::Schema.define(:version => 20130802164253) do
 
   create_table "admins", :force => true do |t|
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
+
+  create_table "candidates", :force => true do |t|
+    t.string   "name"
+    t.text     "description"
+    t.string   "curriculum_file_name"
+    t.string   "curriculum_content_type"
+    t.integer  "curriculum_file_size"
+    t.datetime "curriculum_updated_at"
+    t.string   "email"
+    t.string   "course"
+    t.datetime "created_at",              :null => false
+    t.datetime "updated_at",              :null => false
+  end
+
+  create_table "candidates_process_steps", :id => false, :force => true do |t|
+    t.integer "candidate_id"
+    t.integer "process_step_id"
+  end
+
+  add_index "candidates_process_steps", ["candidate_id", "process_step_id"], :name => "candidate_id_on_process"
+  add_index "candidates_process_steps", ["process_step_id"], :name => "index_candidates_process_steps_on_process_step_id"
 
   create_table "employees", :force => true do |t|
     t.datetime "created_at", :null => false
@@ -33,6 +54,29 @@ ActiveRecord::Schema.define(:version => 20130802155154) do
     t.integer  "user_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+  end
+
+  create_table "process_steps", :force => true do |t|
+    t.text     "description"
+    t.string   "name"
+    t.datetime "open_date"
+    t.datetime "close_date"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  create_table "selection_processes", :force => true do |t|
+    t.text     "description"
+    t.integer  "year"
+    t.integer  "semester"
+    t.string   "edict_file_name"
+    t.string   "edict_content_type"
+    t.integer  "edict_file_size"
+    t.datetime "edict_updated_at"
+    t.datetime "open_date"
+    t.datetime "close_date"
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
   end
 
   create_table "social_networks", :force => true do |t|
@@ -73,9 +117,13 @@ ActiveRecord::Schema.define(:version => 20130802155154) do
     t.string   "last_sign_in_ip"
     t.string   "name"
     t.text     "about"
+    t.text     "address"
+    t.string   "cnpj"
+    t.string   "corporate_name"
+    t.string   "cpf"
+    t.string   "type"
     t.datetime "created_at",                             :null => false
     t.datetime "updated_at",                             :null => false
-    t.string   "role"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

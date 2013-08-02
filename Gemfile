@@ -18,6 +18,8 @@ gem 'acts-as-taggable-on'
 
 gem 'brazilian-rails'
 
+gem 'paperclip'
+
 group :test do
   gem 'simplecov'
   gem 'sqlite3'
@@ -30,6 +32,7 @@ end
 
 group :development do
   gem 'sqlite3'
+  gem 'paperclip-dropbox'
 end
 
 group :production do
