@@ -1,12 +1,16 @@
 <asideb class="sidebar">
 	<div class="session">
-		<div class="session__avatar"></div>
-		<div class="session__user">
-			<%= current_user.email %>
-		</div>
-		<div class="session__email">
-			<a href="#">Minha Conta</a>
-			<%= link_to "Fechar Sessão", destroy_user_session_path, :method=> "delete" %>
+		<div class="session__avatar" style="background-image:url(<%= gravatar_url(current_user) %>)">
+
+			<div class="session__info">
+				<div class="session__user">
+					<%= current_user.name %>
+					<span class="push-to-right">
+						<%= link_to "<i class='icon-cog'></i>".html_safe, edit_user_registration_path(current_user) %>
+						<%= link_to "<i class='icon-signout'></i>".html_safe, destroy_user_session_path, :method => "delete" %>
+					</span>
+				</div>
+			</div>
 		</div>
 	</div>
 	<ul>

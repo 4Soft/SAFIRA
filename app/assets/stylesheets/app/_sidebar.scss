@@ -15,32 +15,46 @@
 
 .session {
 	margin: 0 -1em;
-	padding: 1em;
-	background: #18191a;
 	font-weight: 100;
 	&:after {
 		content: "";
 		clear: both;
 		display: table;
 	}
-	@include media($tablet) {
-		display: none;
-	}
 }
 
 	.session__avatar {
 		float: left;
-		border: 2px solid #fff;
-		margin-right: 0.5em;
-		width: 3em;
-		height: 3em;
-		border-radius: 50%;
-		background: url(http://www.nerdice.com/wp-content/uploads/2013/05/Scarlett-Johansson-6.jpg);
+		width: 240px;
+		height: 240px;
 		background-size: auto 100%;
+		&:hover {
+			.session__info {
+				opacity: 0.9;
+			}
+		}
+	}
+
+	.session__info {
+		top: -3em;
+		height: 3em;
+		padding: 0 1em;
+		margin-top: 12em;
+		line-height: 3em;
+		background: $primary-color;
+		transition: opacity 0.2s ease;
+		opacity: 0;
+		a {
+			color: #fff;
+			font-size: em(18);
+			margin-left: 0.4em;
+			&:hover {
+				text-decoration: none;
+			}
+		}
 	}
 
 	.session__user {
-		margin-top: 0.2em;
 		font-size: em(14);
 	}
 
