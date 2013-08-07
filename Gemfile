@@ -35,6 +35,7 @@ end
 group :development do
   gem 'sqlite3'
   gem 'paperclip-dropbox'
+  gem 'magic_encoding', require: false
 end
 
 group :production do

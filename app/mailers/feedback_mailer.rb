@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class FeedbackMailer < ActionMailer::Base
   default from: "boladaodeamor123@gmail.com"
 

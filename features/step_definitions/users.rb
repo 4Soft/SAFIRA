@@ -1,5 +1,4 @@
-# encoding: UTF-8
-# coding: UTF-8
+# -*- encoding : utf-8 -*-
 # -*- coding: UTF-8 -*-
 
 require_relative "helpers"
@@ -62,4 +61,6 @@ end
 Then(/^I should be signed out$/) do
   page.should have_content "Login"
   page.should_not have_content "Fechar Sessão"
+end
+o"
 end

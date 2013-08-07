@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class Enterprise < User
   attr_accessible :corporate_name
 

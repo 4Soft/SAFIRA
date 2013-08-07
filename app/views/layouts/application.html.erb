@@ -8,15 +8,16 @@
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
-<body class="sidebar-push-ready">
+<body>
 
-<%= render "partials/topbar" %>
+<div class="sidebar-push-ready">
+  <%= render "partials/topbar" %>
 
-<% if user_signed_in? %>
-	<%= render "partials/sidebar" %>
-<% end %>
-<div class="wrapper">
-	<%= yield %>
+  <%= render "partials/sidebar" %>
+  
+  <div class="wrapper">
+  	<%= yield %>
+  </div>
 </div>
 
 </body>

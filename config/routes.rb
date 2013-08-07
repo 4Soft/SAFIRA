@@ -1,5 +1,5 @@
+# -*- encoding : utf-8 -*-
 SIG::Application.routes.draw do
-
   devise_for :users
 
   get "users/dashboard" => "users#dashboard"
@@ -7,6 +7,11 @@ SIG::Application.routes.draw do
   devise_scope :user do
     root :to => "devise/sessions#new"
   end
+
+  post "candidates/register/:id" => "selection_processes#register_candidate", as: :register_candidate
+
+  resources :selection_processes
+  resources :candidates, except: [:create, :new]
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

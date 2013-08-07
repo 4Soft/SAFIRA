@@ -1,0 +1,3 @@
+CandidateMailer#send_confirmation
+
+Hi, find me in app/views/candidate_mailer/send_confirmation

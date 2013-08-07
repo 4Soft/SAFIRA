@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class CreateCandidatesProcessStepsJoinTable < ActiveRecord::Migration
   def self.up
     create_table :candidates_process_steps, :id => false do |t|

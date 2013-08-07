@@ -126,6 +126,7 @@ GEM
       railties (>= 3.0, < 5.0)
       thor (>= 0.14, < 2.0)
     json (1.8.0)
+    magic_encoding (0.0.2)
     mail (2.5.4)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
@@ -239,6 +240,7 @@ DEPENDENCIES
   factory_girl_rails
   gravatar_image_tag (>= 0.1.0)
   jquery-rails
+  magic_encoding
   neat
   paperclip
   paperclip-dropbox

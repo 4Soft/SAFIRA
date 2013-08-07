@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 SIG::Application.configure do
   # Settings specified here will take precedence over those in config/application.rb
 
@@ -47,7 +48,7 @@ SIG::Application.configure do
     :domain               => 'localhost:3000',
     :user_name            => 'boladaodeamor123@gmail.com',
     :password             => 'congohmvfdmntkpd',
-    :authentication       => 'plain',
+    :authentication       => 'login',
     :enable_starttls_auto => true
   }
 end
