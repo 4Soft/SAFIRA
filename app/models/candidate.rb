@@ -9,7 +9,9 @@ class Candidate < ActiveRecord::Base
     :dropbox_credentials => Rails.root.join("config/dropbox.yml"),
     :dropbox_options => {
       :path => proc { |style| "#{selection_process.enterprise.name}/#{selection_process.year}-#{selection_process.semester}/curriculos/#{name.capitalize}-#{email}" }, :unique_filename => true
-    }
+  }
+
+  validates_presence_of :curriculum
 
   attr_accessible :curriculum, :curriculum_content_type, :curriculum_file_name, :curriculum_file_size
 

@@ -22,6 +22,8 @@ gem 'paperclip'
 
 gem 'gravatar_image_tag', '>= 0.1.0'
 
+gem 'paperclip-dropbox'
+
 group :test do
   gem 'simplecov'
   gem 'sqlite3'
@@ -30,11 +32,12 @@ group :test do
   gem 'database_cleaner'
   gem 'rspec-rails'
   gem 'factory_girl_rails'
+  gem 'activerecord-nulldb-adapter'
 end
 
 group :development do
   gem 'sqlite3'
-  gem 'paperclip-dropbox'
+  gem 'rspec-rails'
   gem 'magic_encoding', require: false
 end
 

@@ -3,11 +3,12 @@
 
 FactoryGirl.define do
   factory :selection_process do
-    description "MyText"
-    year 1
+    description "Lorem ipsum"
+    year 2013
     semester 1
-    edict ""
+    edict File.new(Rails.root + 'spec/support/edictTest.pdf')
     open_date "2013-08-02 13:17:51"
     close_date "2013-08-02 13:17:51"
+    enterprise FactoryGirl.build(:enterprise)
   end
 end

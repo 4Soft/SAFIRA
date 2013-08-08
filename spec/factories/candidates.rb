@@ -5,8 +5,8 @@ FactoryGirl.define do
   factory :candidate do
     name "MyString"
     description "MyText"
-    curriculum ""
-    email "MyString"
+    curriculum File.new(Rails.root + 'spec/support/curriculumTest.pdf')
+    email "email@email.com"
     course "MyString"
   end
 end
