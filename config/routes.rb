@@ -8,7 +8,7 @@ SIG::Application.routes.draw do
     root :to => "devise/sessions#new"
   end
 
-  post "candidates/register/:id" => "selection_processes#register_candidate", as: :register_candidate
+  post "candidates/register/:id" => "candidates#register", as: :register_candidate
 
   resources :selection_processes
   resources :candidates, except: [:create, :new]

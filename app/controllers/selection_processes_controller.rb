@@ -1,19 +1,30 @@
 # -*- encoding : utf-8 -*-
-class SelectionProcessesController < ApplicationController 
+class SelectionProcessesController < ApplicationController
+  before_filter :authenticate_enterprise, except: [:show, :register_candidate]
+
   def show
     @selection_process = SelectionProcess.find(params[:id])
   end
 
-  def register_candidate
-    @selection_process = SelectionProcess.find(params[:id])
-    @candidate = Candidate.new(params[:candidate])
+  def new
+    @selection_process = SelectionProcess.new
+  end
 
-    if @selection_process.add_candidate(@candidate)
-      flash[:message] = "Cadastro de boa"
-      redirect_to @candidate
-    else
-      flash[:message] = "Cadastro deu ruim"
-      render action: :show
-    end
+  def create
+    @selection_process = SelectionProcess.create(params[:selection_process])
+  end
+
+  def edit
+    @selection_process = SelectionProcess.find(params[:id])
+  end
+
+  def update
+    @selection_process = SelectionProcess.find(params[:id])
+    @selection_process.update_attributes(params[:selection_process])
+  end
+
+  def destroy
+    @selection_process = SelectionProcess.find(params[:id])
+    @selection_process.destroy
   end
 end
