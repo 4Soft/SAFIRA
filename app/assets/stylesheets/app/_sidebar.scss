@@ -2,62 +2,23 @@
 	@include sidebar;
 }
 
-.sidebar__header {
-	height: 4em;
-	line-height: 4em;
-	h1 {
-		margin: 0;
-		font-size: 1.5em;
-		font-weight: 600;
-		color: #18191a;
-	}
-}
-
-.session {
-	margin: 0 -1em;
-	font-weight: 100;
-	&:after {
-		content: "";
-		clear: both;
-		display: table;
-	}
-}
-
-	.session__avatar {
+	.sidebar__avatar {
+		position: relative;
+		margin-right: 0.5em;
 		float: left;
-		width: 240px;
-		height: 240px;
-		background-size: auto 100%;
-		&:hover {
-			.session__info {
-				opacity: 0.9;
-			}
+		margin-top: 0.5em;
+		height: 1.5em;
+		width: 1.5em;
+		border-radius: 2px;
+		background-size: 100% auto;
+		box-shadow: 0 1px shade($dark-color, 60%);
+		&:after {
+			content: "";
+			position: absolute;
+			height: 100%;
+			width: 100%;
+			border-top: 1px solid #fff;
+			border-radius: 2px;
+			opacity: 0.3;
 		}
-	}
-
-	.session__info {
-		top: -3em;
-		height: 3em;
-		padding: 0 1em;
-		margin-top: 12em;
-		line-height: 3em;
-		background: $primary-color;
-		transition: opacity 0.2s ease;
-		opacity: 0;
-		a {
-			color: #fff;
-			font-size: em(18);
-			margin-left: 0.4em;
-			&:hover {
-				text-decoration: none;
-			}
-		}
-	}
-
-	.session__user {
-		font-size: em(14);
-	}
-
-	.session__email {
-		font-size: em(12);
 	}

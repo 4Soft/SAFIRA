@@ -15,22 +15,27 @@
 	&.is-pushing {
 		left: -width;
 		&:before {
+			left: 0;
 			background: $dark-color;
+			margin: 0;
+			transition: left 0.3s ease;
 		}
 	}
 	&:before {
 		content: "";
 		display: block;
 		position: fixed;
+		margin: 0 -1em;
 		z-index: -1;
-		left: 0;
+		left: -width;	
 		bottom: 0;
 		width: $width;
 		height: 2000px;
+		transition: left 0.3s ease;
+		background: $dark-color;	
 	}
 	@include media($tablet) {
 		left: 0 !important;
-		top: 4em;
 		&:before {
 			background: $dark-color;
 		}
@@ -40,14 +45,22 @@
 		padding: 0;
 	}
 	li {
-		display: block;
 		margin: 0 -1em;
 		font-weight: 400;
-		font-size: 16px;
 		list-style: none;
 		transition: all 0.3s ease;
+		border-bottom: 1px solid shade($dark-color, 30%);
+		border-top: 1px solid tint($dark-color, 3%);
+		text-shadow: 0 1px shade($dark-color, 70%);
+		&:first-child {
+			border-top: 0;
+		}
+		&:last-child {
+			box-shadow: 0 1px tint($dark-color, 3%);
+		}
 		&:hover {
-			background: $primary-color;
+			background: shade($dark-color, 30%);
+			border-top: 1px solid shade($dark-color,30%);
 			a {
 				color: #fff;
 				text-decoration: none;
@@ -57,24 +70,28 @@
 			background: $primary-color;
 		}
 		&.heading {
-			margin-top: 1em;
-			margin-bottom: 1em;
 			padding: 0 1em;
-			font-weight: 400;
-			color: #797c80;
+			border-bottom: 1px solid shade($dark-color, 50%);
+			color: tint($dark-color, 50%);
 			text-transform: uppercase;
-			&:hover {
-				background: none;
+			span {
+				display: block;
+				font-size: 0.8em;
+				line-height: 40px;
 			}
 		}
 		a {
-			font-size: em(12);
-			line-height: 3em;
 			display: block;
 			color: #fff;
 			width: 100%;
-			padding: 0 2em;
-			text-transform: uppercase;	
+			padding: 0 1em;
+			line-height: 40px;
+			// text-transform: uppercase;	
+		}
+		i {
+			margin-right: 0.5em;
+			font-size: em(18);
+			line-height: 36px;
 		}
 	}
 }
@@ -102,7 +119,7 @@ body {
 				left: 0;
 			}
 		}
-		.wrap {
+		.wrapper {
 			margin-left: $sidebar-width !important;
 		}
 	}
