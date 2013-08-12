@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130802175637) do
+ActiveRecord::Schema.define(:version => 20130812122525) do
 
   create_table "admins", :force => true do |t|
     t.datetime "created_at", :null => false
@@ -139,6 +139,8 @@ ActiveRecord::Schema.define(:version => 20130802175637) do
     t.string   "type"
     t.datetime "created_at",                             :null => false
     t.datetime "updated_at",                             :null => false
+    t.integer  "profileable_id"
+    t.string   "profileable_type"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
