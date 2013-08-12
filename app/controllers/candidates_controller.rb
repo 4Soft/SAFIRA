@@ -1,6 +1,6 @@
 class CandidatesController < ApplicationController
   def register
-    @selection_process = SelectionProcess.find(params[:id])
+    @selection_process = SelectionProcess.find(params[:selection_process_id])
     @candidate = Candidate.new(params[:candidate])
 
     if @selection_process.add_candidate(@candidate)

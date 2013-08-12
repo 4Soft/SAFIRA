@@ -8,10 +8,11 @@ SIG::Application.routes.draw do
     root :to => "devise/sessions#new"
   end
 
-  post "candidates/register/:id" => "candidates#register", as: :register_candidate
 
-  resources :selection_processes
-  resources :candidates, except: [:create, :new]
+  resources :selection_processes do 
+    resources :candidates, except: [:create, :new]
+    post "candidates/register" => "candidates#register", as: :register_candidate
+  end
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

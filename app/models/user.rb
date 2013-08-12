@@ -10,4 +10,7 @@ class User < ActiveRecord::Base
 
   has_many :phones
   has_many :social_networks
+
+  belongs_to :profileable, polymorphic: true
+  
 end
