@@ -24,10 +24,7 @@ class SpRegisterController < ApplicationController
 
   def show_confirm
     @candidate = Candidate.find_by_confirmation_register_token(params[:x])
-  end
-
-  def confirm_register
-    @candidate = Candidate.find_by_confirmation_register_token(params[:x])
+    @selection_process = @candidate.selection_process
 
     if @candidate.confirm(params[:x])
       flash[:message] = "Confirmação de boa"
