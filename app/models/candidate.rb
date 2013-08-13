@@ -17,4 +17,19 @@ class Candidate < ActiveRecord::Base
 
   belongs_to :selection_process
   has_and_belongs_to_many :process_steps
+
+  def register_confirmed?
+    not register_confirmed_at.blank?
+  end
+
+  def confirm(confirmation_token)
+    candidate = Candidate.find_by_confirmation_register_token(confirmation_token)
+    candidate.register_confirmed_at = Time.now
+
+    if candidate.save
+      return true
+    else
+      return false
+    end
+  end
 end

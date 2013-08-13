@@ -21,6 +21,5 @@ class ApplicationController < ActionController::Base
 
   def authenticate(role)
     flash[:message] = "Access denied"
-    redirect_to new_user_session_path unless current_user.try(:profileable_type).eql? role
   end
 end

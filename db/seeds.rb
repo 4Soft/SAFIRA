@@ -11,17 +11,3 @@ enterprise = Enterprise.create(name: "4Soft", password: "12345678", email: "4sof
 sel = SelectionProcess.new(year: 2013, semester: 2)
 sel.enterprise = enterprise
 sel.save
-
-step = ProcessStep.new(name: "Entrevista")
-step.selection_process = sel
-step.save
-
-cand = Candidate.new(name: "Jao", email: "painkiller778@gmail.com")
-cand.selection_process = sel
-cand.process_steps << step
-cand.save
-
-feedback = Feedback.new(public: "Como vc eh burro cara...", private: "huehuehueheuhe")
-feedback.candidate = cand
-feedback.process_step = step
-feedback.save

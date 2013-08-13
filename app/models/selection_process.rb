@@ -24,12 +24,25 @@ class SelectionProcess < ActiveRecord::Base
   def add_candidate(candidate)
     candidate.selection_process = self
 
+    token = SecureRandom.hex
+
+    while (Candidate.find_by_confirmation_register_token(token))
+      token = SecureRandom.urlsafe_base64
+    end
+
+    candidate.confirmation_register_token = token
+    candidate.register_confirmation_sent_at = Time.now
+
     if candidate.save
-      notify_observers(:new_candidate)
+      CandidateMailer.send_confirmation(candidate).deliver
       return true
     else
       return false
     end
+  end
+
+  def to_param
+    "#{id} #{full_name}".parameterize
   end
 
   private

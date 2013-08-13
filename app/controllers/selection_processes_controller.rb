@@ -1,9 +1,8 @@
 # -*- encoding : utf-8 -*-
 class SelectionProcessesController < ApplicationController
-  before_filter :authenticate_enterprise, except: [:show, :register_candidate]
-
   def show
-    @selection_process = SelectionProcess.find(params[:id])
+    @selection_process = SelectionProcess.find(params[:selection_process_id])
+    @candidate = Candidate.find(params[:id])
   end
 
   def new
