@@ -59,8 +59,7 @@
 			box-shadow: 0 1px tint($dark-color, 3%);
 		}
 		&:hover {
-			background: shade($dark-color, 30%);
-			border-top: 1px solid shade($dark-color,30%);
+			background: tint($dark-color, 3%);
 			a {
 				color: #fff;
 				text-decoration: none;
@@ -79,9 +78,14 @@
 				font-size: 0.8em;
 				line-height: 40px;
 			}
+			&:first-child {
+				&:hover {
+					border-top: 0;
+				}
+			}
 			&:hover {
 				background: transparent;
-				border-top: 0;
+				border-top: 1px solid tint($dark-color, 3%);
 			}
 		}
 		a {

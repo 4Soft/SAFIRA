@@ -1,3 +1,6 @@
-<% SelectionProcess.all.each do |sp| %>
-  <%= link_to sp.full_name, selection_process_register_form_path(sp) %> <br/>
-<% end %>
+<%= render "aside" %>
+
+<section class="section-content open-processes">
+    <h2>Processos seletivos abertos</h2>
+    <p>Acompanhe e gerencie as etapas e os candidatos dos seus processos seletivos que estão acontecendo.</p>
+</section>

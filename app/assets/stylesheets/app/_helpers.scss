@@ -17,3 +17,9 @@
 	border-right: 4px solid transparent;
 	border-top: 4px solid tint($dark-color, 60%);
 }
+
+%push-content {
+	@include media($tablet) {
+		margin-left: 15em;
+	}
+}

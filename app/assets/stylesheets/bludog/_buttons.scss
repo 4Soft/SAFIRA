@@ -29,6 +29,7 @@
 	transition: all 0.1s;
 	&:hover {
 		background: tint($color, 10%);
+		text-decoration: none;
 		@if (lightness($color) >= 70) {
 			background: tint($color, 20%);
 		}

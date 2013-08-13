@@ -1,21 +1,26 @@
 @mixin box($width: 100%) {
 	max-width: $width;
 	.header {
-		line-height: 4em;
+		padding: 0 1em;
+		border: 1px solid shade(#f2f2f1,10%);
+		line-height: 3em;
 		background: #fff;
 		border-top-left-radius: 2px;
 		border-top-right-radius: 2px;
+		border-bottom: 0;
 		h1 {
 			margin: 0;
-			font-size: em(24);
-			font-weight: 600;
+			font-size: 0.8em;
+			font-weight: 400;
+			text-transform: uppercase;
 		}
 	}
 	.body {
 		padding: 2em 1em;
-		color: #fff;
-		background: $dark-color;
+		color: #000;
+		background: #fff;
 		border-bottom-right-radius: 2px;
 		border-bottom-left-radius: 2px;
+		border: 1px solid shade(#f2f2f1,10%);
 	}
 }

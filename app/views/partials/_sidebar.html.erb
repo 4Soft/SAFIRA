@@ -7,6 +7,8 @@
 				<%= current_user.name %>
 			<% end %>
 		</li>
-		<li><%= link_to "Sair", destroy_user_session_path, :method => "delete" %></li>
+		<li><%= link_to 'Sair', destroy_user_session_path, :method => "delete" %></li>
+		<li class="heading"><span>Processo Seletivo</span></li>
+		<li><%= link_to 'Processos Abertos', selection_processes_path %></li>
 	</ul>
 </aside>

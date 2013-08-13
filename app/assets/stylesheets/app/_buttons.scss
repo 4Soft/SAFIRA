@@ -1,3 +1,7 @@
 .button-primary {
 	@include button($primary-color);
 }
+
+.button-success {
+    @include button($success-color);
+}

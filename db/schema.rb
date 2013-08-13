@@ -19,24 +19,18 @@ ActiveRecord::Schema.define(:version => 20130802175637) do
   end
 
   create_table "candidates", :force => true do |t|
-    t.string   "email",                         :null => false
     t.string   "name"
     t.text     "description"
     t.string   "curriculum_file_name"
     t.string   "curriculum_content_type"
     t.integer  "curriculum_file_size"
     t.datetime "curriculum_updated_at"
+    t.string   "email"
     t.string   "course"
-    t.string   "confirmation_register_token"
-    t.datetime "register_confirmed_at"
-    t.datetime "register_confirmation_sent_at"
     t.integer  "selection_process_id"
-    t.datetime "created_at",                    :null => false
-    t.datetime "updated_at",                    :null => false
+    t.datetime "created_at",              :null => false
+    t.datetime "updated_at",              :null => false
   end
-
-  add_index "candidates", ["confirmation_register_token"], :name => "index_candidates_on_confirmation_register_token", :unique => true
-  add_index "candidates", ["email"], :name => "index_candidates_on_email", :unique => true
 
   create_table "candidates_process_steps", :id => false, :force => true do |t|
     t.integer "candidate_id"

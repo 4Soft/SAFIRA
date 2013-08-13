@@ -5,6 +5,10 @@ class SelectionProcessesController < ApplicationController
     @candidate = Candidate.find(params[:id])
   end
 
+  def dashboard
+    @selection_processes = SelectionProcess.all
+  end
+
   def new
     @selection_process = SelectionProcess.new
   end
