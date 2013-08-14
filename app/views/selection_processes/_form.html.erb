@@ -1,0 +1,21 @@
+<%= form_for(@selection_process) do |f| %>
+  <%= f.label "Year" %>
+  <%= f.number_field :year %><br/>
+
+  <%= f.label "Semestre" %>
+  <%= f.number_field :semester %><br/>
+
+  <%= f.label "Descrição" %>
+  <%= f.text_area :description %><br/>
+
+  <%= f.label "Data de abertura" %>
+  <%= f.datetime_select :open_date %><br/>
+
+  <%= f.label "Data de fechamento" %>
+  <%= f.datetime_select :close_date %><br/>
+
+  <%= f.label "Edital" %>
+  <%= f.file_field :edict %><br/>
+
+  <%= f.submit "Criar" %>
+<% end %>

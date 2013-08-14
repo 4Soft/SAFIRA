@@ -1,0 +1,15 @@
+<%= form_for(:process_step) do |f| %>
+  <%= f.label "Nome" %>
+  <%= f.text_field :name %><br/>
+
+  <%= f.label "Descrição" %>
+  <%= f.email_field :description %><br/>
+
+  <%= f.label "Data de abertura" %>
+  <%= f.datetime_select :open_date %><br/>
+
+  <%= f.label "Data de fechamento" %>
+  <%= f.datetime_select :close_date %><br/>
+
+  <%= f.submit "Inscreva-se" %>
+<% end %>

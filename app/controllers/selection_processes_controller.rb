@@ -1,8 +1,7 @@
 # -*- encoding : utf-8 -*-
 class SelectionProcessesController < ApplicationController
   def show
-    @selection_process = SelectionProcess.find(params[:selection_process_id])
-    @candidate = Candidate.find(params[:id])
+    @selection_process = SelectionProcess.find(params[:id])
   end
 
   def new
@@ -10,7 +9,12 @@ class SelectionProcessesController < ApplicationController
   end
 
   def create
-    @selection_process = SelectionProcess.create(params[:selection_process])
+    @selection_process = SelectionProcess.new(params[:selection_process])
+    @selection_process.enterprise = current_user
+
+    @selection_process.save
+    
+    redirect_to @selection_process
   end
 
   def edit

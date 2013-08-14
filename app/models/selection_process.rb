@@ -18,7 +18,7 @@ class SelectionProcess < ActiveRecord::Base
   has_many :candidates
 
   def full_name
-    year.to_s + "." + semester.to_s + " " + enterprise.name
+    "#{year}.#{semester} #{enterprise.name}"
   end
 
   def add_candidate(candidate)
