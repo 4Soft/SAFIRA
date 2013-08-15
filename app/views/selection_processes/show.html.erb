@@ -1,3 +1,19 @@
 <h1><%= "Processo Seletivo " + @selection_process.year.to_s + "." + @selection_process.semester.to_s + " " + @selection_process.enterprise.name %></h1>
 
 <p><%= @selection_process.description %></p>
+
+<% @selection_process.process_steps.each do |step| %>
+  <div style="background: #ccc">
+    <h3><%= step.name %></h3>
+
+    <p><%= truncate(step.description, length: 80) %></p>
+
+    <ul>
+      <% step.candidates.each do |cand| %>
+        <li><%= cand.name %>: <%= cand.email %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<%= render 'process_steps/form' %>

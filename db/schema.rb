@@ -36,7 +36,7 @@ ActiveRecord::Schema.define(:version => 20130802175637) do
   end
 
   add_index "candidates", ["confirmation_register_token"], :name => "index_candidates_on_confirmation_register_token", :unique => true
-  add_index "candidates", ["email"], :name => "index_candidates_on_email", :unique => true
+  add_index "candidates", ["email"], :name => "index_candidates_on_email"
 
   create_table "candidates_process_steps", :id => false, :force => true do |t|
     t.integer "candidate_id"
@@ -93,8 +93,6 @@ ActiveRecord::Schema.define(:version => 20130802175637) do
     t.string   "edict_content_type"
     t.integer  "edict_file_size"
     t.datetime "edict_updated_at"
-    t.datetime "open_date"
-    t.datetime "close_date"
     t.integer  "enterprise_id"
     t.datetime "created_at",         :null => false
     t.datetime "updated_at",         :null => false
