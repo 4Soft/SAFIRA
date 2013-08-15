@@ -34,6 +34,7 @@ class SelectionProcess < ActiveRecord::Base
     candidate.register_confirmation_sent_at = Time.now
 
     if candidate.save
+      CandidateMailer.send_confirmation(self, candidate).deliver
       return true
     else
       return false
