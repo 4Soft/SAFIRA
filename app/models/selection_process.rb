@@ -2,7 +2,7 @@
 class SelectionProcess < ActiveRecord::Base
   after_create :create_inscription_step
 
-  attr_accessible :description, :semester, :year
+  attr_accessible :description, :name
 
   has_attached_file :edict,
     :storage => :dropbox,
@@ -18,7 +18,7 @@ class SelectionProcess < ActiveRecord::Base
   has_many :process_steps
 
   def full_name
-    "#{year}.#{semester} #{enterprise.name}"
+    "#{name} #{enterprise.name}"
   end
 
   def add_candidate(candidate)

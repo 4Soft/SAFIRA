@@ -87,8 +87,7 @@ ActiveRecord::Schema.define(:version => 20130802175637) do
 
   create_table "selection_processes", :force => true do |t|
     t.text     "description"
-    t.integer  "year"
-    t.integer  "semester"
+    t.string   "name"
     t.string   "edict_file_name"
     t.string   "edict_content_type"
     t.integer  "edict_file_size"

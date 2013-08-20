@@ -1,9 +1,6 @@
 <%= form_for(@selection_process) do |f| %>
-  <%= f.label "Year" %>
-  <%= f.number_field :year %><br/>
-
-  <%= f.label "Semestre" %>
-  <%= f.number_field :semester %><br/>
+  <%= f.label "Nome" %>
+  <%= f.text_area :name %><br/>
 
   <%= f.label "Descrição" %>
   <%= f.text_area :description %><br/>
