@@ -1,12 +1,25 @@
-<%= form_for(@selection_process) do |f| %>
-  <%= f.label "Nome" %>
-  <%= f.text_area :name %><br/>
+<%= form_for(@selection_process_form, url: selection_processes_path) do |f| %>
+  <%= f.label "Nome" %> 
+  <%= f.text_field :selection_process_name %><br/>
 
   <%= f.label "Descrição" %>
-  <%= f.text_area :description %><br/>
+  <%= f.text_area :selection_process_description %><br/>
 
   <%= f.label "Edital" %>
-  <%= f.file_field :edict %><br/>
+  <%= f.file_field :selection_process_edict %><br/>
+
+  <hr/>
+
+  <h3>Inscrições</h3>
+
+  <%= f.label "Chamada" %>
+  <%= f.text_area :inscription_description %><br/>
+
+  <%= f.label "Data de abertura" %>
+  <%= f.datetime_select :inscription_open_date %><br/>
+
+  <%= f.label "Data de fechamento" %>
+  <%= f.datetime_select :inscription_close_date %><br/>
 
   <%= f.submit "Criar" %>
 <% end %>

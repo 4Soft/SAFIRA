@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class ProcessStepsController < ApplicationController
   def create
     @selection_process = SelectionProcess.find(params[:selection_process_id])

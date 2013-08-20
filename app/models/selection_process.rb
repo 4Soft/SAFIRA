@@ -1,14 +1,12 @@
 # -*- encoding : utf-8 -*-
 class SelectionProcess < ActiveRecord::Base
-  after_create :create_inscription_step
-
   attr_accessible :description, :name
 
   has_attached_file :edict,
     :storage => :dropbox,
     :dropbox_credentials => Rails.root.join("config/dropbox.yml"),
     :dropbox_options => {
-      :path => proc { |style| "#{enterprise.name}/#{year}-#{semester}/edital/#{edict.original_filename}:basename.:extension" }, :unique_filename => true
+      :path => proc { |style| "#{enterprise.name}/#{full_name}/edital/#{edict.original_filename}" }, :unique_filename => true
     }
 
   attr_accessible :edict, :edict_content_type, :edict_file_name, :edict_file_size
@@ -43,12 +41,5 @@ class SelectionProcess < ActiveRecord::Base
 
   def to_param
     "#{id} #{full_name}".parameterize
-  end
-
-  private
-  
-  def create_inscription_step
-    inscription = ProcessStep.new(name: "Inscrições", description: "edite-me")
-    self.process_steps << inscription
   end
 end

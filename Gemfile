@@ -25,6 +25,8 @@ gem 'gravatar_image_tag', '>= 0.1.0'
 
 gem 'paperclip-dropbox'
 
+gem 'virtus'
+
 group :test do
   gem 'simplecov'
   gem 'sqlite3'
