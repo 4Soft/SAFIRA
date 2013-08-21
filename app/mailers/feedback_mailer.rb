@@ -8,6 +8,8 @@ class FeedbackMailer < ActionMailer::Base
   #   en.feedback_mailer.public_feedback.subject
   #
   def send_public_feedback(feedback)
+    @feedback = feedback
+
     @candidate = feedback.candidate
     @process_step = feedback.process_step
     @selection_process = @process_step.selection_process

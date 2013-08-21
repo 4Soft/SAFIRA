@@ -15,14 +15,11 @@ class SelectionProcessForm
   attribute :selection_process_enterprise, Enterprise
 
   attribute :inscription_description, String
-  attribute :inscription_open_date, String
-  attribute :inscription_close_date, File
+  attribute :inscription_open_date, DateTime
+  attribute :inscription_close_date, DateTime
 
-  #validates :selection_process_name, presence: true
-  #validates :selection_process_edict, presence: true
-
-  #validates :inscription_open_date, presence: true
-  #validates :inscription_close_date, presence: true
+  validates :selection_process_name, presence: true
+  validates :selection_process_edict, presence: true
   # … more validations …
 
   # Forms are never themselves persisted

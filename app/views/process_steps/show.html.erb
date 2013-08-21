@@ -1,0 +1,45 @@
+<h1>Gerenciando etapa <%= @process_step.name %> do ps <%= @selection_process.full_name %></h1>
+
+<h2>Candidatos inscritos</h2>
+
+<ul>
+  <% @process_step.candidates.each do |cand| %>
+    <li>
+      <%= cand.name %>
+      <%= cand.email %>
+      <%= link_to_function "Avaliar", "show_evaluation_form(#{cand.id})", id: "action" %>
+      <%= form_for(Feedback.new, url: selection_process_process_step_eval_candidate_path(@selection_process, @process_step, cand)) do |f| %>
+        <div id=<%= "#{cand.id}_eval" %> style="display: none">
+          <%= f.label "Feedback público" %>
+          <%= f.text_area :public %>
+
+          <%= f.label "Feedback privado" %>
+          <%= f.text_area :private %>
+
+          <%= f.label :approved, "Aprovado" %>
+          <%= f.radio_button :approved, true %>
+          <%= f.label :approved, "Reprovado" %>
+          <%= f.radio_button :approved, false %>
+
+          <%= f.submit "Avaliar" %>
+        </div>
+      <% end %>
+
+    </li>
+  <% end %>
+</ul>
+
+<script>
+
+  function show_evaluation_form(candidate) {
+    if ($("#action").text() == "Avaliar") {
+      $("#" + candidate + "_eval").show();
+      $("#action").text("Esconder");
+    }
+    else if ($("#action").text() == "Esconder") {
+      $("#" + candidate + "_eval").hide();
+      $("#action").text("Avaliar");
+    }
+    
+  }
+</script>

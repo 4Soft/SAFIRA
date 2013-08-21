@@ -13,9 +13,9 @@ class SelectionProcessesController < ApplicationController
       params[:selection_process_form].merge(selection_process_enterprise: current_user))
 
     if @selection_process_form.save
-
       redirect_to @selection_process_form.selection_process
     else
+      render :new
     end
   end
 

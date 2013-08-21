@@ -1,4 +1,4 @@
-# -*- encoding : utf-8 -*-
+# encoding: UTF-8
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -59,6 +59,7 @@ ActiveRecord::Schema.define(:version => 20130802175637) do
   create_table "feedbacks", :force => true do |t|
     t.text     "public"
     t.text     "private"
+    t.boolean  "approved"
     t.integer  "candidate_id"
     t.integer  "process_step_id"
     t.datetime "created_at",      :null => false

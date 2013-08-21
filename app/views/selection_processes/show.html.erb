@@ -10,9 +10,10 @@
 
     <ul>
       <% step.candidates.each do |cand| %>
-        <li><%= cand.name %>: <%= cand.email %></li>
+        <li><%= link_to "#{cand.name}: #{cand.email}", [@selection_process, cand] %></li>
       <% end %>
     </ul>
+    <%= link_to "Gerenciar etapa", [@selection_process, step] %>
   </div>
 <% end %>
 
