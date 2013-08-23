@@ -1,16 +1,14 @@
 .section-intro {
-    display: block;
-    float: left;
     width: 100%;
-    padding: 0 1em;
+    padding: 1em;
+    margin-top: 1em;
     background: #fff;
-    position: relative;
-    border-bottom: 1px solid shade(#ebebe9, 10%);
     @include media($tablet) {
         position: absolute;
         width: 15em;
         min-height: 100%;
         border-bottom: 0;
+        margin-top: 0;
         margin-left: -1em;
     }
     h2 {
