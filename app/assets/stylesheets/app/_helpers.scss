@@ -1,6 +1,8 @@
 .wrapper {
 	@include outer-container;
 	padding: 0 1em;
+	background: #ebebe9;
+	min-height: 100%;
 }
 
 .push-to-right {

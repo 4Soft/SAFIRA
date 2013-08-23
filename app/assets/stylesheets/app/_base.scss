@@ -4,12 +4,16 @@ html, body {
 }
 
 body {
-	background: #ebebe9;
+	background: $dark-color;
 	font-family: "Source Sans Pro", sans-serif;
 	font-size: 16px;
 	font-weight: 200;
 	height: 100%;
 	z-index: 1;
+}
+
+h1, h2, h3, h4 {
+	font-weight: 400;
 }
 
 a {
@@ -24,3 +28,7 @@ a {
 {  
     outline: none;  
 } 
+
+.page-title {
+	text-transform: uppercase;
+}
