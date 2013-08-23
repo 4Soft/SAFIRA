@@ -7,11 +7,11 @@ class CandidateMailer < ActionMailer::Base
   #
   #   en.candidate_mailer.send_confirmation.subject
   #
-  def send_confirmation(candidate)
+  def send_confirmation(selection_process, candidate)
     @candidate = candidate
-    @selection_process = @candidate.selection_process
+    @selection_process = selection_process
 
-    mail to: candidate.email, subject: "[#{candidate.selection_process.enterprise.name}] Cadastro confirmado"
+    mail to: candidate.email, subject: "[#{selection_process.enterprise.name}] Cadastro confirmado"
   end
 
 end

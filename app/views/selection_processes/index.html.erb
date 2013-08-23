@@ -3,4 +3,20 @@
 <section class="section-content open-processes">
     <h2>Processos seletivos abertos</h2>
     <p>Acompanhe e gerencie as etapas e os candidatos dos seus processos seletivos que estão acontecendo.</p>
+    
+    <table class="table">
+        <% @selection_processes.each do |sp| %>
+            <tr>
+                <td>
+                    <%= sp.year %>.<%= sp.semester %>
+                </td>
+                <td>
+                    <%= sp.candidates.count %>
+                </td>
+                <td>
+                    <%= link_to "Edital", sp.edict.url, :target => "blank" %>
+                </td>
+            </tr>
+        <% end %>
+    </table>
 </section>

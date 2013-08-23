@@ -9,4 +9,5 @@ class ProcessStep < ActiveRecord::Base
   def generate_feedback(feedback)
     FeedbackMailer.send_public_feedback(feedback).deliver
   end
+
 end

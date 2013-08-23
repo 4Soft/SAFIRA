@@ -2,7 +2,7 @@
 class SelectionProcess < ActiveRecord::Base
   after_create :create_inscription_step
 
-  attr_accessible :close_date, :description, :open_date, :semester, :year
+  attr_accessible :description, :semester, :year
 
   has_attached_file :edict,
     :storage => :dropbox,
@@ -13,12 +13,12 @@ class SelectionProcess < ActiveRecord::Base
 
   attr_accessible :edict, :edict_content_type, :edict_file_name, :edict_file_size
 
+  has_many :candidates
   belongs_to :enterprise, class_name: "User"
   has_many :process_steps
-  has_many :candidates
 
   def full_name
-    year.to_s + "." + semester.to_s + " " + enterprise.name
+    "#{year}.#{semester} #{enterprise.name}"
   end
 
   def add_candidate(candidate)
@@ -34,7 +34,7 @@ class SelectionProcess < ActiveRecord::Base
     candidate.register_confirmation_sent_at = Time.now
 
     if candidate.save
-      CandidateMailer.send_confirmation(candidate).deliver
+      CandidateMailer.send_confirmation(self, candidate).deliver
       return true
     else
       return false
@@ -51,4 +51,5 @@ class SelectionProcess < ActiveRecord::Base
     inscription = ProcessStep.new(name: "Inscrições", description: "edite-me")
     self.process_steps << inscription
   end
+
 end

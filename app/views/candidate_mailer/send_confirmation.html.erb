@@ -1,1 +1,1 @@
-<p>Cadastro quase confirmado no ps <%= @selection_process.full_name %>, basta acessar <%= selection_process_show_confirm_url(@selection_process, x: @candidate.confirmation_register_token) %></p>
+<p>Cadastro quase confirmado no ps <%= @selection_process.full_name %>, basta acessar <%= link_to " este link", selection_process_confirm_register_url(@selection_process, x: @candidate.confirmation_register_token), method: :post %> para confirmar</p>

@@ -1,24 +1,23 @@
-<div style="text-align: center">
-  <h1><%= "Processo Seletivo " + @selection_process.year.to_s + "." + @selection_process.semester.to_s + " " + @selection_process.enterprise.name %></h1>
+<%= render "aside" %>
 
-  <p><%= @selection_process.description %></p>
+<section class="section-content">
+<h1><%= "Processo Seletivo " + @selection_process.year.to_s + "." + @selection_process.semester.to_s + " " + @selection_process.enterprise.email %></h1>
 
-  <%= form_for(:candidate, url: selection_process_register_candidate_url(@selection_process)) do |f| %>
-    <%= f.label "Nome completo" %>
-    <%= f.text_field :name %>
+<p><%= @selection_process.description %></p>
 
-    <%= f.label "E-mail" %>
-    <%= f.email_field :email %>
+<% @selection_process.process_steps.each do |step| %>
+  <div style="background: #ccc">
+    <h3><%= step.name %></h3>
 
-    <%= f.label "Curso" %>
-    <%= f.text_field :course %>
+    <p><%= truncate(step.description, length: 80) %></p>
 
-    <%= f.label "Escreva sobre você" %>
-    <%= f.text_area :description %>
+    <ul>
+      <% step.candidates.each do |cand| %>
+        <li><%= cand.name %>: <%= cand.email %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
 
-    <%= f.label "Currículo" %>
-    <%= f.file_field :curriculum %>
-
-    <%= f.submit "Inscreva-se" %>
-  <% end %>
-</div>
+<%= render 'process_steps/form' %>
+</section>

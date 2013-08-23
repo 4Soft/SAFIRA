@@ -8,7 +8,7 @@ class Candidate < ActiveRecord::Base
     :storage => :dropbox,
     :dropbox_credentials => Rails.root.join("config/dropbox.yml"),
     :dropbox_options => {
-      :path => proc { |style| "#{selection_process.enterprise.name}/#{selection_process.year}-#{selection_process.semester}/curriculos/#{name.capitalize}-#{email}" }, :unique_filename => true
+      :path => proc { |style| "#{selection_process.enterprise.name}/#{selection_process.year}-#{selection_process.semester}/curriculos/#{name.capitalize}-#{email}:basename.:extension" }, :unique_filename => true
   }
 
   validates_presence_of :curriculum
@@ -25,6 +25,8 @@ class Candidate < ActiveRecord::Base
   def confirm(confirmation_token)
     candidate = Candidate.find_by_confirmation_register_token(confirmation_token)
     candidate.register_confirmed_at = Time.now
+
+    candidate.selection_process.process_steps.first.candidates << candidate
 
     if candidate.save
       return true

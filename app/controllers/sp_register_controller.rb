@@ -22,7 +22,7 @@ class SpRegisterController < ApplicationController
     @candidate = Candidate.find_by_email(params[:x])
   end
 
-  def show_confirm
+  def confirm_register
     @candidate = Candidate.find_by_confirmation_register_token(params[:x])
     @selection_process = @candidate.selection_process
 

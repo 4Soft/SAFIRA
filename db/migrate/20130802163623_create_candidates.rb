@@ -17,7 +17,7 @@ class CreateCandidates < ActiveRecord::Migration
       t.timestamps
     end
 
-    add_index :candidates, :email, unique: true
+    add_index :candidates, :email
     add_index :candidates, :confirmation_register_token, unique: true
   end
 end

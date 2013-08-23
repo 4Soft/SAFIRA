@@ -1,0 +1,15 @@
+<%= form_for(:process_step, url: selection_process_process_steps_url(@selection_process)) do |f| %>
+  <%= f.label "Nome" %>
+  <%= f.text_field :name %><br/>
+
+  <%= f.label "Descrição" %>
+  <%= f.text_area :description %><br/>
+
+  <%= f.label "Data de abertura" %>
+  <%= f.datetime_select :open_date %><br/>
+
+  <%= f.label "Data de fechamento" %>
+  <%= f.datetime_select :close_date %><br/>
+
+  <%= f.submit "Vai" %>
+<% end %>

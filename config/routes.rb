@@ -15,9 +15,10 @@ SIG::Application.routes.draw do
 
     get "/success/" => "sp_register#successful_register", as: :successful_register
     
-    get "/confirm_register/" => "sp_register#show_confirm", as: :show_confirm
+    get "/confirm_register/" => "sp_register#confirm_register", as: :confirm_register
 
     resources :candidates, except: [:create, :new]
+    resources :process_steps
   end
 
   # The priority is based upon order of creation:

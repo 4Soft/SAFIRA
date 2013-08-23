@@ -41,14 +41,5 @@ SIG::Application.configure do
   ActionMailer::Base.delivery_method = :smtp
   ActionMailer::Base.perform_deliveries = true
   ActionMailer::Base.raise_delivery_errors = true
-
-  config.action_mailer.smtp_settings = {
-    :address              => 'smtp.gmail.com',
-    :port                 => 587,
-    :domain               => 'localhost:3000',
-    :user_name            => 'boladaodeamor123@gmail.com',
-    :password             => 'congohmvfdmntkpd',
-    :authentication       => 'login',
-    :enable_starttls_auto => true
-  }
+  config.action_mailer.smtp_settings = { :address => "localhost", :port => 1025 }
 end
