@@ -10,7 +10,7 @@ class SelectionProcessForm
   attr_reader :inscription
 
   attribute :selection_process_name, String
-  attribute :selection_process_description, String
+  attribute :selection_process_call, String
   attribute :selection_process_edict, File
   attribute :selection_process_enterprise, Enterprise
 
@@ -40,15 +40,15 @@ private
 
   def persist!
     @selection_process = SelectionProcess.new(name: selection_process_name, 
-      description: selection_process_description, edict: selection_process_edict)
+      call: selection_process_call, edict: selection_process_edict)
     @selection_process.enterprise = selection_process_enterprise
     @selection_process.save!
 
     @inscription = @selection_process.process_steps.create!(name: "Inscrições",
-      description: inscription_description, open_date: inscription_open_date,
+      description: "Etapa de inscrição dos candidatos", open_date: inscription_open_date,
        close_date: inscription_close_date)
   end
 end
 
-  #attr_accessor :selection_process_name, :selection_process_description, :selection_process_edict,
+  #attr_accessor :selection_process_name, :selection_process_call, :selection_process_edict,
    #             :inscription_description, :inscription_open_date, :inscription_close_date

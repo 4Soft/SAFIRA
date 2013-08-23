@@ -15,4 +15,7 @@ class ProcessStepsController < ApplicationController
 
     redirect_to @selection_process
   end
+
+  def consolidate
+  end
 end

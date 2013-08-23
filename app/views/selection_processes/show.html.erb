@@ -1,28 +1,23 @@
-<<<<<<< HEAD
 <%= render "aside" %>
 
 <section class="section-content">
-<h1><%= "Processo Seletivo " + @selection_process.year.to_s + "." + @selection_process.semester.to_s + " " + @selection_process.enterprise.email %></h1>
-=======
-<h1><%= @selection_process.full_name %></h1>
->>>>>>> c6273201f02417280807ea53bda73126c2bc00a0
 
-<p><%= @selection_process.description %></p>
+  <h1><%= @selection_process.full_name %></h1>
 
-<% @selection_process.process_steps.each do |step| %>
-  <div style="background: #ccc">
-    <h3><%= step.name %></h3>
+  <% @selection_process.process_steps.each do |step| %>
+    <div style="background: #ccc">
+      <h3><%= step.name %></h3>
 
-    <p><%= truncate(step.description, length: 80) %></p>
+      <p><%= truncate(step.description, length: 80) %></p>
 
-    <ul>
-      <% step.candidates.each do |cand| %>
-        <li><%= link_to "#{cand.name}: #{cand.email}", [@selection_process, cand] %></li>
-      <% end %>
-    </ul>
-    <%= link_to "Gerenciar etapa", [@selection_process, step] %>
-  </div>
-<% end %>
+      <ul>
+        <% step.candidates.each do |cand| %>
+          <li><%= link_to "#{cand.name}: #{cand.email}", [@selection_process, cand] %></li>
+        <% end %>
+      </ul>
+      <%= link_to "Gerenciar etapa", [@selection_process, step] %>
+    </div>
+  <% end %>
 
-<%= render 'process_steps/form' %>
+  <%= render 'process_steps/form' %>
 </section>

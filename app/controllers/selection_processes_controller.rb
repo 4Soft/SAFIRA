@@ -6,7 +6,13 @@ class SelectionProcessesController < ApplicationController
   end
 
   def index
-    @selection_processes = SelectionProcess.all
+    if params[:done].nil?
+      @selection_processes = SelectionProcess.all
+    elsif params[:done] == "true"
+      @selection_processes = SelectionProcess.all.select { |sp| sp.done }
+    else
+      @selection_processes = SelectionProcess.all.reject { |sp| sp.done }
+    end
   end
 
   def new

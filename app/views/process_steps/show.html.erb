@@ -8,7 +8,8 @@
       <%= cand.name %>
       <%= cand.email %>
       <%= link_to_function "Avaliar", "show_evaluation_form(#{cand.id})", id: "action" %>
-      <%= form_for(Feedback.new, url: selection_process_process_step_eval_candidate_path(@selection_process, @process_step, cand)) do |f| %>
+      
+      <%= form_for(Feedback.where(candidate_id: cand, process_step_id: @process_step).first || Feedback.new, url: selection_process_process_step_eval_candidate_path(@selection_process, @process_step, cand)) do |f| %>
         <div id=<%= "#{cand.id}_eval" %> style="display: none">
           <%= f.label "Feedback público" %>
           <%= f.text_area :public %>
@@ -16,9 +17,9 @@
           <%= f.label "Feedback privado" %>
           <%= f.text_area :private %>
 
-          <%= f.label :approved, "Aprovado" %>
+          <%= f.label :approved_true, "Aprovado" %>
           <%= f.radio_button :approved, true %>
-          <%= f.label :approved, "Reprovado" %>
+          <%= f.label :approved_false, "Reprovado" %>
           <%= f.radio_button :approved, false %>
 
           <%= f.submit "Avaliar" %>
@@ -27,8 +28,10 @@
 
     </li>
   <% end %>
+
 </ul>
 
+<%= link_to "Consolidar etapa" %>
 <script>
 
   function show_evaluation_form(candidate) {
@@ -40,6 +43,5 @@
       $("#" + candidate + "_eval").hide();
       $("#action").text("Avaliar");
     }
-    
   }
 </script>

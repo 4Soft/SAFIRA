@@ -2,23 +2,16 @@
   <%= f.label "Nome" %> 
   <%= f.text_field :selection_process_name %><br/>
 
-  <%= f.label "Descrição" %>
-  <%= f.text_area :selection_process_description %><br/>
+  <%= f.label "Chamada" %>
+  <%= f.text_area :selection_process_call %><br/>
 
   <%= f.label "Edital" %>
   <%= f.file_field :selection_process_edict %><br/>
 
-  <hr/>
-
-  <h3>Inscrições</h3>
-
-  <%= f.label "Chamada" %>
-  <%= f.text_area :inscription_description %><br/>
-
-  <%= f.label "Data de abertura" %>
+  <%= f.label "Data de abertura das inscrições" %>
   <%= f.datetime_select :inscription_open_date %><br/>
 
-  <%= f.label "Data de fechamento" %>
+  <%= f.label "Data de fechamento das inscrições" %>
   <%= f.datetime_select :inscription_close_date %><br/>
 
   <%= f.submit "Criar" %>

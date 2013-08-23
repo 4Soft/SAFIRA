@@ -20,6 +20,7 @@ SIG::Application.routes.draw do
 
     resources :process_steps do
       post "/feedback/:cand_id" => "feedback#eval_candidate", as: :eval_candidate
+      put "/feedback/:cand_id" => "feedback#update_eval_candidate", as: :eval_candidate
     end
   end
 

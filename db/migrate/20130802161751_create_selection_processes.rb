@@ -2,7 +2,7 @@
 class CreateSelectionProcesses < ActiveRecord::Migration
   def change
     create_table :selection_processes do |t|
-      t.text :description
+      t.text :call
       t.string :name
       t.attachment :edict
       
