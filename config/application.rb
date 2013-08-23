@@ -72,5 +72,7 @@ module SIG
       g.helper = false
     end
 
+    config.autoload_paths += Dir["#{config.root}/app/models/**/","#{config.root}/lib/**/"]
+
   end
 end

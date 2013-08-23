@@ -4,6 +4,7 @@ class CreateFeedbacks < ActiveRecord::Migration
     create_table :feedbacks do |t|
       t.text :public
       t.text :private
+      t.boolean :approved
       t.references :candidate
       t.references :process_step
 

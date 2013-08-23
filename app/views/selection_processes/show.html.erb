@@ -1,7 +1,11 @@
+<<<<<<< HEAD
 <%= render "aside" %>
 
 <section class="section-content">
 <h1><%= "Processo Seletivo " + @selection_process.year.to_s + "." + @selection_process.semester.to_s + " " + @selection_process.enterprise.email %></h1>
+=======
+<h1><%= @selection_process.full_name %></h1>
+>>>>>>> c6273201f02417280807ea53bda73126c2bc00a0
 
 <p><%= @selection_process.description %></p>
 
@@ -13,9 +17,10 @@
 
     <ul>
       <% step.candidates.each do |cand| %>
-        <li><%= cand.name %>: <%= cand.email %></li>
+        <li><%= link_to "#{cand.name}: #{cand.email}", [@selection_process, cand] %></li>
       <% end %>
     </ul>
+    <%= link_to "Gerenciar etapa", [@selection_process, step] %>
   </div>
 <% end %>
 

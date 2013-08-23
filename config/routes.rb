@@ -8,7 +8,6 @@ SIG::Application.routes.draw do
     root :to => "devise/sessions#new"
   end
   
-
   resources :selection_processes do 
     get "/register/" => "sp_register#show_process", as: :register_form
     post "/register/" => "sp_register#register", as: :register_candidate
@@ -18,7 +17,10 @@ SIG::Application.routes.draw do
     get "/confirm_register/" => "sp_register#confirm_register", as: :confirm_register
 
     resources :candidates, except: [:create, :new]
-    resources :process_steps
+
+    resources :process_steps do
+      post "/feedback/:cand_id" => "feedback#eval_candidate", as: :eval_candidate
+    end
   end
 
   # The priority is based upon order of creation:

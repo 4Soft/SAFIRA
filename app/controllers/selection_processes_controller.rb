@@ -10,16 +10,18 @@ class SelectionProcessesController < ApplicationController
   end
 
   def new
-    @selection_process = SelectionProcess.new
+    @selection_process_form = SelectionProcessForm.new
   end
 
   def create
-    @selection_process = SelectionProcess.new(params[:selection_process])
-    @selection_process.enterprise = current_user
+    @selection_process_form = SelectionProcessForm.new(
+      params[:selection_process_form].merge(selection_process_enterprise: current_user))
 
-    @selection_process.save
-    
-    redirect_to @selection_process
+    if @selection_process_form.save
+      redirect_to @selection_process_form.selection_process
+    else
+      render :new
+    end
   end
 
   def edit
