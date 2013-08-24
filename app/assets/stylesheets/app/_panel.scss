@@ -1,0 +1,10 @@
+.panel {
+  padding: 1em;
+  background: #fff;
+  border-radius: 2px;
+  &:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+}

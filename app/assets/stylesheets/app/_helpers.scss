@@ -5,7 +5,7 @@
 	min-height: 100%;
 }
 
-.push-to-right {
+.pull-right {
 	display: inline-block;
 	float: right;
 	text-align: right;
@@ -22,10 +22,19 @@
 
 %push-content {
 	@include media($tablet) {
-		margin-left: 15em;
+		margin: -1em;
+		margin-left: 14em;
 	}
 }
 
 .section-content {
 	@extend %push-content;
+	display: block;
+	padding: 1em;
+	background: #ebebe9;
+	hr {
+		border: 0;
+		border-top: 1px solid #ccc;
+		margin: 2em -1em;
+	}
 }

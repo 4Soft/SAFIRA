@@ -2,6 +2,10 @@
 	@include button($primary-color);
 }
 
+.button-primary-inline {
+    @include button($primary-color, false)
+}
+
 .button-success {
     @include button($success-color);
 }

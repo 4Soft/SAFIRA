@@ -6,6 +6,7 @@ class SelectionProcessesController < ApplicationController
   end
 
   def index
+    # REFATORAR!
     if params[:done].nil?
       @selection_processes = SelectionProcess.all
     elsif params[:done] == "true"
