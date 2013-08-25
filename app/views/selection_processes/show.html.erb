@@ -4,7 +4,7 @@
 
   <h1><%= @selection_process.full_name %></h1>
 
-  <% @selection_process.process_steps.each do |step| %>
+  <% @selection_process.process_steps.order(&:order_number).each do |step| %>
     <div style="background: #ccc">
       <h3><%= step.name %></h3>
 

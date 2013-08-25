@@ -81,6 +81,7 @@ ActiveRecord::Schema.define(:version => 20130802175637) do
     t.string   "name"
     t.datetime "open_date"
     t.datetime "close_date"
+    t.integer  "order_number"
     t.integer  "selection_process_id"
     t.datetime "created_at",           :null => false
     t.datetime "updated_at",           :null => false

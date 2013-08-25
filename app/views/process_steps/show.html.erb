@@ -31,7 +31,12 @@
 
 </ul>
 
-<%= link_to "Consolidar etapa" %>
+<% if @process_step.consolidated? %>
+  <p>Consolidado em <%= @process_step.close_date %></p>
+<% else %>
+  <%=  link_to "Consolidar etapa", selection_process_process_step_consolidate_path(@selection_process, @process_step), method: :post %>
+<% end %>
+
 <script>
 
   function show_evaluation_form(candidate) {

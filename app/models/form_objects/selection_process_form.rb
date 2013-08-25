@@ -14,7 +14,6 @@ class SelectionProcessForm
   attribute :selection_process_edict, File
   attribute :selection_process_enterprise, Enterprise
 
-  attribute :inscription_description, String
   attribute :inscription_open_date, DateTime
   attribute :inscription_close_date, DateTime
 
@@ -46,9 +45,6 @@ private
 
     @inscription = @selection_process.process_steps.create!(name: "Inscrições",
       description: "Etapa de inscrição dos candidatos", open_date: inscription_open_date,
-       close_date: inscription_close_date)
+      close_date: inscription_close_date, order_number: 1)
   end
 end
-
-  #attr_accessor :selection_process_name, :selection_process_call, :selection_process_edict,
-   #             :inscription_description, :inscription_open_date, :inscription_close_date

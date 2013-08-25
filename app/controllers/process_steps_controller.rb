@@ -16,6 +16,14 @@ class ProcessStepsController < ApplicationController
     redirect_to @selection_process
   end
 
-  def consolidate
+  def consolidate_step
+    @selection_process = SelectionProcess.find(params[:selection_process_id])
+    @process_step = ProcessStep.find(params[:process_step_id])
+
+    @process_step.close_date = Time.now
+
+    @process_step.save
+
+    redirect_to @selection_process
   end
 end
