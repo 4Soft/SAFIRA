@@ -5,6 +5,8 @@ class CreateSelectionProcesses < ActiveRecord::Migration
       t.text :call
       t.string :name
       t.attachment :edict
+      t.datetime :consolidated_at
+      t.boolean :consolidated
       
       t.references :enterprise
 

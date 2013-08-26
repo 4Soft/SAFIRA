@@ -11,6 +11,14 @@ class ProcessStepsController < ApplicationController
 
     @process_step.selection_process = @selection_process
 
+    last_step = @selection_process.process_steps.order(:order_number).last
+
+    @process_step.order_number = last_step.order_number + 1
+
+    if last_step.consolidated?
+      @process_step.candidates += last_step.approved_candidates
+    end
+
     @process_step.save
 
     redirect_to @selection_process
@@ -20,9 +28,7 @@ class ProcessStepsController < ApplicationController
     @selection_process = SelectionProcess.find(params[:selection_process_id])
     @process_step = ProcessStep.find(params[:process_step_id])
 
-    @process_step.close_date = Time.now
-
-    @process_step.save
+    @process_step.consolidate_step!
 
     redirect_to @selection_process
   end

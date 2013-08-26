@@ -82,6 +82,7 @@ ActiveRecord::Schema.define(:version => 20130802175637) do
     t.datetime "open_date"
     t.datetime "close_date"
     t.integer  "order_number"
+    t.boolean  "consolidated"
     t.integer  "selection_process_id"
     t.datetime "created_at",           :null => false
     t.datetime "updated_at",           :null => false
@@ -94,6 +95,8 @@ ActiveRecord::Schema.define(:version => 20130802175637) do
     t.string   "edict_content_type"
     t.integer  "edict_file_size"
     t.datetime "edict_updated_at"
+    t.datetime "consolidated_at"
+    t.boolean  "consolidated"
     t.integer  "enterprise_id"
     t.datetime "created_at",         :null => false
     t.datetime "updated_at",         :null => false

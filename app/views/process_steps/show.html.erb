@@ -1,4 +1,4 @@
-<h1>Gerenciando etapa <%= @process_step.name %> do ps <%= @selection_process.full_name %></h1>
+<h1>Gerenciando etapa <%= @process_step.name %> #<%= @process_step.order_number %></h1>
 
 <h2>Candidatos inscritos</h2>
 
@@ -34,6 +34,10 @@
 <% if @process_step.consolidated? %>
   <p>Consolidado em <%= @process_step.close_date %></p>
 <% else %>
+  <% if @process_step.delayed? %>
+    <b style="background: yellow"><marquee style="color: red">TÁ ATRASADO, CONSOLIDA AÊ!!!</marquee></b>
+  <% end %>
+
   <%=  link_to "Consolidar etapa", selection_process_process_step_consolidate_path(@selection_process, @process_step), method: :post %>
 <% end %>
 

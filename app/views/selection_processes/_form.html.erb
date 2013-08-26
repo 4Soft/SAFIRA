@@ -12,12 +12,12 @@
   <div class="row">
     <div class="opening">
       <%= f.label "Data de abertura das inscrições" %>
-      <%= f.datetime_select :inscription_open_date, 'data-behaviour' => 'datepicker' %>
+      <%= f.text_field :inscription_open_date, 'data-behaviour' => 'datepicker' %>
     </div>
 
     <div class="closing">
       <%= f.label "Data de fechamento das inscrições" %>
-      <%= f.datetime_select :inscription_close_date, 'data-behaviour' => 'datepicker'%>
+      <%= f.text_field :inscription_close_date, 'data-behaviour' => 'datepicker'%>
     </div>
   </div>
 </div>

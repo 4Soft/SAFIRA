@@ -1,6 +1,6 @@
 # -*- encoding : utf-8 -*-
 class SelectionProcess < ActiveRecord::Base
-  attr_accessible :call, :name
+  attr_accessible :call, :name, :consolidated, :consolidated_at
 
   has_attached_file :edict,
     :storage => :dropbox,

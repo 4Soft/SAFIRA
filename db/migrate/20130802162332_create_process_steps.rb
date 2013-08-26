@@ -7,6 +7,8 @@ class CreateProcessSteps < ActiveRecord::Migration
       t.datetime :open_date
       t.datetime :close_date
       t.integer :order_number
+      t.boolean :consolidated
+
       t.references :selection_process
 
       t.timestamps

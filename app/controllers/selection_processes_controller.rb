@@ -23,10 +23,6 @@ class SelectionProcessesController < ApplicationController
   def create
     @selection_process_form = SelectionProcessForm.new(
       params[:selection_process_form].merge(selection_process_enterprise: current_user))
-    @selection_process_form.inscription_open_date = 
-      params[:selection_process_form][:inscription_open_date].to_datetime
-
-    raise Exception.new @selection_process_form.inscription_open_date
 
     if @selection_process_form.save
       redirect_to @selection_process_form.selection_process
