@@ -19,5 +19,15 @@
     </div>
   <% end %>
 
+  <% if @selection_process.consolidated? %>
+    <p>Processo consolidado em <%= @selection_process.consolidated_at %></p>
+  <% else %>
+    <%= link_to "Consolidar processo seletivo", selection_process_consolidate_path(@selection_process), method: :post %>
+  <% end %>
+
+  <hr/>
+
+  <h2>Adicionar etapa</h2>
+
   <%= render 'process_steps/form' %>
 </section>

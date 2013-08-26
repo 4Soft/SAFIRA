@@ -6,13 +6,14 @@ class SelectionProcessesController < ApplicationController
   end
 
   def index
-    # REFATORAR!
+    sel_processes = SelectionProcess.where(enterprise_id: current_user.id)
+
     if params[:done].nil?
-      @selection_processes = SelectionProcess.all
+      @selection_processes = sel_processes
     elsif params[:done] == "true"
-      @selection_processes = SelectionProcess.all.select { |sp| sp.done }
+      @selection_processes = sel_processes.select { |sp| sp.consolidated }
     else
-      @selection_processes = SelectionProcess.all.reject { |sp| sp.done }
+      @selection_processes = sel_processes.reject { |sp| sp.consolidated }
     end
   end
 
@@ -43,5 +44,12 @@ class SelectionProcessesController < ApplicationController
   def destroy
     @selection_process = SelectionProcess.find(params[:id])
     @selection_process.destroy
+  end
+
+  def consolidate_process
+    @selection_process = SelectionProcess.find(params[:selection_process_id])
+    @selection_process.consolidate_process!
+
+    redirect_to @selection_process
   end
 end

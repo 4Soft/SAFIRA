@@ -15,9 +15,6 @@ class SelectionProcess < ActiveRecord::Base
   belongs_to :enterprise, class_name: "User"
   has_many :process_steps
 
-  def done
-    true
-  end
 
   def full_name
     "#{name} #{enterprise.name}"
@@ -41,6 +38,12 @@ class SelectionProcess < ActiveRecord::Base
     else
       return false
     end
+  end
+
+  def consolidate_process!
+    self.consolidated = true
+    self.consolidated_at = Time.now
+    self.save
   end
 
   def to_param

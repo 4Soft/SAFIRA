@@ -16,6 +16,8 @@ SIG::Application.routes.draw do
     
     get "/confirm_register/" => "sp_register#confirm_register", as: :confirm_register
 
+    post "/consolidate" => "selection_processes#consolidate_process", as: :consolidate
+
     resources :candidates, except: [:create, :new]
 
     resources :process_steps do
