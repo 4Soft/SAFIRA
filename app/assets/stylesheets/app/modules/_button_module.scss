@@ -1,0 +1,36 @@
+.btn {
+    padding: 1em 1em;
+    border: 0;
+    border-radius: 2px;
+    color: #fff;
+    text-transform: uppercase;
+    background: $color_black;
+    &:hover {
+        background: tint($color_black, 5%);
+    }
+}
+
+    .btn--primary {
+        @extend .btn;
+        background: $color_blue;
+        &:hover {
+            background: shade($color_blue, 10%);
+        }       
+    }
+
+    .btn--success {
+        @extend .btn;
+        background: $color_green;
+        &:hover {
+            background: shade($color_green, 10%);
+        }
+    }
+
+    .btn--small {
+        font-size: 12px;
+        padding: 0.5em 1em;
+    }
+
+    .btn--full-width {
+        width: 100%;
+    }

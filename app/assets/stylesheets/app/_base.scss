@@ -1,34 +1,21 @@
-html, body {
-	height: 100%;
-	min-height: 100%;
-}
-
 body {
-	background: $dark-color;
-	font-family: "Source Sans Pro", sans-serif;
-	font-size: 16px;
-	font-weight: 200;
-	height: 100%;
-	z-index: 1;
+    background: $color_cloudy;
+    font-family: "Source Sans Pro";
+    &.visitors {
+        background: $color_black;
+        color: #fff;
+    }
 }
 
-h1, h2, h3, h4 {
-	font-weight: 400;
+*:focus {
+    outline: 0;
+}
+
+strong {
+    font-weight: 600;
 }
 
 a {
-	color: $primary-color;
-	text-decoration: none;
-	&:hover {
-		text-decoration: underline;
-	}
-}
-
-*:focus  
-{  
-    outline: none;  
-} 
-
-.page-title {
-	text-transform: uppercase;
+    color: $color_blue;
+    text-decoration: none;
 }

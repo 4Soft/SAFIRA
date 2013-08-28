@@ -1,0 +1,35 @@
+<header class="header">
+  <div class="wrapper">
+  
+    <div class="header__logo">
+      SAFIRA
+      <small class="beta">BETA</small>
+    </div>
+
+    <nav class="header__navigation">
+      <ul>
+        <li>
+          <a href="#">
+            <div class="header__user-session">
+              <div class="user-session">
+                <div class="user-session__avatar" style="background-image: url(<%= gravatar_url current_user %>)"></div>
+                <span class="user-session__username"><%= current_user.name %></span>
+                <div class="arrow-down"></div>
+              </div>
+            </div>
+          </a>
+        </li>
+        <li>
+          <a href="#">Feedback</a>
+        </li>
+        <li>
+          <a href="#">Ajuda</a>
+        </li>
+        <li class="hide-tablet">
+          <%= link_to "Sair", destroy_user_session_path, :method => "delete" %>
+        </li>
+      </ul>
+    </nav>
+
+  </div>
+</header>

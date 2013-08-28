@@ -1,0 +1,19 @@
+.table {
+    width: 100%;
+    color: #757b80;
+    tr {
+        &:nth-child(2n+1) {
+            background: $color_lighter_cloudy;
+        }
+    }
+    td {
+        padding: 2em 1em;
+    }
+}
+    .table__data-title {
+        font-size: 1.125em;
+    }
+
+    .table__label {
+        font-size: 14px;
+    }

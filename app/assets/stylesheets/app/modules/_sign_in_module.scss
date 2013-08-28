@@ -1,0 +1,62 @@
+.sign-in {
+    max-width: 26em;
+    text-align: center;
+    margin: auto;
+    padding: 0 1em;
+    margin-top: 4em;
+    input[type="email"], input[type="password"] {
+        width: 100%;
+        height: 48px;
+        margin-bottom: 1em;
+        padding: 0 1em;
+        border: 0;
+        font-size: 16px;
+        font-weight: 400;
+        color: $color_black;
+        border-radius: 2px;
+        background: #fff;
+        ::-webkit-input-placeholder {
+           color: tint($color_black, 35%);
+           font-style: italic;
+        }
+        :-moz-placeholder { /* Firefox 18- */
+            color: tint($color_black, 35%);
+           font-style: italic;
+        }
+        ::-moz-placeholder {  /* Firefox 19+ */
+          color: tint($color_black, 35%);
+       font-style: italic;
+        }
+        :-ms-input-placeholder {  
+       color: tint($color_black, 35%);
+       font-style: italic;
+        }
+    }
+    input[type="submit"] {
+        @extend .button-primary;
+    }
+}
+
+    .sign-in__forgot-password {
+        @extend .push-to-right;
+        margin-bottom: 16px;
+        font-size: em(14);
+    }
+
+.footer-notes {
+    color: #fff;
+    margin-top: 1em;
+    text-align: center;
+    .copyright {
+        text-transform: uppercase;
+        font-size: 0.8em;
+        opacity: 0.6;
+    }
+}
+
+.sign-in__logo {
+    margin-bottom: 2em;
+    font-size: 2em;
+    font-weight: 600;
+    color: #fff;
+}

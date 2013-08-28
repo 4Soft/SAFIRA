@@ -1,9 +1,0 @@
-.opening, .closing {
-    @include media($tablet) {
-        @include span-columns(6);
-    }
-}
-
-.row {
-    @include row;
-}

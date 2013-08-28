@@ -1,22 +1,45 @@
-<%= render "aside" %>
-
-<section class="section-content open-processes">
-  <h2>Processos seletivos abertos</h2>
-  <p>Acompanhe e gerencie as etapas e os candidatos dos seus processos seletivos que estão acontecendo.</p>
-  
-  <table class="table">
-    <% @selection_processes.each do |sp| %>
-      <tr>
-          <td>
-              <%= link_to sp.full_name, sp %>
-          </td>
-          <td>
-              <%= sp.candidates.count %>
-          </td>
-          <td>
-              <%= link_to "Edital", sp.edict.url, :target => "blank" %>
-          </td>
-      </tr>
-    <% end %>
-  </table>
-</section>
+<section class="panel">
+        <header class="panel__header">
+            <span class="hide-mobile">
+                <h2>Processos Seletivos</h2>
+            </span>
+            <div class="pull-right">
+                <a class="btn--success" href="#">
+                    + CRIAR PROCESSO SELETIVO
+                </a>
+            </div>
+        </header>
+        <table class="table">
+            <tbody>
+                <tr>
+                    <td>
+                        <a href="#" class="table__data-title">Processo Seletivo 2013.1</a>
+                    </td>
+                    <td class="hide-mobile">
+                        <span class="table__label">
+                            <strong>INÍCIO</strong><br>
+                            16/02/2013
+                        </span>
+                    </td>
+                    <td class="hide-mobile">
+                        <span class="table__label">
+                            <strong>ÚLTIMA ETAPA</strong><br>
+                            18/04/2013
+                        </span>
+                    </td>
+                    <td class="hide-mobile">
+                        <span class="table__label">
+                            <strong>PROGRESSO</strong><br>
+                            [BARRA DE PROGRESSO]
+                        </span>
+                    </td>
+                    <td>
+                        <div class="pull-right">
+                            <a href="#" class="btn btn--small">EDITAL</a>
+                            <a href="#" class="btn--primary btn--small">GERENCIAR etapas</a>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
