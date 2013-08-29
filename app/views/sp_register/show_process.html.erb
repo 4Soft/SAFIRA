@@ -2,12 +2,13 @@
   <header class="panel__header">
     <span class="hide-mobile">
       <h2><%= @selection_process.full_name %></h2>
+      <p><%= @selection_process.call %></p>
     </span>
   </header>
 
   <div class="panel">
-    <p><%= @selection_process.call %></p>
-
+    <%= link_to "Ler Edital", @selection_process.edict.url %>
+    
     <%= form_for(:candidate, url: selection_process_register_candidate_url(@selection_process)) do |f| %>
       <%= f.label "Nome completo" %>
       <%= f.text_field :name %><br/>
