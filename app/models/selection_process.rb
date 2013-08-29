@@ -15,6 +15,8 @@ class SelectionProcess < ActiveRecord::Base
   belongs_to :enterprise, class_name: "User"
   has_many :process_steps
 
+  scope :consolidated, where(consolidated: true)
+  scope :not_consolidated, where(consolidated: false)
 
   def full_name
     "#{name} #{enterprise.name}"

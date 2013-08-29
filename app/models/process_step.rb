@@ -7,6 +7,9 @@ class ProcessStep < ActiveRecord::Base
   has_and_belongs_to_many :candidates
   belongs_to :selection_process
 
+  scope :consolidated, where(consolidated: true)
+  scope :not_consolidated, where(consolidated: false)
+
   def consolidate_step!
     self.consolidated = true
     self.close_date = Time.now

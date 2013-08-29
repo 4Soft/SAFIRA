@@ -11,9 +11,9 @@ class SelectionProcessesController < ApplicationController
     if params[:done].nil?
       @selection_processes = sel_processes
     elsif params[:done] == "true"
-      @selection_processes = sel_processes.select { |sp| sp.consolidated }
+      @selection_processes = sel_processes.consolidated
     else
-      @selection_processes = sel_processes.reject { |sp| sp.consolidated }
+      @selection_processes = sel_processes.not_consolidated
     end
   end
 
