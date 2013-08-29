@@ -1,19 +1,18 @@
 <section class="panel">
-        <header class="panel__header">
-            <span class="hide-mobile">
-                <h2>Processos Seletivos</h2>
-            </span>
-            <div class="pull-right">
-                <a class="btn--success" href="#">
-                    + CRIAR PROCESSO SELETIVO
-                </a>
-            </div>
-        </header>
-        <table class="table">
-            <tbody>
+    <header class="panel__header">
+        <span class="hide-mobile">
+            <h2>Processos Seletivos</h2>
+        </span>
+        <div class="pull-right">
+            <%= link_to "+ CRIAR PROCESSO SELETIVO", new_selection_process_path, :class => "btn--success" %>
+        </div>
+    </header>
+    <table class="table">
+        <tbody>
+            <% if @selection_processes.each do |sp| %>
                 <tr>
                     <td>
-                        <a href="#" class="table__data-title">Processo Seletivo 2013.1</a>
+                        <%= link_to sp.full_name, sp, :class => "table__data-title" %>
                     </td>
                     <td class="hide-mobile">
                         <span class="table__label">
@@ -35,11 +34,18 @@
                     </td>
                     <td>
                         <div class="pull-right">
-                            <a href="#" class="btn btn--small">EDITAL</a>
-                            <a href="#" class="btn--primary btn--small">GERENCIAR etapas</a>
+                            <%= link_to "EDITAL", sp.edict.url, :class => "btn btn--small" %>
+                            <%= link_to "GERENCIAR ETAPAS", sp, :class => "btn--primary btn--small" %>
                         </div>
                     </td>
                 </tr>
-            </tbody>
-        </table>
-    </section>
+            <% end.empty? %>
+                <tr>
+                    <td>
+                        <p>Não há nenhum <strong>Processo Seletivo</strong> cadastrado até o momento.</p>
+                    </td>
+                </tr>
+            <% end %>
+        </tbody>
+    </table>
+</section>
