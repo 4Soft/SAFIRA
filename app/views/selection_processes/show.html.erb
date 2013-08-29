@@ -1,8 +1,9 @@
-<%= render "aside" %>
-
-<section class="section-content">
-
-  <h1><%= @selection_process.full_name %></h1>
+<section class="panel">
+  <header class="panel__header">
+      <span class="hide-mobile">
+          <h2><%= @selection_process.full_name %></h2>
+      </span>
+  </header>
 
   <% @selection_process.process_steps.order(&:order_number).each do |step| %>
     <div style="background: #ccc">
@@ -18,7 +19,7 @@
       <%= link_to "Gerenciar etapa", [@selection_process, step] %>
     </div>
   <% end %>
-
+  
   <% if @selection_process.consolidated? %>
     <p>Processo consolidado em <%= @selection_process.consolidated_at %></p>
   <% else %>
@@ -26,8 +27,6 @@
   <% end %>
 
   <hr/>
-
-  <h2>Adicionar etapa</h2>
-
+  <h3 style="margin-left:20px">Adicionar etapa</h3><br>
   <%= render 'process_steps/form' %>
 </section>
