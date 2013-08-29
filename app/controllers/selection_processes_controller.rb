@@ -48,8 +48,13 @@ class SelectionProcessesController < ApplicationController
 
   def consolidate_process
     @selection_process = SelectionProcess.find(params[:selection_process_id])
-    @selection_process.consolidate_process!
 
-    redirect_to @selection_process
+    begin
+      @selection_process.consolidate_process!
+      redirect_to @selection_process
+    rescue Exception => e
+      flash[:notice] = e.message
+      render :show
+    end
   end
 end

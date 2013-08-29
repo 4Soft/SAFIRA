@@ -43,6 +43,10 @@ class SelectionProcess < ActiveRecord::Base
   end
 
   def consolidate_process!
+    process_steps.each do |step|
+      raise "Nem todos os passos foram consolidados!" unless step.consolidated?
+    end
+
     self.consolidated = true
     self.consolidated_at = Time.now
     self.save
