@@ -2,31 +2,36 @@
   <header class="panel__header">
     <span class="hide-mobile">
       <h2><%= @selection_process.full_name %></h2>
-      <p><%= @selection_process.call %></p>
+      <p>
+        <%= @selection_process.call %><br>
+        <%= link_to "Ler Edital", @selection_process.edict.url, :class => "btn--small btn--primary" %>
+      </p>
     </span>
   </header>
 
   <div class="panel">
-    <%= link_to "Ler Edital", @selection_process.edict.url %>
-    
-    <%= form_for(:candidate, url: selection_process_register_candidate_url(@selection_process)) do |f| %>
+
+    <%= form_for(:candidate, url: selection_process_register_candidate_url(@selection_process), :html => { :class => "form"}) do |f| %>
       <%= f.label "Nome completo" %>
-      <%= f.text_field :name %><br/>
+      <%= f.text_field :name, :required => true, :autofocus => true %><br/>
 
       <%= f.label "E-mail" %>
-      <%= f.email_field :email %><br/>
+      <%= f.email_field :email, :required => true %><br/>
 
       <%= f.label "Curso" %>
-      <%= f.text_field :course %><br/>
+      <%= f.text_field :course, :required => true %><br/>
 
       <%= f.label "Escreva sobre você" %>
       <%= f.text_area :description %><br/>
 
       <%= f.label "Currículo" %>
-      <%= f.file_field :curriculum %><br/>
+      <%= f.file_field :curriculum, :required => true %><br/>
 
       <div class="form-actions">
-        <%= f.submit "Inscreva-se", :class => "btn--success" %>
+        <center>
+          <%= f.submit "Inscreva-se", :class => "btn--success" %>
+          <%= link_to "Cancelar", :back, :class => "btn--primary" %>
+        </center>
       </div>
     <% end %>
   </div>
