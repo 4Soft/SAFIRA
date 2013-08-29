@@ -7,25 +7,31 @@
     </div>
 
     <nav class="header__navigation">
-      <ul>
-        <li>
-          <a href="#">
-            <div class="header__user-session">
-              <div class="user-session">
-                <div class="user-session__avatar" style="background-image: url(<%= gravatar_url current_user %>)"></div>
-                <span class="user-session__username"><%= current_user.name %></span>
-                <div class="arrow-down"></div>
+      <ul class="header__navigation__list">
+        <li class="header__navigation__item">
+          <div class="dropdown">
+            <a data-toggle="dropdown" href="#">
+              <div class="header__user-session">
+                <div class="user-session">
+                  <div class="user-session__avatar" style="background-image: url(<%= gravatar_url current_user %>)"></div>
+                  <span class="user-session__username"><%= current_user.name %></span>
+                  <div class="arrow-down"></div>
+                </div>
               </div>
-            </div>
-          </a>
+            </a>
+            <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+              <li role="presentation"><%= link_to "Editar meus dados", edit_user_registration_path %></li>
+              <li><%= link_to "Sair", destroy_user_session_path, :method => "delete" %></li>
+            </ul>
+          </div>
         </li>
-        <li>
+        <li class="header__navigation__item">
           <a href="#">Feedback</a>
         </li>
-        <li>
+        <li class="header__navigation__item">
           <a href="#">Ajuda</a>
         </li>
-        <li class="hide-tablet">
+        <li class="header__navigation__item hide-tablet">
           <%= link_to "Sair", destroy_user_session_path, :method => "delete" %>
         </li>
       </ul>
