@@ -19,4 +19,8 @@ strong {
 a {
     color: $color_blue;
     text-decoration: none;
+    &:hover {
+        text-decoration: none;
+        color: $color_blue;
+    }
 }

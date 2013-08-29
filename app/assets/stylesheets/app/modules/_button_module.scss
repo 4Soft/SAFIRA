@@ -7,6 +7,7 @@
     background: $color_black;
     &:hover {
         background: tint($color_black, 5%);
+        color: #fff;
     }
 }
 
