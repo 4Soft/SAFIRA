@@ -1,22 +1,34 @@
-<h1><%= @selection_process.full_name %></h1>
+<section class="panel">
+  <header class="panel__header">
+    <span class="hide-mobile">
+      <h2><%= @selection_process.full_name %></h2>
+    </span>
+  </header>
 
-<p><%= @selection_process.call %></p>
+  <div class="panel">
+    <p><%= @selection_process.call %></p>
 
-<%= form_for(:candidate, url: selection_process_register_candidate_url(@selection_process)) do |f| %>
-  <%= f.label "Nome completo" %>
-  <%= f.text_field :name %><br/>
+    <%= form_for(:candidate, url: selection_process_register_candidate_url(@selection_process)) do |f| %>
+      <%= f.label "Nome completo" %>
+      <%= f.text_field :name %><br/>
 
-  <%= f.label "E-mail" %>
-  <%= f.email_field :email %><br/>
+      <%= f.label "E-mail" %>
+      <%= f.email_field :email %><br/>
 
-  <%= f.label "Curso" %>
-  <%= f.text_field :course %><br/>
+      <%= f.label "Curso" %>
+      <%= f.text_field :course %><br/>
 
-  <%= f.label "Escreva sobre você" %>
-  <%= f.text_area :description %><br/>
+      <%= f.label "Escreva sobre você" %>
+      <%= f.text_area :description %><br/>
 
-  <%= f.label "Currículo" %>
-  <%= f.file_field :curriculum %><br/>
+      <%= f.label "Currículo" %>
+      <%= f.file_field :curriculum %><br/>
 
-  <%= f.submit "Inscreva-se" %>
-<% end %>
+      <div class="form-actions">
+        <%= f.submit "Inscreva-se", :class => "btn--success" %>
+      </div>
+    <% end %>
+  </div>
+</section>
+
+
