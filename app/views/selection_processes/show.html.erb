@@ -1,30 +1,48 @@
 <section class="panel">
   <header class="panel__header">
-      <span class="hide-mobile">
-          <h2><%= @selection_process.full_name %></h2>
-      </span>
+    <span class="hide-mobile">
+        <h2><%= @selection_process.full_name %></h2>
+    </span>
+
+    <div class="pull-right">
+        <% if @selection_process.consolidated? %>
+          <span>
+            Processo consolidado em
+            <%= @selection_process.consolidated_at.strftime("%d/%m/%y %H:%M") %>
+          </span>
+        <% else %>
+          <%= link_to "CONSOLIDAR PROCESSO SELETIVO", selection_process_consolidate_path(@selection_process), :class => "btn--primary", method: :post %>
+        <% end %>
+
+        <%= link_to "EDITAR PROCESSO SELETIVO", @selection_process, :class => "btn" %>
+    </div>
   </header>
 
-  <% @selection_process.process_steps.order(&:order_number).each do |step| %>
-    <div style="background: #ccc">
-      <h3><%= step.name %></h3>
-
-      <p><%= truncate(step.description, length: 80) %></p>
-
-      <ul>
-        <% step.candidates.each do |cand| %>
-          <li><%= link_to "#{cand.name}: #{cand.email}", [@selection_process, cand] %></li>
-        <% end %>
-      </ul>
-      <%= link_to "Gerenciar etapa", [@selection_process, step] %>
-    </div>
-  <% end %>
+  <hr>
+  <h3 style="margin-left:20px">Listgem de Etapas</h3>
+  <table class="table">
+    <tbody>
+      <% @selection_process.process_steps.order(&:order_number).each do |step| %>
+        <tr>
+          <td>
+            <h4><%= step.name %></h4>
+            <p><%= truncate(step.description, length: 80) %></p>
+            <ul>
+              <% step.candidates.each do |cand| %>
+                <li>
+                  <%= link_to "#{cand.name}: #{cand.email}", [@selection_process, cand] %>
+                </li>
+              <% end %>
+            </ul>
+          </td>
+          <td>
+            <%= link_to "Gerenciar etapa", [@selection_process, step], :class => "btn btn--small" %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
   
-  <% if @selection_process.consolidated? %>
-    <p>Processo consolidado em <%= @selection_process.consolidated_at %></p>
-  <% else %>
-    <%= link_to "Consolidar processo seletivo", selection_process_consolidate_path(@selection_process), method: :post %>
-  <% end %>
 
   <hr/>
   <h3 style="margin-left:20px">Adicionar etapa</h3><br>
