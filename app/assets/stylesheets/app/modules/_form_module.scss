@@ -1,0 +1,7 @@
+.form {
+     @include form($color_blue);
+}
+
+    .form--full-width {
+        @include form($color_blue, true);
+    }
