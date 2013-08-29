@@ -15,6 +15,8 @@ class SelectionProcess < ActiveRecord::Base
   belongs_to :enterprise, class_name: "User"
   has_many :process_steps
 
+  scope :consolidated, where(consolidated: true)
+  scope :not_consolidated, where(consolidated: false)
 
   def full_name
     "#{name} #{enterprise.name}"
@@ -41,6 +43,10 @@ class SelectionProcess < ActiveRecord::Base
   end
 
   def consolidate_process!
+    process_steps.each do |step|
+      raise "Nem todos os passos foram consolidados!" unless step.consolidated?
+    end
+
     self.consolidated = true
     self.consolidated_at = Time.now
     self.save

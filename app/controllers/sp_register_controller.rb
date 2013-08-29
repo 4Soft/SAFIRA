@@ -10,7 +10,8 @@ class SpRegisterController < ApplicationController
 
     if @selection_process.add_candidate(@candidate)
       flash[:message] = "Cadastro de boa"
-      redirect_to selection_process_successful_register_path(@selection_process, x: @candidate.email)
+      redirect_to selection_process_successful_register_path(@selection_process, 
+        x: @candidate.confirmation_register_token)
     else
       flash[:message] = "Cadastro deu ruim"
       render action: :show_process
@@ -19,7 +20,7 @@ class SpRegisterController < ApplicationController
 
   def successful_register
     @selection_process = SelectionProcess.find(params[:selection_process_id])
-    @candidate = Candidate.find_by_email(params[:x])
+    @candidate = Candidate.find_by_confirmation_register_token(params[:x])
   end
 
   def confirm_register
@@ -28,7 +29,8 @@ class SpRegisterController < ApplicationController
 
     if @candidate.confirm(params[:x])
       flash[:message] = "Confirmação de boa"
-      redirect_to selection_process_successful_register_path(@selection_process, x: @candidate.email)
+      redirect_to selection_process_successful_register_path(@selection_process,
+       x: @candidate.confirmation_register_token)
     else
       flash[:message] = "Confirmação deu ruim"
       render action: :show_process

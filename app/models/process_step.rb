@@ -7,13 +7,23 @@ class ProcessStep < ActiveRecord::Base
   has_and_belongs_to_many :candidates
   belongs_to :selection_process
 
+  scope :consolidated, where(consolidated: true)
+  scope :not_consolidated, where(consolidated: false)
+
   def consolidate_step!
+    cand_feedback = {}
+
+    candidates.each do |cand|
+      unless cand_feedback[cand] = Feedback.where(candidate_id: cand.id, process_step_id: id).first
+        raise "Nem todos os candidatos foram avaliados!" 
+      end
+    end
+
     self.consolidated = true
     self.close_date = Time.now
     
-    candidates.find_each do |cand|
-      feedback = Feedback.where(candidate_id: cand.id, process_step_id: id).first
-      FeedbackMailer.send_public_feedback(feedback).deliver
+    cand_feedback.each do |cand, feed|
+      FeedbackMailer.send_public_feedback(feed).deliver
     end
 
     next_step = get_next_step

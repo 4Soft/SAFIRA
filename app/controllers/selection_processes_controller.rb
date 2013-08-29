@@ -11,9 +11,9 @@ class SelectionProcessesController < ApplicationController
     if params[:done].nil?
       @selection_processes = sel_processes
     elsif params[:done] == "true"
-      @selection_processes = sel_processes.select { |sp| sp.consolidated }
+      @selection_processes = sel_processes.consolidated
     else
-      @selection_processes = sel_processes.reject { |sp| sp.consolidated }
+      @selection_processes = sel_processes.not_consolidated
     end
   end
 
@@ -48,8 +48,13 @@ class SelectionProcessesController < ApplicationController
 
   def consolidate_process
     @selection_process = SelectionProcess.find(params[:selection_process_id])
-    @selection_process.consolidate_process!
 
-    redirect_to @selection_process
+    begin
+      @selection_process.consolidate_process!
+      redirect_to @selection_process
+    rescue Exception => e
+      flash[:notice] = e.message
+      render :show
+    end
   end
 end
