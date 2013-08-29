@@ -1,6 +1,7 @@
 body {
     background: $color_cloudy;
     font-family: "Source Sans Pro";
+    font-size: 16px;
     &.visitors {
         background: $color_black;
         color: #fff;
@@ -18,4 +19,8 @@ strong {
 a {
     color: $color_blue;
     text-decoration: none;
+    &:hover {
+        text-decoration: none;
+        color: $color_blue;
+    }
 }
