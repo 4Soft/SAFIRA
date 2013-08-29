@@ -1,5 +1,6 @@
 .form {
      @include form($color_blue);
+     margin: 20px;
 }
 
     .form--full-width {
