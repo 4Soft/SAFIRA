@@ -28,8 +28,13 @@ class ProcessStepsController < ApplicationController
     @selection_process = SelectionProcess.find(params[:selection_process_id])
     @process_step = ProcessStep.find(params[:process_step_id])
 
-    @process_step.consolidate_step!
+    begin
+      @process_step.consolidate_step!
+      redirect_to @selection_process
+    rescue Exception => e
+      flash[:error] = e.message
+      render :show
+    end
 
-    redirect_to @selection_process
   end
 end
