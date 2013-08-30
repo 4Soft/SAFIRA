@@ -54,7 +54,7 @@ class ProcessStep < ActiveRecord::Base
   end
 
   def delayed?
-    Time.now > consolidated_at
+    not consolidated and Time.now > consolidated_at
   end
 
 end
