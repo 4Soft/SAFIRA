@@ -1,7 +1,7 @@
 # -*- encoding : utf-8 -*-
 class ProcessStep < ActiveRecord::Base
-  attr_accessible :close_date, :description, :name, :open_date, :order_number
-                  :consolidated
+  attr_accessible :description, :name, :open_date, :order_number,
+                  :consolidated, :consolidated_at
 
   has_many :feedbacks
   has_and_belongs_to_many :candidates
@@ -9,6 +9,8 @@ class ProcessStep < ActiveRecord::Base
 
   scope :consolidated, where(consolidated: true)
   scope :not_consolidated, where(consolidated: false)
+
+  validates_presence_of :description, :name, :open_date, :order_number, :selection_process_id
 
   def consolidate_step!
     cand_feedback = {}
@@ -52,7 +54,7 @@ class ProcessStep < ActiveRecord::Base
   end
 
   def delayed?
-    Time.now > close_date
+    Time.now > consolidated_at
   end
 
 end

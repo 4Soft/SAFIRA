@@ -33,6 +33,13 @@
               <%= step.name %>
             </h4>
             <p><%= truncate(step.description, length: 80) %></p>
+            <ul>
+              <% step.candidates.each do |cand| %>
+                <li>
+                  <%= link_to "#{cand.name}: #{cand.email}", [@selection_process, cand] %>
+                </li>
+              <% end %>
+            </ul>
           </td>
           <td>
             <%= step.candidates.count == 1 ? "1 Candidato" : "#{step.candidates.count} Candidatos" %>

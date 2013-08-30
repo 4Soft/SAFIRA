@@ -15,7 +15,7 @@ class SelectionProcessForm
   attribute :selection_process_enterprise, Enterprise
 
   attribute :inscription_open_date, DateTime
-  attribute :inscription_close_date, DateTime
+  attribute :inscription_consolidated_at, DateTime
 
   validates :selection_process_name, presence: true
   validates :selection_process_edict, presence: true
@@ -45,6 +45,6 @@ private
 
     @inscription = @selection_process.process_steps.create!(name: "Inscrições",
       description: "Etapa de inscrição dos candidatos", open_date: inscription_open_date,
-      close_date: inscription_close_date, order_number: 1)
+      consolidated_at: inscription_consolidated_at, order_number: 1)
   end
 end

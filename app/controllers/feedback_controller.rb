@@ -1,7 +1,7 @@
 class FeedbackController < ApplicationController
   def eval_candidate
     @selection_process = SelectionProcess.find(params[:selection_process_id])
-    @process_step = ProcessStep.find(params[:process_step_id])
+    @process_step = @selection_process.process_steps.find(params[:process_step_id])
     @feedback = Feedback.new(params[:feedback])
     @candidate = Candidate.find(params[:cand_id])
 
@@ -10,6 +10,8 @@ class FeedbackController < ApplicationController
 
     if @feedback.save
       redirect_to [@selection_process, @process_step]
+    else
+      render "process_steps/show"
     end
   end
 
@@ -22,6 +24,8 @@ class FeedbackController < ApplicationController
 
     if @feedback.update_attributes!(params[:feedback])
       redirect_to [@selection_process, @process_step]
+    else
+      render "process_steps/show"
     end
   end
 end

@@ -13,11 +13,6 @@
 
 ActiveRecord::Schema.define(:version => 20130802175637) do
 
-  create_table "admins", :force => true do |t|
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
   create_table "candidates", :force => true do |t|
     t.string   "email",                         :null => false
     t.string   "name"
@@ -51,11 +46,6 @@ ActiveRecord::Schema.define(:version => 20130802175637) do
     t.datetime "updated_at", :null => false
   end
 
-  create_table "enterprises", :force => true do |t|
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
   create_table "feedbacks", :force => true do |t|
     t.text     "public"
     t.text     "private"
@@ -80,7 +70,7 @@ ActiveRecord::Schema.define(:version => 20130802175637) do
     t.text     "description"
     t.string   "name"
     t.datetime "open_date"
-    t.datetime "close_date"
+    t.datetime "consolidated_at"
     t.integer  "order_number"
     t.boolean  "consolidated"
     t.integer  "selection_process_id"

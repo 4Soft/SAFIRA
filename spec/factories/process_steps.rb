@@ -6,6 +6,6 @@ FactoryGirl.define do
     description "MyText"
     name "MyString"
     open_date "2013-08-02 13:23:32"
-    close_date "2013-08-02 13:23:32"
+    consolidated_at "2013-08-02 13:23:32"
   end
 end
