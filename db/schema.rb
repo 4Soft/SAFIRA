@@ -13,6 +13,11 @@
 
 ActiveRecord::Schema.define(:version => 20130802175637) do
 
+  create_table "admins", :force => true do |t|
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "candidates", :force => true do |t|
     t.string   "email",                         :null => false
     t.string   "name"
@@ -42,6 +47,11 @@ ActiveRecord::Schema.define(:version => 20130802175637) do
   add_index "candidates_process_steps", ["process_step_id"], :name => "index_candidates_process_steps_on_process_step_id"
 
   create_table "employees", :force => true do |t|
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "enterprises", :force => true do |t|
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end

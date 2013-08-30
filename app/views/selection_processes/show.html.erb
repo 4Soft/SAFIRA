@@ -33,20 +33,13 @@
               <%= step.name %>
             </h4>
             <p><%= truncate(step.description, length: 80) %></p>
-            <ul>
-              <% step.candidates.each do |cand| %>
-                <li>
-                  <%= link_to "#{cand.name}: #{cand.email}", [@selection_process, cand] %>
-                </li>
-              <% end %>
-            </ul>
           </td>
           <td>
             <%= step.candidates.count == 1 ? "1 Candidato" : "#{step.candidates.count} Candidatos" %>
           </td>
           <td>
             <%= "Abertura: #{step.open_date.strftime("%d/%m/%y %H:%M")}" if step.open_date %><br>
-            <%= "Fechamento: #{step.close_date.strftime("%d/%m/%y %H:%M")}" if step.open_date %>
+            <%= "Fechamento: #{step.consolidated_at.strftime("%d/%m/%y %H:%M")}" if step.open_date %>
           </td>
           <td>
             <%= link_to "Gerenciar etapa", [@selection_process, step], :class => "btn btn--small" %>

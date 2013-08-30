@@ -4,7 +4,7 @@
       <h2><%= @selection_process.full_name %></h2>
       <p>
         <%= @selection_process.call %><br>
-        <%= link_to "Ler Edital", @selection_process.edict.url, :class => "btn--small btn--primary" %>
+        <%= link_to "Ler Edital", @selection_process.edict.url, :class => "btn--small btn--primary", :target => "_blank" %>
       </p>
     </span>
   </header>
