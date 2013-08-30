@@ -4,6 +4,8 @@ SIG::Application.routes.draw do
 
   get "users/dashboard" => "users#dashboard"
 
+  get "/feedbacks" => "feedback#show"
+
   devise_scope :user do
     root :to => "devise/sessions#new"
   end

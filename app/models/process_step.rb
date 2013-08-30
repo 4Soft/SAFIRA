@@ -22,7 +22,7 @@ class ProcessStep < ActiveRecord::Base
     end
 
     self.consolidated = true
-    self.close_date = Time.now
+    self.consolidated_at = Time.now
     
     cand_feedback.each do |cand, feed|
       FeedbackMailer.send_public_feedback(feed).deliver

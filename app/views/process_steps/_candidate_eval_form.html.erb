@@ -1,0 +1,20 @@
+<div id=<%= "#{cand.id}_eval" %>>
+  <%= form_for(@feedback, url: selection_process_process_step_eval_candidate_path(@selection_process, @process_step, cand), :html => { :class => "form"}) do |f| %>
+      <%= f.label "Feedback público" %>
+      <%= f.text_area :public %>
+
+      <%= f.label "Feedback privado" %>
+      <%= f.text_area :private %>
+
+      <%= f.label :approved_true, "Aprovado" %>
+      <%= f.radio_button :approved, true %>
+      <%= f.label :approved_false, "Reprovado" %>
+      <%= f.radio_button :approved, false %>
+
+      <div class="form-actions">
+        <center>
+          <%= f.submit "Avaliar", :class => "btn--success" %>
+        </center>
+      </div>
+  <% end %>
+</div>

@@ -51,10 +51,10 @@ class SelectionProcessesController < ApplicationController
 
     begin
       @selection_process.consolidate_process!
-      redirect_to @selection_process
     rescue Exception => e
       flash[:notice] = e.message
-      render :show
     end
+    
+    redirect_to @selection_process
   end
 end

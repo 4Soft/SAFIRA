@@ -1,4 +1,16 @@
 class FeedbackController < ApplicationController
+
+  def show
+    @feedback = Feedback.where(
+      candidate_id: params[:cand_id], process_step_id: params[:process_step_id]).first
+    @selection_process = SelectionProcess.find(params[:selection_process_id])
+    @process_step = @selection_process.process_steps.find(params[:process_step_id])
+
+    render partial: "process_steps/candidate_eval_form",
+     locals: { feedback: @feedback, cand: @feedback.candidate,
+     selection_process: @selection_process, process_step: @process_step }
+  end
+
   def eval_candidate
     @selection_process = SelectionProcess.find(params[:selection_process_id])
     @process_step = @selection_process.process_steps.find(params[:process_step_id])
@@ -17,7 +29,7 @@ class FeedbackController < ApplicationController
 
   def update_eval_candidate
     @selection_process = SelectionProcess.find(params[:selection_process_id])
-    @process_step = ProcessStep.find(params[:process_step_id])
+    @process_step = @selection_process.process_steps.find(params[:process_step_id])
     @candidate = Candidate.find(params[:cand_id])
 
     @feedback = Feedback.where(process_step_id: @process_step, candidate_id: @candidate).first

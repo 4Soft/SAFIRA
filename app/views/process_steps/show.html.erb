@@ -34,28 +34,8 @@
         <%= cand.name %>
         <%= cand.email %>
         <%= link_to_function "Avaliar", "show_evaluation_form(#{cand.id})", id: "action" %>
-        
-        <%= form_for(Feedback.where(candidate_id: cand, process_step_id: @process_step).first || Feedback.new, url: selection_process_process_step_eval_candidate_path(@selection_process, @process_step, cand), :html => { :class => "form"}) do |f| %>
-          <div id=<%= "#{cand.id}_eval" %> style="display: none">
-            <%= f.label "Feedback público" %>
-            <%= f.text_area :public %>
-
-            <%= f.label "Feedback privado" %>
-            <%= f.text_area :private %>
-
-            <%= f.label :approved_true, "Aprovado" %>
-            <%= f.radio_button :approved, true %>
-            <%= f.label :approved_false, "Reprovado" %>
-            <%= f.radio_button :approved, false %>
-
-            <div class="form-actions">
-              <center>
-                <%= f.submit "Avaliar", :class => "btn--success" %>
-                <%= link_to_function "Esconder", "show_evaluation_form(#{cand.id})", id: "action", :class => "btn--primary" %>
-              </center>
-            </div>
-          </div>
-        <% end %>
+      
+        <%= render "candidate_eval_form", cand: cand %>
       </li>
     <% end.empty? %>
       <p>Nenhum Candidato até o momento.</p>
@@ -65,8 +45,29 @@
     
 <script>
 
+  $(document).ready(function(){
+    hide_all_forms();
+  });
+
+  function hide_all_forms() {
+    $("form").hide();
+  }
+
   function show_evaluation_form(candidate) {
     if ($("#action").text() == "Avaliar") {
+      $.ajax({
+        url: "/feedbacks",
+        data: {
+          selection_process_id: <%= "#{@selection_process.id}" %>,
+          process_step_id: <%= "#{@process_step.id}" %>,
+          cand_id: candidate
+        },
+        success: function(data){
+          $("#" + candidate + "_eval").html(data);
+        }
+      });
+
+      hide_all_forms();
       $("#" + candidate + "_eval").show();
       $("#action").text("Esconder");
     }
