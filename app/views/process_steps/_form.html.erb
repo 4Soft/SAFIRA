@@ -1,5 +1,5 @@
 <div class="panel">
-  <%= form_for(:process_step, url: selection_process_process_steps_url(@selection_process), :html => { :class => "form"}) do |f| %>
+  <%= form_for(:process_step, url: selection_process_process_steps_url(@selection_process), :html => { :class => "form", :id => "process_step_form"}) do |f| %>
     <%= f.label "Nome" %>
     <%= f.text_field :name %><br/>
 
@@ -15,6 +15,7 @@
     <div class="form-actions">
       <center>
         <%= f.submit "Criar Etapa", :class=> "btn--success" %>
+        <%= link_to "Cancelar", @selection_process, :class => "btn" %>
       </center>
     </div>
   <% end %>

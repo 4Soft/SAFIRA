@@ -19,7 +19,11 @@
   </header>
 
   <hr>
-  <h3 style="margin-left:20px">Listgem de Etapas</h3>
+  <h3 style="margin-left:20px">
+    Listagem de Etapas
+    <%= link_to_function "ADICIONAR ETAPA", "show_process_steps_form()", :class => "btn btn--small", :style => "margin-right:20px; float:right" %>
+  </h3>
+  
   <table class="table">
     <tbody>
       <% @selection_process.process_steps.order(&:order_number).each do |step| %>
@@ -27,13 +31,6 @@
           <td>
             <h4><%= step.name %></h4>
             <p><%= truncate(step.description, length: 80) %></p>
-            <ul>
-              <% step.candidates.each do |cand| %>
-                <li>
-                  <%= link_to "#{cand.name}: #{cand.email}", [@selection_process, cand] %>
-                </li>
-              <% end %>
-            </ul>
           </td>
           <td>
             <%= link_to "Gerenciar etapa", [@selection_process, step], :class => "btn btn--small" %>
@@ -43,7 +40,17 @@
     </tbody>
   </table>
   
-  <hr/>
-  <h3 style="margin-left:20px">Adicionar etapa</h3><br>
-  <%= render 'process_steps/form' %>
+  <div id="block_process_step_form" style="display: none">
+    <hr/>
+    <h3 style="margin-left:20px">Adicionar etapa</h3><br>
+    <%= render 'process_steps/form' %>
+  </div>
 </section>
+
+<script>
+  function show_process_steps_form() {
+    var target = "#block_process_step_form";
+    $(target).show();
+    $(window).scrollTop($(target).offset().top);
+  }
+</script>
