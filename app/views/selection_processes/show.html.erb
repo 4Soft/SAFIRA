@@ -31,6 +31,13 @@
           <td>
             <h4><%= step.name %></h4>
             <p><%= truncate(step.description, length: 80) %></p>
+            <ul>
+              <% step.candidates.each do |cand| %>
+                <li>
+                  <%= link_to "#{cand.name}: #{cand.email}", [@selection_process, cand] %>
+                </li>
+              <% end %>
+            </ul>
           </td>
           <td>
             <%= link_to "Gerenciar etapa", [@selection_process, step], :class => "btn btn--small" %>

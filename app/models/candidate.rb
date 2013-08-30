@@ -1,8 +1,7 @@
 # -*- encoding : utf-8 -*-
 class Candidate < ActiveRecord::Base
   attr_accessible :course, :description, :email, :name
-
-  validates_presence_of :name
+  attr_accessible :curriculum, :curriculum_content_type, :curriculum_file_name, :curriculum_file_size
 
   has_attached_file :curriculum,
     :storage => :dropbox,
@@ -11,9 +10,7 @@ class Candidate < ActiveRecord::Base
       :path => proc { |style| "#{selection_process.enterprise.name}/#{selection_process.full_name}/curriculos/#{name.capitalize}-#{email}:basename.:extension" }, :unique_filename => true
   }
 
-  validates_presence_of :curriculum
-
-  attr_accessible :curriculum, :curriculum_content_type, :curriculum_file_name, :curriculum_file_size
+  validates_presence_of :name, :email, :course, :curriculum
 
   belongs_to :selection_process
   has_and_belongs_to_many :process_steps
