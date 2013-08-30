@@ -1,46 +1,68 @@
-<h1>Gerenciando etapa <%= @process_step.name %> #<%= @process_step.order_number %></h1>
-
-<h2>Candidatos inscritos</h2>
-
-<ul>
-  <% @process_step.candidates.each do |cand| %>
-    <li>
-      <%= cand.name %>
-      <%= cand.email %>
-      <%= link_to_function "Avaliar", "show_evaluation_form(#{cand.id})", id: "action" %>
-      
-      <%= form_for(Feedback.where(candidate_id: cand, process_step_id: @process_step).first || Feedback.new, url: selection_process_process_step_eval_candidate_path(@selection_process, @process_step, cand)) do |f| %>
-        <div id=<%= "#{cand.id}_eval" %> style="display: none">
-          <%= f.label "Feedback público" %>
-          <%= f.text_area :public %>
-
-          <%= f.label "Feedback privado" %>
-          <%= f.text_area :private %>
-
-          <%= f.label :approved_true, "Aprovado" %>
-          <%= f.radio_button :approved, true %>
-          <%= f.label :approved_false, "Reprovado" %>
-          <%= f.radio_button :approved, false %>
-
-          <%= f.submit "Avaliar" %>
-        </div>
+<section class="panel">
+  <header class="panel__header">
+    <span class="hide-mobile">
+      <h2>
+        Gerenciando etapa "<%= @process_step.name %> #<%= @process_step.order_number %>""
+      </h2>
+      <% if @process_step.delayed? %>
+        <br>
+        <b style="background: yellow">
+          <marquee style="color: red">
+            TÁ ATRASADO DESDE O DIA <%= @process_step.close_date.strftime("%d/%m/%y") %>, CONSOLIDA AÊ!!!
+          </marquee>
+        </b>
       <% end %>
+    </span>
+    
+    <div class="pull-right">
+      <% if @process_step.consolidated? %>
+        <span>
+          Etapa consolidada em
+          <%= @process_step.consolidated_at.strftime("%d/%m/%y %H:%M") %>
+        </span>
+      <% else %>
+        <%= link_to "CONSOLIDAR ETAPA", selection_process_process_step_consolidate_path(@selection_process, @process_step), :class => "btn--primary", method: :post %>
+      <% end %>
+    </div>
+  </header>
 
-    </li>
-  <% end %>
+  <hr>
+  <h3 style="margin-left:20px">Candidatos inscritos</h3 style="margin-left:20px">
+  <ul>
+    <% if @process_step.candidates.each do |cand| %>
+      <li>
+        <%= cand.name %>
+        <%= cand.email %>
+        <%= link_to_function "Avaliar", "show_evaluation_form(#{cand.id})", id: "action" %>
+        
+        <%= form_for(Feedback.where(candidate_id: cand, process_step_id: @process_step).first || Feedback.new, url: selection_process_process_step_eval_candidate_path(@selection_process, @process_step, cand), :html => { :class => "form"}) do |f| %>
+          <div id=<%= "#{cand.id}_eval" %> style="display: none">
+            <%= f.label "Feedback público" %>
+            <%= f.text_area :public %>
 
-</ul>
+            <%= f.label "Feedback privado" %>
+            <%= f.text_area :private %>
 
-<% if @process_step.consolidated? %>
-  <p>Consolidado em <%= @process_step.close_date %></p>
-<% else %>
-  <% if @process_step.delayed? %>
-    <b style="background: yellow"><marquee style="color: red">TÁ ATRASADO, CONSOLIDA AÊ!!!</marquee></b>
-  <% end %>
+            <%= f.label :approved_true, "Aprovado" %>
+            <%= f.radio_button :approved, true %>
+            <%= f.label :approved_false, "Reprovado" %>
+            <%= f.radio_button :approved, false %>
 
-  <%=  link_to "Consolidar etapa", selection_process_process_step_consolidate_path(@selection_process, @process_step), method: :post %>
-<% end %>
-
+            <div class="form-actions">
+              <center>
+                <%= f.submit "Avaliar", :class => "btn--success" %>
+                <%= link_to_function "Esconder", "show_evaluation_form(#{cand.id})", id: "action", :class => "btn--primary" %>
+              </center>
+            </div>
+          </div>
+        <% end %>
+      </li>
+    <% end.empty? %>
+      <p>Nenhum Candidato até o momento.</p>
+    <% end %>
+  </ul>
+</section>
+    
 <script>
 
   function show_evaluation_form(candidate) {

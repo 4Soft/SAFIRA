@@ -3,6 +3,7 @@
 	input[type="email"],
 	input[type="password"],
 	input[type="file"],
+	input[type="radio"],
 	textarea {
 		@if $full-width {
 			width: 100%;
