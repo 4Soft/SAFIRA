@@ -1,20 +1,20 @@
 <section class="panel">
   <header class="panel__header">
     <span class="hide-mobile">
-        <h2><%= @selection_process.full_name %></h2>
+      <h2><%= @selection_process.full_name %></h2>
     </span>
 
     <div class="pull-right">
-        <% if @selection_process.consolidated? %>
-          <span>
-            Processo consolidado em
-            <%= @selection_process.consolidated_at.strftime("%d/%m/%y %H:%M") %>
-          </span>
-        <% else %>
-          <%= link_to "CONSOLIDAR PROCESSO SELETIVO", selection_process_consolidate_path(@selection_process), :class => "btn--primary", method: :post %>
-        <% end %>
+      <% if @selection_process.consolidated? %>
+        <span>
+          Processo consolidado em
+          <%= @selection_process.consolidated_at.strftime("%d/%m/%y %H:%M") %>
+        </span>
+      <% else %>
+        <%= link_to "CONSOLIDAR PROCESSO SELETIVO", selection_process_consolidate_path(@selection_process), :class => "btn--primary", method: :post %>
+      <% end %>
 
-        <%= link_to "EDITAR PROCESSO SELETIVO", @selection_process, :class => "btn" %>
+      <%= link_to "EDITAR PROCESSO SELETIVO", @selection_process, :class => "btn" %>
     </div>
   </header>
 
@@ -43,7 +43,6 @@
     </tbody>
   </table>
   
-
   <hr/>
   <h3 style="margin-left:20px">Adicionar etapa</h3><br>
   <%= render 'process_steps/form' %>

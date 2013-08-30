@@ -1,51 +1,52 @@
 <section class="panel">
-    <header class="panel__header">
-        <span class="hide-mobile">
-            <h2>Processos Seletivos</h2>
-        </span>
-        <div class="pull-right">
-            <%= link_to "+ CRIAR PROCESSO SELETIVO", new_selection_process_path, :class => "btn--success" %>
-        </div>
-    </header>
-    <table class="table">
-        <tbody>
-            <% if @selection_processes.each do |sp| %>
-                <tr>
-                    <td>
-                        <%= link_to sp.full_name, sp, :class => "table__data-title" %>
-                    </td>
-                    <td class="hide-mobile">
-                        <span class="table__label">
-                            <strong>INÍCIO</strong><br>
-                            16/02/2013
-                        </span>
-                    </td>
-                    <td class="hide-mobile">
-                        <span class="table__label">
-                            <strong>ÚLTIMA ETAPA</strong><br>
-                            18/04/2013
-                        </span>
-                    </td>
-                    <td class="hide-mobile">
-                        <span class="table__label">
-                            <strong>PROGRESSO</strong><br>
-                            [BARRA DE PROGRESSO]
-                        </span>
-                    </td>
-                    <td>
-                        <div class="pull-right">
-                            <%= link_to "EDITAL", sp.edict.url, :class => "btn btn--small" %>
-                            <%= link_to "GERENCIAR ETAPAS", sp, :class => "btn--primary btn--small" %>
-                        </div>
-                    </td>
-                </tr>
-            <% end.empty? %>
-                <tr>
-                    <td>
-                        <p>Não há nenhum <strong>Processo Seletivo</strong> cadastrado até o momento.</p>
-                    </td>
-                </tr>
-            <% end %>
-        </tbody>
-    </table>
+  <header class="panel__header">
+    <span class="hide-mobile">
+      <h2>Processos Seletivos</h2>
+    </span>
+    <div class="pull-right">
+      <%= link_to "+ CRIAR PROCESSO SELETIVO", new_selection_process_path, :class => "btn--success" %>
+    </div>
+  </header>
+  
+  <table class="table">
+    <tbody>
+      <% if @selection_processes.each do |sp| %>
+        <tr>
+          <td>
+            <%= link_to sp.full_name, sp, :class => "table__data-title" %>
+          </td>
+          <td class="hide-mobile">
+            <span class="table__label">
+              <strong>INÍCIO</strong><br>
+              16/02/2013
+            </span>
+          </td>
+          <td class="hide-mobile">
+            <span class="table__label">
+              <strong>ÚLTIMA ETAPA</strong><br>
+              18/04/2013
+            </span>
+          </td>
+          <td class="hide-mobile">
+            <span class="table__label">
+              <strong>PROGRESSO</strong><br>
+              [BARRA DE PROGRESSO]
+            </span>
+          </td>
+          <td>
+            <div class="pull-right">
+              <%= link_to "EDITAL", sp.edict.url, :class => "btn btn--small" %>
+              <%= link_to "GERENCIAR ETAPAS", sp, :class => "btn--primary btn--small" %>
+            </div>
+          </td>
+        </tr>
+      <% end.empty? %>
+        <tr>
+          <td>
+            <p>Não há nenhum <strong>Processo Seletivo</strong> cadastrado até o momento.</p>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
 </section>
