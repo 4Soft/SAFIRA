@@ -19,11 +19,11 @@
   </header>
 
   <hr>
-    <%= link_to_function "ADICIONAR ETAPA", "show_process_steps_form()", :class => "btn", :style => "margin-right:20px; float:right" %>
+    <%= link_to_function "ADICIONAR ETAPA", "show_process_steps_form()", :class=> "btn--success", :style => "margin-right:20px; float:right" %>
   <h3 style="margin-left:20px">
     Listagem de Etapas
   </h3>
-  
+  <br/><br/>
   <table class="table">
     <tbody>
       <% @selection_process.process_steps.order(&:order_number).each do |step| %>
@@ -42,7 +42,7 @@
             <%= "Fechamento: #{step.consolidated_at.strftime("%d/%m/%y %H:%M")}" if step.open_date %>
           </td>
           <td>
-            <%= link_to "Gerenciar etapa", [@selection_process, step], :class => "btn btn--small" %>
+            <%= link_to "Gerenciar etapa", [@selection_process, step], :class => "btn--primary" %>
           </td>
         </tr>
       <% end %>

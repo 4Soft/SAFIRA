@@ -2,7 +2,7 @@
   <header class="panel__header">
     <span class="hide-mobile">
       <h2>
-        Gerenciando etapa "#<%= @process_step.order_number %> <%= @process_step.name %>"
+        Gerenciando etapa <%= @process_step.order_number %> - <%= @process_step.name %>
       </h2>
       <% if @process_step.delayed? %>
         <br>
