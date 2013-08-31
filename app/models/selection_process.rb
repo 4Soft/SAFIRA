@@ -23,6 +23,10 @@ class SelectionProcess < ActiveRecord::Base
     "#{name} #{enterprise.name}"
   end
 
+  def approved_candidates
+    self.process_steps.order('order_number asc').first.approved_candidates
+  end
+
   def add_candidate(candidate)
     candidate.selection_process = self
 

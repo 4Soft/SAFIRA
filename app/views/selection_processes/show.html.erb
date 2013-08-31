@@ -54,6 +54,19 @@
     <h3 style="margin-left:20px">Adicionar etapa</h3><br>
     <%= render 'process_steps/form' %>
   </div>
+
+  <% if @selection_process.consolidated? %>
+    <h3 style="margin-left:20px">Aprovados:</h3>
+    <table class="table">
+      <tbody>
+        <% if @selection_process.approved_candidates.each do |cand| %>
+          <td><%= cand.name %></ltd>
+        <% end.empty? %>
+          <td>Ninguém foi aprovado :(</td>
+        <% end %>
+      </tbody>
+    </table>
+  <% end %>
 </section>
 
 <script>
