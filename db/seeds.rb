@@ -7,3 +7,9 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 enterprise = Enterprise.create(name: "4Soft", password: "12345678", email: "4soft@4soft.com")
+
+entrepreneur = Entrepreneur.new(name: "Heiseinberg",
+ personal_email: "email@email.com", professional_email: "email@email.com")
+entrepreneur.enterprise = enterprise
+entrepreneur.save
+

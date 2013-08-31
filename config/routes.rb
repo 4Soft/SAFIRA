@@ -1,5 +1,7 @@
 # -*- encoding : utf-8 -*-
 SIG::Application.routes.draw do
+  resources :entrepreneurs, controller: :human_resources, as: :human_resources
+
   devise_for :users
 
   get "users/dashboard" => "users#dashboard"

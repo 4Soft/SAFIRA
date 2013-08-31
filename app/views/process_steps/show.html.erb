@@ -2,7 +2,7 @@
   <header class="panel__header">
     <span class="hide-mobile">
       <h2>
-        Gerenciando etapa "<%= @process_step.name %> #<%= @process_step.order_number %>""
+        Gerenciando etapa "#<%= @process_step.order_number %> <%= @process_step.name %>"
       </h2>
       <% if @process_step.delayed? %>
         <br>
@@ -27,7 +27,7 @@
   </header>
 
   <hr>
-  <h3 style="margin-left:20px">Candidatos inscritos</h3 style="margin-left:20px">
+  <h3 style="margin-left:20px">Candidatos inscritos</h3>
   <ul>
     <% if @process_step.candidates.each do |cand| %>
       <li>

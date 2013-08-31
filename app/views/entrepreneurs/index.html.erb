@@ -1,0 +1,27 @@
+<h1>Listing entrepreneurs</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Personal email</th>
+    <th>Professional email</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @entrepreneurs.each do |entrepreneur| %>
+  <tr>
+    <td><%= entrepreneur.name %></td>
+    <td><%= entrepreneur.personal_email %></td>
+    <td><%= entrepreneur.professional_email %></td>
+    <td><%= link_to 'Show', entrepreneur %></td>
+    <td><%= link_to 'Edit', edit_entrepreneur_path(entrepreneur) %></td>
+    <td><%= link_to 'Destroy', entrepreneur, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Entrepreneur', new_entrepreneur_path %>

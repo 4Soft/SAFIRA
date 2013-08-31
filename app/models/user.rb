@@ -8,6 +8,5 @@ class User < ActiveRecord::Base
 
   acts_as_taggable_on :permissions
 
-  has_many :phones
-  has_many :social_networks
+  has_many :custom_infos, as: :custom_infoable
 end

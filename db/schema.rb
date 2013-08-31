@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130802175637) do
+ActiveRecord::Schema.define(:version => 20130831023122) do
 
   create_table "admins", :force => true do |t|
     t.datetime "created_at", :null => false
@@ -46,14 +46,28 @@ ActiveRecord::Schema.define(:version => 20130802175637) do
   add_index "candidates_process_steps", ["candidate_id", "process_step_id"], :name => "candidate_id_on_process"
   add_index "candidates_process_steps", ["process_step_id"], :name => "index_candidates_process_steps_on_process_step_id"
 
-  create_table "employees", :force => true do |t|
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+  create_table "custom_infos", :force => true do |t|
+    t.string   "name"
+    t.string   "value"
+    t.integer  "custom_infoable_id"
+    t.string   "custom_infoable_type"
+    t.datetime "created_at",           :null => false
+    t.datetime "updated_at",           :null => false
   end
 
   create_table "enterprises", :force => true do |t|
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+  end
+
+  create_table "entrepreneurs", :force => true do |t|
+    t.string   "name"
+    t.string   "personal_email"
+    t.string   "professional_email"
+    t.text     "infos"
+    t.integer  "enterprise_id"
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
   end
 
   create_table "feedbacks", :force => true do |t|
@@ -68,13 +82,6 @@ ActiveRecord::Schema.define(:version => 20130802175637) do
 
   add_index "feedbacks", ["candidate_id"], :name => "index_feedbacks_on_candidate_id"
   add_index "feedbacks", ["process_step_id"], :name => "index_feedbacks_on_process_step_id"
-
-  create_table "phones", :force => true do |t|
-    t.string   "number"
-    t.integer  "user_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
 
   create_table "process_steps", :force => true do |t|
     t.text     "description"
@@ -100,14 +107,6 @@ ActiveRecord::Schema.define(:version => 20130802175637) do
     t.integer  "enterprise_id"
     t.datetime "created_at",         :null => false
     t.datetime "updated_at",         :null => false
-  end
-
-  create_table "social_networks", :force => true do |t|
-    t.string   "name"
-    t.string   "value"
-    t.integer  "user_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
   end
 
   create_table "taggings", :force => true do |t|

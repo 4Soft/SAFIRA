@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @entrepreneur.name %>
+</p>
+
+<p>
+  <b>Personal email:</b>
+  <%= @entrepreneur.personal_email %>
+</p>
+
+<p>
+  <b>Professional email:</b>
+  <%= @entrepreneur.professional_email %>
+</p>
+
+
+<%= link_to 'Edit', edit_entrepreneur_path(@entrepreneur) %> |
+<%= link_to 'Back', entrepreneurs_path %>

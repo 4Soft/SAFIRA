@@ -35,7 +35,7 @@
             <p><%= truncate(step.description, length: 80) %></p>
           </td>
           <td>
-            <%= step.candidates.count == 1 ? "1 Candidato" : "#{step.candidates.count} Candidatos" %>
+            <%= pluralize(step.candidates.count, "Candidato")  %>
           </td>
           <td>
             <%= "Abertura: #{step.open_date.strftime("%d/%m/%y %H:%M")}" if step.open_date %><br>

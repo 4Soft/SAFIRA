@@ -4,5 +4,6 @@ class Enterprise < User
 
   usar_como_cnpj :cnpj
 
+  has_many :entrepreneurs
   has_many :selection_process
 end
