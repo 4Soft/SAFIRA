@@ -1,6 +1,6 @@
 # -*- encoding : utf-8 -*-
 class CandidateMailer < ActionMailer::Base
-  default from: "boladaodeamor123@gmail.com"
+  default from: "safira@4soft.com"
 
   # Subject can be set in your I18n file at config/locales/en.yml
   # with the following lookup:

@@ -33,7 +33,7 @@
       <li>
         <%= cand.name %>
         <%= cand.email %>
-        <%= link_to_function "Avaliar", "show_evaluation_form(#{cand.id})", id: "action" %>
+        <%= link_to_function "Avaliar", "show_evaluation_form(#{cand.id})", id: "action_#{cand.id}" %>
       
         <%= render "candidate_eval_form", cand: cand %>
       </li>
@@ -51,10 +51,11 @@
 
   function hide_all_forms() {
     $("form").hide();
+    $("a[id^=action]").text("Avaliar");
   }
 
   function show_evaluation_form(candidate) {
-    if ($("#action").text() == "Avaliar") {
+    if ($("#action_" + candidate).text() == "Avaliar") {
       $.ajax({
         url: "/feedbacks",
         data: {
@@ -69,11 +70,11 @@
 
       hide_all_forms();
       $("#" + candidate + "_eval").show();
-      $("#action").text("Esconder");
+      $("#action_" + candidate).text("Esconder");
     }
-    else if ($("#action").text() == "Esconder") {
+    else if ($("#action_" + candidate).text() == "Esconder") {
       $("#" + candidate + "_eval").hide();
-      $("#action").text("Avaliar");
+      $("#action_" + candidate).text("Avaliar");
     }
   }
 </script>

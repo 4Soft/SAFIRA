@@ -2,12 +2,13 @@ class FeedbackController < ApplicationController
 
   def show
     @feedback = Feedback.where(
-      candidate_id: params[:cand_id], process_step_id: params[:process_step_id]).first
+      candidate_id: params[:cand_id], process_step_id: params[:process_step_id]).first || Feedback.new
     @selection_process = SelectionProcess.find(params[:selection_process_id])
     @process_step = @selection_process.process_steps.find(params[:process_step_id])
+    @candidate = @process_step.candidates.find(params[:cand_id])
 
     render partial: "process_steps/candidate_eval_form",
-     locals: { feedback: @feedback, cand: @feedback.candidate,
+     locals: { feedback: @feedback, cand: @candidate,
      selection_process: @selection_process, process_step: @process_step }
   end
 
