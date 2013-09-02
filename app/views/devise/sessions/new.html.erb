@@ -1,17 +1,25 @@
-<%= flash[:notice] if flash[:notice] %>
-<%= flash[:alert] if flash[:alert] %>
-
 <section class="sign-in">
 	<header class="sign-in__logo">
 		SAFIRA
 	</header>
+
+	<% if flash[:notice] %>
+		<div class="alert--notice">
+			<%= flash[:notice] %>
+		</div>
+	<% end %>
+	<% if flash[:alert] %>
+		<div class="alert--warning">
+			<%= flash[:alert] %>
+		</div>
+	<% end %>
 
 	<div class="body">	
 		<%= simple_form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
 		  <div class="form-inputs">
 		    <%= f.input :email, :placeholder => "Email", :required => false, :autofocus => true, :label => false, :input_html => { :autocomplete => "off" } %>
 		    <%= f.input :password, :placeholder => "Senha", :required => false, :label => false, input_html: { :autocomplete => "off" } %>
-		    <div class="sign-in__forgot-password">
+		    <div class="sign-in__forgot-password pull-right">
 		    	<%= link_to "Esqueceu a senha?", new_user_password_path %>
 		    </div>
 		  </div>
