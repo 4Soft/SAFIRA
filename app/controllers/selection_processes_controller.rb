@@ -1,5 +1,6 @@
 # -*- encoding : utf-8 -*-
 class SelectionProcessesController < ApplicationController
+  before_filter :authenticate_user!
 
   def show
     @selection_process = SelectionProcess.find(params[:id])
