@@ -6,14 +6,14 @@
       </h2>
       <% if @process_step.delayed? %>
         <div class = "alert--warning"> 
-            Etapa atrasada desde <%= @process_step.consolidated_at.strftime("%d/%m/%y") %>, consolide o quanto antes!!!
+            Etapa a desde <%= @process_step.consolidated_at.strftime("%d/%m/%y") %>, consolide o quanto antes!!!
          </div>
       <% end %>
     </span>
     
     <div class="pull-right">
       <% if @process_step.consolidated? %>
-        <span>
+        <span class= "alert--notice">
           Etapa consolidada em
           <%= @process_step.consolidated_at.strftime("%d/%m/%y %H:%M") %>
         </span>
