@@ -5,12 +5,9 @@
         Gerenciando etapa <%= @process_step.order_number %> - <%= @process_step.name %>
       </h2>
       <% if @process_step.delayed? %>
-        <br>
-        <b style="background: yellow">
-          <marquee style="color: red">
-            TÁ ATRASADO DESDE O DIA <%= @process_step.consolidated_at.strftime("%d/%m/%y") %>, CONSOLIDA AÊ!!!
-          </marquee>
-        </b>
+        <div class = "alert--warning"> 
+            Etapa atrasada desde <%= @process_step.consolidated_at.strftime("%d/%m/%y") %>, consolide o quanto antes!!!
+         </div>
       <% end %>
     </span>
     
