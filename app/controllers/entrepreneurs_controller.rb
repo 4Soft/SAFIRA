@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class EntrepreneursController < ApplicationController
   # GET /entrepreneurs
   # GET /entrepreneurs.json
