@@ -23,8 +23,10 @@ class FeedbackController < ApplicationController
     @feedback.process_step = @process_step
 
     if @feedback.save
-      redirect_to [@selection_process, @process_step]
+      redirect_to [@selection_process, @process_step],
+        notice: "Candidato avaliado com sucesso"
     else
+      flash[:notice] = "Problema na avaliação"
       render "process_steps/show"
     end
   end
@@ -37,8 +39,10 @@ class FeedbackController < ApplicationController
     @feedback = Feedback.where(process_step_id: @process_step, candidate_id: @candidate).first
 
     if @feedback.update_attributes!(params[:feedback])
-      redirect_to [@selection_process, @process_step]
+      redirect_to [@selection_process, @process_step],
+        notice: "Feedback atualizado com sucesso"
     else
+      flash[:notice] = "Problema na avaliação"
       render "process_steps/show"
     end
   end

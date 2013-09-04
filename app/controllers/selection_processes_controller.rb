@@ -27,8 +27,10 @@ class SelectionProcessesController < ApplicationController
       params[:selection_process_form].merge(selection_process_enterprise: current_user))
 
     if @selection_process_form.save
-      redirect_to @selection_process_form.selection_process
+      redirect_to @selection_process_form.selection_process,
+        notice: "Processo criado com sucesso"
     else
+      flash[:notice] = "Problema na criação do processo"
       render :new
     end
   end
@@ -52,6 +54,7 @@ class SelectionProcessesController < ApplicationController
 
     begin
       @selection_process.consolidate_process!
+      flash[:notice] = "Processo consolidado com sucesso"
     rescue Exception => e
       flash[:notice] = e.message
     end

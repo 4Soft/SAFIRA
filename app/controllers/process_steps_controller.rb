@@ -29,7 +29,7 @@ class ProcessStepsController < ApplicationController
 
       @process_step.save
 
-      redirect_to @selection_process
+      redirect_to @selection_process, notice: "Etapa criada com sucesso"
     end
   end
 
@@ -37,12 +37,11 @@ class ProcessStepsController < ApplicationController
     @selection_process = SelectionProcess.find(params[:selection_process_id])
     @process_step = @selection_process.process_steps.find(params[:process_step_id])
 
-      @process_step.consolidate_step!
     begin
-      redirect_to @selection_process
+      @process_step.consolidate_step!
+      redirect_to @selection_process, notice: "Processo consolidado com sucesso"
     rescue Exception => e
-      flash[:error] = e.message
-      redirect_to [@selection_process, @process_step]
+      redirect_to [@selection_process, @process_step], notice: e.message
     end
 
   end
