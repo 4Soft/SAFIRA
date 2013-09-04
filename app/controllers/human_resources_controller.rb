@@ -9,7 +9,7 @@ class HumanResourcesController < ApplicationController
 
     params[:entrepreneur][:custom_infos].each do |info|
       @entrepreneur.custom_infos << CustomInfo.new(name: info[:name], value: info[:value])
-    end
+    end if params[:entrepreneur][:custom_infos]
 
     @entrepreneur.save
 

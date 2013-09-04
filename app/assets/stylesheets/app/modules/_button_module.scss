@@ -5,6 +5,7 @@
     color: #fff;
     text-transform: uppercase;
     background: $color_black;
+    display: inline-block;
     &:hover {
         background: tint($color_black, 5%);
         color: #fff;
