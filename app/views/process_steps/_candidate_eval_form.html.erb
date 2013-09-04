@@ -1,4 +1,6 @@
 <div id=<%= "#{cand.id}_eval" %>>
+  <%= link_to "Currículo", cand.curriculum.url %>
+
   <%= form_for(@feedback, url: selection_process_process_step_eval_candidate_path(@selection_process, @process_step, cand), :html => { :class => "form"}) do |f| %>
       <%= f.label "Feedback público" %>
       <%= f.text_area :public, rows: 3 %>
@@ -10,6 +12,12 @@
       <%= f.radio_button :approved, true %>
       <%= f.label :approved_false, "Reprovado" %>
       <%= f.radio_button :approved, false %>
+
+      <p>Enviar email</p>
+      <%= f.label :send_email, "Sim" %>
+      <%= f.radio_button :send_email, true %>
+      <%= f.label :send_email, "Não" %>
+      <%= f.radio_button :send_email, false %>
 
       <div class="form-actions">
         <center>

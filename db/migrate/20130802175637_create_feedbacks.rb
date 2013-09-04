@@ -5,6 +5,7 @@ class CreateFeedbacks < ActiveRecord::Migration
       t.text :public
       t.text :private
       t.boolean :approved
+      t.boolean :send_email
       t.references :candidate
       t.references :process_step
 

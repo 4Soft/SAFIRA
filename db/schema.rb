@@ -73,6 +73,7 @@ ActiveRecord::Schema.define(:version => 20130831023122) do
     t.text     "public"
     t.text     "private"
     t.boolean  "approved"
+    t.boolean  "send_email"
     t.integer  "candidate_id"
     t.integer  "process_step_id"
     t.datetime "created_at",      :null => false
