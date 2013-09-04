@@ -1,40 +1,49 @@
-<section class="panel register_form">
-  <header class="panel__header">
-    <span class="hide-mobile">
-      <h2><%= @selection_process.full_name %></h2>
-      <p>
-        <%= @selection_process.call %><br>
-        <%= link_to "Ler Edital", @selection_process.edict.url, :class => "btn--small btn--primary", :target => "_blank" %>
-      </p>
-    </span>
-  </header>
-
-  <div class="panel register_form">
-
-    <%= form_for(:candidate, url: selection_process_register_candidate_url(@selection_process), :html => { :class => "form"}) do |f| %>
-      <%= f.label "Nome completo" %>
-      <%= f.text_field :name, :required => true, :autofocus => true %><br/>
-
-      <%= f.label "E-mail" %>
-      <%= f.email_field :email, :required => true %><br/>
-
-      <%= f.label "Curso" %>
-      <%= f.text_field :course, :required => true %><br/>
-
-      <%= f.label "Escreva sobre você" %>
-      <%= f.text_area :description %><br/>
-
-      <%= f.label "Currículo" %>
-      <%= f.file_field :curriculum, :required => true %><br/>
-
-      <div class="form-actions">
-        <center>
-          <%= f.submit "Inscreva-se", :class => "btn--success" %>
-          <%= link_to "Cancelar", :back, :class => "btn--primary" %>
-        </center>
-      </div>
-    <% end %>
+<div class="process-sign-up">
+  <div class="process-sign-up__logo">
+    <span><%= @selection_process.enterprise.name %></span>
   </div>
-</section>
+  <header class="process-sign-up__header">
+    <h1><%= @selection_process.name %></h1>
+  </header>
+  <div class="process-sign-up__body">
+    <%= form_for(:candidate, url: selection_process_register_candidate_url(@selection_process), :html => { :class => "form process-sign-up__form"}) do |f| %>
+        <div class="field-box">
+          <%= f.label :name, "Meu Nome É" %>
+          <%= f.text_field :name, :required => true, :autofocus => true %>
+        </div>
+        
+        <div class="field-box">
+          <%= f.label :email, "Meu email é" %>
+          <%= f.email_field :email, :required => true %>
+        </div>
+
+        <div class="field-box">
+          <%= f.label :course, "Faço curso de" %>
+          <%= f.text_field :course, :required => true %>
+        </div>
+        
+        <div class="field-box">
+          <%= f.label :description, "Sobre mim" %>
+          <%= f.text_area :description %>
+        </div>
+
+        <div class="field-box">
+          <%= f.label "Currículo" %>
+          <%= f.file_field :curriculum, :required => true %>
+        </div>
+    </div>
+    <div class="process-sign-up__footer">
+      <%= f.submit "Inscreva-se", :class => "btn--success btn--full-width" %>
+    </div>
+  <% end %>
+  <div class="process-sign-up__footer-notes">
+    <small>
+      POWERED BY SAFIRA <br>
+      2013 © 4SOFT
+    </small>
+  </div>
+</div>
+
+
 
 

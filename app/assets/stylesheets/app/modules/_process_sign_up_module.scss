@@ -1,0 +1,59 @@
+.process-sign-up {
+  max-width: 39em;
+  margin: auto;
+}
+  
+  .process-sign-up__logo {
+    margin: 2em 0;
+    text-align: center;
+    font-weight: 600;
+    font-size: 2em;
+  }
+
+  .process-sign-up__header {
+    display: block;
+    line-height: 4em;
+    border-top-right-radius: 2px;
+    border-top-left-radius: 2px;
+    background: $color_blue;
+    h1 {
+      font-size: 1.5em;
+      font-weight: 600;
+      text-align: center;
+      text-transform: uppercase;
+    }
+  }
+
+  .process-sign-up__body {
+    background: #fff;
+    margin: 0;
+    border-bottom-right-radius: 2px;
+    border-bottom-left-radius: 2px;
+  }
+
+  .process-sign-up__form {
+    margin: 0;
+    label {
+      font-weight: 600;
+      font-size: em(14);
+      width: 20%;
+      color: $color_black;
+      text-transform: uppercase;
+    }
+    input, textarea {
+      font-size: em(14);
+      width: 80% !important;
+    }
+  }
+
+  .process-sign-up__footer {
+    margin: 1em 0;
+    text-align: center;
+  }
+
+  .process-sign-up__footer-notes {
+    width: 100%;
+    margin-bottom: 1em;
+    text-align: center;
+    color: tint($color_black, 30%);
+  }
