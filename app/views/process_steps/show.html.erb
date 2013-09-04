@@ -15,7 +15,7 @@
       <% if @process_step.consolidated? %>
         <span class= "alert--notice">
           Etapa consolidada em
-          <%= @process_step.consolidated_at.strftime("%d/%m/%y %H:%M") %>
+          <%= @process_step.consolidated_at.strftime("%d/%m/%y") %>
         </span>
       <% else %>
         <%= link_to "CONSOLIDAR ETAPA", selection_process_process_step_consolidate_path(@selection_process, @process_step), :class => "btn--primary", method: :post %>
