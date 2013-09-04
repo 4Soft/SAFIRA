@@ -38,8 +38,8 @@
             <%= pluralize(step.candidates.count, "Candidato")  %>
           </td>
           <td>
-            <%= "Abertura: #{step.open_date.strftime("%d/%m/%y %H:%M")}" if step.open_date %><br>
-            <%= "Fechamento: #{step.consolidated_at.strftime("%d/%m/%y %H:%M")}" if step.open_date %>
+            <%= "Abertura: #{step.open_date.strftime("%d/%m/%y")}" if step.open_date %><br>
+            <%= "Fechamento: #{step.consolidated_at.strftime("%d/%m/%y")}" if step.open_date %>
           </td>
           <td>
             <%= link_to "Gerenciar etapa", [@selection_process, step], :class => "btn--primary" %>
