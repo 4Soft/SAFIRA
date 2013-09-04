@@ -1,0 +1,19 @@
+.alert {
+    display: block;
+    width: 100%;
+    padding: 1em;
+    margin: 2em 0;
+    border-radius: 2px;
+    color: #fff;
+    text-transform: uppercase;
+}
+
+    .alert--notice {
+        @extend .alert;
+        background: #2ECC71;
+    }
+
+    .alert--warning {
+        @extend .alert;
+        background: #E74C3C;
+    }

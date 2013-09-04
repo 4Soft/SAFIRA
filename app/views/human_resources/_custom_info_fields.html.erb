@@ -3,5 +3,5 @@
   <%= f.text_field :name, name: "entrepreneur[custom_infos][][name]" %>
   <%= f.label "Valor" %>
   <%= f.text_field :value, name: "entrepreneur[custom_infos][][value]"  %> 
-  <%= link_to_function "remove", "remove_fields(this)" %>
+  <%= link_to_remove_fields "remove", f %>
 </div>

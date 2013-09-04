@@ -1,4 +1,6 @@
 class HumanResourcesController < ApplicationController
+  before_filter :authenticate_user!
+
   def index
     @entrepreneurs = current_user.entrepreneurs
   end
