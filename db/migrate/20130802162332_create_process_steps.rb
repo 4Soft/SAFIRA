@@ -4,8 +4,8 @@ class CreateProcessSteps < ActiveRecord::Migration
     create_table :process_steps do |t|
       t.text :description
       t.string :name
-      t.datetime :open_date
-      t.datetime :consolidated_at
+      t.date :open_date
+      t.date :consolidated_at
       t.boolean :consolidated
       t.integer :order_number
 
