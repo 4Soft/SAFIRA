@@ -25,7 +25,7 @@ class ProcessStep < ActiveRecord::Base
     self.consolidated_at = Time.now
     
     cand_feedback.each do |cand, feed|
-      FeedbackMailer.send_public_feedback(feed).deliver
+      FeedbackMailer.send_public_feedback(feed).deliver if feed.send_email?
     end
 
     next_step = get_next_step

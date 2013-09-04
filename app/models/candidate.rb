@@ -20,6 +20,8 @@ class Candidate < ActiveRecord::Base
   end
 
   def confirm(confirmation_token)
+    return if register_confirmed?
+
     candidate = Candidate.find_by_confirmation_register_token(confirmation_token)
     candidate.register_confirmed_at = Time.now
 
