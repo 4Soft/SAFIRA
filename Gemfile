@@ -36,9 +36,12 @@ group :test do
   gem 'factory_girl_rails'
 end
 
-gem 'sqlite3'
-
 group :development do
+  gem 'sqlite3'
   gem 'rspec-rails'
   gem 'magic_encoding', require: false
+end
+
+group :production do
+  gem 'pg'
 end
