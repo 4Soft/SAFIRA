@@ -13,8 +13,11 @@ class HumanResourcesController < ApplicationController
       @entrepreneur.custom_infos << CustomInfo.new(name: info[:name], value: info[:value])
     end if params[:entrepreneur][:custom_infos]
 
-    @entrepreneur.save
-
-    redirect_to human_resources_path
+    if @entrepreneur.save
+      redirect_to human_resources_path, notice: "Adicionado com sucesso"
+    else
+      flash[:notice] = "Houve um erro"
+      render :index
+    end
   end
 end
