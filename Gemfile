@@ -12,6 +12,8 @@ group :assets do
   gem 'neat'  
 end
 
+gem 'therubyracer'
+
 gem 'devise'
 gem 'simple_form'
 gem 'cancan'
@@ -43,5 +45,5 @@ group :development do
 end
 
 group :production do
-  gem 'pg'
+  gem 'sqlite3'
 end
