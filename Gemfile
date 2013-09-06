@@ -9,10 +9,10 @@ group :assets do
   gem 'coffee-rails', '~> 3.2.1'
   gem 'uglifier', '>= 1.0.3'
   gem 'bourbon'
-  gem 'neat'
-  
-  gem 'bootstrap-datepicker-rails'
+  gem 'neat'  
 end
+
+gem 'therubyracer'
 
 gem 'devise'
 gem 'simple_form'
@@ -31,7 +31,6 @@ gem 'virtus'
 
 group :test do
   gem 'simplecov'
-  gem 'sqlite3'
   gem 'capybara'
   gem 'cucumber-rails', :require => false
   gem 'database_cleaner'

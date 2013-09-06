@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class CreateEntrepreneurs < ActiveRecord::Migration
   def change
     create_table :entrepreneurs do |t|

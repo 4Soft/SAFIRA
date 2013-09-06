@@ -15,7 +15,7 @@
   <link href="<!-- @path favicon.ico -->" rel="shortcut icon">
   <link href="<!-- @path apple-touch-icon.png -->" rel="apple-touch-icon">
   
-  <title>SAFIRA</title>
+  <title><%= content_for?(:title) ? "Safira | " + yield(:title) : "Safira - Agilizando sua Empresa" %></title>
   
   <%= csrf_meta_tag %>
 </head>

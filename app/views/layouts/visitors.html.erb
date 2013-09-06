@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>SIG</title>
+  <title><%= content_for?(:title) ? "Safira | " + yield(:title) : "Safira - Agilizando sua Empresa" %></title>
   <%= stylesheet_link_tag    "safira", :media => "all" %>
   <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,600' rel='stylesheet' type='text/css'>
   <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
