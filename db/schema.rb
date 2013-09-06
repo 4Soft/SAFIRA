@@ -86,8 +86,8 @@ ActiveRecord::Schema.define(:version => 20130831023122) do
   create_table "process_steps", :force => true do |t|
     t.text     "description"
     t.string   "name"
-    t.datetime "open_date"
-    t.datetime "consolidated_at"
+    t.date     "open_date"
+    t.date     "consolidated_at"
     t.boolean  "consolidated"
     t.integer  "order_number"
     t.integer  "selection_process_id"

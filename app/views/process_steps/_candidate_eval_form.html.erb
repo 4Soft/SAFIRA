@@ -1,5 +1,4 @@
 <div id=<%= "#{cand.id}_eval" %>>
-  <%= link_to "Currículo", cand.curriculum.url %>
 
   <%= form_for(@feedback, url: selection_process_process_step_eval_candidate_path(@selection_process, @process_step, cand), :html => { :class => "form"}) do |f| %>
       <%= f.label "Feedback público" %>
