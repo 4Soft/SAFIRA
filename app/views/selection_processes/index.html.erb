@@ -26,9 +26,9 @@
              <% if sp.consolidated %>
                 <strong>FINALIZADO EM</strong><br>
                 <%= post_date sp.consolidated_at %>
-              <% else %>
-                <strong>ÚLTIMA ETAPA REALIZADA EM</strong><br>                                
-                <%= post_date sp.last_step_consolidated%>                   
+              <% elsif sp.last_step_consolidated != nil %>
+                  <strong>ÚLTIMA ETAPA REALIZADA EM</strong><br>
+                  <%= post_date sp.last_step_consolidated%>
               <% end %>
             </span>
           </td>
