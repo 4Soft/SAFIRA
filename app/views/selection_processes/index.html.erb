@@ -23,8 +23,13 @@
           </td>
           <td class="hide-mobile">
             <span class="table__label">
-              <strong>ÚLTIMA ETAPA</strong><br>
-              18/04/2013
+             <% if sp.consolidated %>
+                <strong>FINALIZADO EM</strong><br>
+                <%= post_date sp.consolidated_at %>
+              <% else %>
+                <strong>ÚLTIMA ETAPA REALIZADA EM</strong><br>                                
+                <%= post_date sp.last_step_consolidated%>                   
+              <% end %>
             </span>
           </td>
           <td class="hide-mobile">
