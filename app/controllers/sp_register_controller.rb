@@ -9,11 +9,11 @@ class SpRegisterController < ApplicationController
     @candidate = Candidate.new(params[:candidate])
 
     if @selection_process.add_candidate(@candidate)
-      flash[:message] = "Cadastro de boa"
+      flash[:message] = "Cadastro realizado com sucesso!"
       redirect_to selection_process_successful_register_path(@selection_process, 
         x: @candidate.confirmation_register_token)
     else
-      flash[:message] = "Cadastro deu ruim"
+      flash[:message] = "Erro no cadastro!"
       render action: :show_process
     end
   end
@@ -28,11 +28,11 @@ class SpRegisterController < ApplicationController
     @selection_process = @candidate.selection_process
 
     if @candidate.confirm(params[:x])
-      flash[:message] = "Confirmação de boa"
+      flash[:message] = "Confirmação realizada com sucesso!"
       redirect_to selection_process_successful_register_path(@selection_process,
        x: @candidate.confirmation_register_token)
     else
-      flash[:message] = "Confirmação deu ruim"
+      flash[:message] = "Erro na confirmação!"
       render action: :show_process
     end
   end
