@@ -21,10 +21,14 @@ class ProcessStepsController < ApplicationController
 
       last_step = @selection_process.process_steps.order(:order_number).last
 
-      @process_step.order_number = last_step.order_number + 1
+      if !last_step
+        @process_step.order_number = 1
+      else
+        @process_step.order_number = last_step.order_number + 1
 
-      if last_step.consolidated?
+        if last_step.consolidated?
         @process_step.candidates += last_step.approved_candidates
+        end
       end
 
       @process_step.save
@@ -43,6 +47,11 @@ class ProcessStepsController < ApplicationController
     rescue Exception => e
       redirect_to [@selection_process, @process_step], notice: e.message
     end
+  end
 
+  def destroy
+    @process_step = ProcessStep.find(params[:id])
+    @process_step.destroy
+    redirect_to selection_process_path params[:selection_process_id]
   end
 end

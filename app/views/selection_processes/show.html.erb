@@ -43,6 +43,7 @@
           </td>
           <td>
             <%= link_to "Gerenciar etapa", [@selection_process, step], :class => "btn--primary" %>
+            <%= link_to "Excluir etapa", [@selection_process, step], method: :delete, :class => "btn btn--danger"%>
           </td>
         </tr>
       <% end %>
