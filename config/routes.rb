@@ -1,6 +1,7 @@
 # -*- encoding : utf-8 -*-
 SIG::Application.routes.draw do
-  get "reports/show" => "reports#show"
+  resources :reports, only: [:index]
+
   get "help" => "help#show"
 
   resources :entrepreneurs , controller: :human_resources, as: :human_resources

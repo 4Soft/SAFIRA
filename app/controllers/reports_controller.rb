@@ -1,5 +1,5 @@
 # -*- encoding : utf-8 -*-
 class ReportsController < ApplicationController
-  def show
+  def index
   end
 end
