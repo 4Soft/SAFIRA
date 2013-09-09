@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130831023122) do
+ActiveRecord::Schema.define(:version => 20130907201035) do
 
   create_table "admins", :force => true do |t|
     t.datetime "created_at", :null => false
@@ -105,8 +105,9 @@ ActiveRecord::Schema.define(:version => 20130831023122) do
     t.datetime "consolidated_at"
     t.boolean  "consolidated"
     t.integer  "enterprise_id"
-    t.datetime "created_at",         :null => false
-    t.datetime "updated_at",         :null => false
+    t.datetime "created_at",             :null => false
+    t.datetime "updated_at",             :null => false
+    t.datetime "last_step_consolidated"
   end
 
   create_table "taggings", :force => true do |t|

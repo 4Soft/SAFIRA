@@ -6,7 +6,7 @@
       </h2>
       <% if @process_step.delayed? %>
         <div class = "alert--warning"> 
-            Etapa a desde <%= @process_step.consolidated_at.strftime("%d/%m/%y") %>, consolide o quanto antes!!!
+            Etapa atrasada desde <%= @process_step.consolidated_at.strftime("%d/%m/%y") %>, consolide o quanto antes!!!
          </div>
       <% end %>
     </span>
@@ -19,7 +19,7 @@
         </span>
       <% else %>
         <%= link_to "CONSOLIDAR ETAPA", selection_process_process_step_consolidate_path(@selection_process, @process_step), :class => "btn--primary", method: :post %>
-      <% end %>
+      <% end %> 
     </div>
   </header>
 

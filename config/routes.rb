@@ -3,7 +3,7 @@ SIG::Application.routes.draw do
   get "reports/show" => "reports#show"
   get "help" => "help#show"
 
-  resources :entrepreneurs, controller: :human_resources, as: :human_resources
+  resources :entrepreneurs , controller: :human_resources, as: :human_resources
 
   devise_for :users
 
@@ -14,7 +14,7 @@ SIG::Application.routes.draw do
   devise_scope :user do
     root :to => "devise/sessions#new"
   end
-  
+   
   resources :selection_processes do 
     get "/register/" => "sp_register#show_process", as: :register_form
     post "/register/" => "sp_register#register", as: :register_candidate

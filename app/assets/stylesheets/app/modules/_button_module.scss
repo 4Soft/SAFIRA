@@ -36,3 +36,8 @@
     .btn--full-width {
         width: 100%;
     }
+
+    .btn--danger{
+        @extend .btn;
+        background: #E74C3C;    
+    }
