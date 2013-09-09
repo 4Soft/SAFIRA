@@ -62,5 +62,3 @@ Then(/^I should be signed out$/) do
   page.should have_content "Login"
   page.should_not have_content "Fechar Sessão"
 end
-o"
-end
