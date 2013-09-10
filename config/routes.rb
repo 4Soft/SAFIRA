@@ -6,7 +6,7 @@ SIG::Application.routes.draw do
 
   resources :entrepreneurs , controller: :human_resources, as: :human_resources
 
-  devise_for :users
+  devise_for :users, :controllers => {:confirmations => 'confirmations'}
 
   get "users/dashboard" => "users#dashboard"
 
@@ -14,6 +14,7 @@ SIG::Application.routes.draw do
 
   devise_scope :user do
     root :to => "devise/sessions#new"
+    put "/confirm" => "confirmations#confirm"
   end
    
   resources :selection_processes do 

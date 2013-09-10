@@ -14,7 +14,7 @@
         <%= link_to "CONSOLIDAR PROCESSO SELETIVO", selection_process_consolidate_path(@selection_process), :class => "btn--primary", method: :post %>
       <% end %>
 
-      <%= link_to "EDITAR PROCESSO SELETIVO", @selection_process, :class => "btn" %>
+      <%= link_to "Formulário de inscrição", selection_process_register_form_path(@selection_process), :class => "btn" %>
     </div>
   </header>
 
