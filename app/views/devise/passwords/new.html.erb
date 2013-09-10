@@ -1,15 +1,35 @@
-<h2>Forgot your password?</h2>
+<section class="sign-in">
+	<header class="sign-in__logo">
+		SAFIRA
+	</header>
 
-<%= simple_form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :post }) do |f| %>
-  <%= f.error_notification %>
+	<% if flash[:notice] %>
+		<div class="alert--notice">
+			<%= flash[:notice] %> 
+		</div>
+	<% end %>
+	<% if flash[:alert] %>
+		<div class="alert--warning">
+			<%= flash[:alert] %>
+		</div>
+	<% end %>
 
-  <div class="form-inputs">
-    <%= f.input :email, :required => true, :autofocus => true %>
-  </div>
+	<h2>Esqueceu sua senha?</h2>
+	</p>
+	<%= simple_form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :post }) do |f| %>
 
-  <div class="form-actions">
-    <%= f.button :submit, "Send me reset password instructions" %>
-  </div>
-<% end %>
+	  <div class="form-inputs">
+	    <%= f.input :email, :placeholder => "Email", :required => true, :autofocus => false, :label => false %>
+	  </div>
 
-<%= render "devise/shared/links" %>
+	  <div class="form-actions">
+	    <%= f.button :submit, "ENVIAR E-MAIL DE RENOVAÇÃO DE SENHA", :class=> "btn--primary btn--full-width" %>
+	  </div>
+	<% end %>
+</section>
+
+<footer class="footer-notes">
+	<div class="copyright">
+		2013 © 4Soft
+	</div>
+</footer>
