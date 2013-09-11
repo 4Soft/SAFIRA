@@ -1,6 +1,6 @@
 <h2>Escolha uma senha para acessar o site</h2>
 
-<%= simple_form_for(resource, as: resource_name, url: confirm_path) do |f| %>
+<%= simple_form_for(resource, as: resource_name, url: confirm_path, html: { class: "form" }) do |f| %>
   <%= devise_error_messages! %>
 
   <div class="form-inputs">

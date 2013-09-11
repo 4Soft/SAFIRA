@@ -1,5 +1,5 @@
 <div class="panel">
-  <%= form_for(@selection_process_form, url: selection_processes_path, :html => { :class => "form"}) do |f| %>
+  <%= form_for(@selection_process_form, url: selection_processes_path, :html => { :class => "form" }) do |f| %>
     <%= f.label "Nome" %> 
     <%= f.text_field :selection_process_name, :required => true, :autofocus => true %>
 
