@@ -1,5 +1,15 @@
-<p>Welcome <%= @email %>!</p>
+<p>Olá, empresários!</p>
 
-<p>You can confirm your account email through the link below:</p>
+ <p>Finalmente chegou a hora! Pedimos desculpas pelo atraso, mas é que não poderíamos deixar de lhes oferecer um serviço de qualidade.</p>
 
-<p><%= link_to 'Confirm my account', confirmation_url(@resource, :confirmation_token => @resource.confirmation_token) %></p>
+ <p>Pois bem, já é possível gerenciar um processo seletivo do começo ao fim!</p>
+
+ <p>Recomendamos que antes de fazerem seus processos seletivos reais, realizem uma simulações no sistema. Podem fazer quantos quiserem. Assim vocês podem entender melhor como gerenciar um e o que seus candidatos podem visualizar, bem como que e-mails eles recebem!</p>
+
+<p>Lembramos que o sistema ainda está em fase alpha e que MUITA COISA ainda será refinada!</p>
+
+<p>Contamos com o feedback da sua EJ e das demais que estão participando dessa etapa para fornecemos um serviço ainda melhor a todas vocês!</p>
+
+<p>Acessem o link abaixo para ter acesso ao SAFIRA:</p>
+
+<p><%= link_to 'SAFIRA - CRIE SUA CONTA', confirmation_url(@resource, :confirmation_token => @resource.confirmation_token) %></p>
