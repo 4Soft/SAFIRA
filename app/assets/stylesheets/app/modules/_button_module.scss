@@ -38,12 +38,10 @@
     }
 
     .btn--danger{
-        @extend .btn;
         background: $color_red;    
     }
 
-    .btn--disabled {
-        @extend .btn;
+    .btn--disabled {       
         background: $color_gray;
         &:hover {
             background: shade($color_gray, 10%);
