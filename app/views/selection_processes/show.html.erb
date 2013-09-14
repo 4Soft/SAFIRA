@@ -19,7 +19,9 @@
   </header>
 
   <hr>
+    <% if !@selection_process.consolidated?%>
     <%= link_to_function "ADICIONAR ETAPA", "show_process_steps_form()", :class=> "btn--success", :style => "margin-right:20px; float:right" %>
+    <% end %>
   <h3 style="margin-left:20px">
     Listagem de Etapas
   </h3>
@@ -51,12 +53,17 @@
       <% end %>
     </tbody>
   </table>
-  
+
+
+
+
   <div id="block_process_step_form" style="display: none">
     <hr/>
     <h3 style="margin-left:20px">Adicionar etapa</h3><br>
     <%= render 'process_steps/form' %>
   </div>
+
+  
 
   <% if @selection_process.consolidated? %>
     <h3 style="margin-left:20px">Aprovados:</h3>
@@ -68,7 +75,7 @@
           <td>Ninguém foi aprovado :(</td>
         <% end %>
       </tbody>
-    </table>
+    </table>  
   <% end %>
 </section>
 

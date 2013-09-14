@@ -10,8 +10,7 @@ class ProcessStepsController < ApplicationController
   end
 
   def create
-    @selection_process = SelectionProcess.find(params[:selection_process_id])
-
+    @selection_process = SelectionProcess.find(params[:selection_process_id])    
     if @selection_process.consolidated?
       redirect_to @selection_process, notice: "Processo já consolidado"
     else
