@@ -43,9 +43,11 @@
           </td>
           <td>
             <%= link_to "Gerenciar etapa", [@selection_process, step], :class => "btn--primary" %>
-          <% if (step.open_date <=> Date.today) == 1 %>
-            <%= link_to "Excluir etapa", [@selection_process, step], method: :delete, :class => "btn btn--danger"%>
-          <% end %>
+            <% if (step.open_date <=> Date.today) == 1 %>              
+              <%= link_to "Excluir etapa normal", [@selection_process, step], method: :delete, :class => "btn", :id => 'botao', :onclick => "$('botao').disabled = true;return false;"%>
+            <% else %> 
+              <%= link_to "Excluir etapa passou", [@selection_process, step], :class => "btn", :id => 'botao', :onclick => "$('botao').disabled = true;return false;"%>
+            <% end %>
           </td>
         </tr>
       <% end %>
