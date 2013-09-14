@@ -11,6 +11,10 @@ $color_blue: #3498db;
 
 $color_green: #65c178;
 
+$color_red: #E74C3C;
+
+$color_gray: #DBE6EC;
+
 // Neat variables
 @import "neat/neat-helpers";
 $mobile: new-breakpoint(max-width 767px 4);
