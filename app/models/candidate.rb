@@ -14,6 +14,7 @@ class Candidate < ActiveRecord::Base
 
   belongs_to :selection_process
   has_and_belongs_to_many :process_steps
+  has_many :positions
 
   def register_confirmed?
     not register_confirmed_at.blank?
