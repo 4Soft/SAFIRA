@@ -3,10 +3,13 @@
     <span><%= @selection_process.enterprise.name %></span>
   </div>
   <header class="process-sign-up__header">
-    <h1><%= @selection_process.name %></h1>
-  </header>
+    <h1><%= @selection_process.name %></h1>    
+  </header>  
   
-  <% if @selection_process.consolidated and current_user == nil%>
+  <% @registration_consolidated = @selection_process.process_steps[0].consolidated_at%>      
+  <% @registration_open = @selection_process.process_steps[0].open_date %>  
+
+  <% if @registration_consolidated < Date.today and current_user == nil%>
     <div class="process-sign-up__body" style="color: black; font-weight: bold; font-size: 24px">    
       <center>
       Desculpe, o prazo de inscrição foi encerrado!            
@@ -15,10 +18,23 @@
     <br>
     <div class="process-sign-up__form">
       <center>
-        <%= image_tag "late2.jpg", style: "border-radius: 50%"%>
+        <%= image_tag "late.jpg", style: "border-radius: 50%"%>
         </center> 
     </div>  
-  <% else%>
+  <% elsif @registration_open > Date.today and current_user == nil%>      
+    <div class="process-sign-up__body" style="color: black; font-weight: bold; font-size: 20px">
+      <center>
+        As inscrições ainda não estão abertas!
+        <p> Mas não fique triste, dia <%= post_date @registration_open %>
+        a espera vai acabar! </p>
+      </center>   
+    </div>
+    <div class="process-sign-up__form">
+      <center>
+        <%= image_tag "wait.jpg", style: "border-radius: 50%"%>
+      </center> 
+    </div>  
+  <% else %>
     <div class="process-sign-up__body" style="color: black; font-weight: bold">    
       <center>
       <%= @selection_process.call%>
