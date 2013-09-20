@@ -1,4 +1,4 @@
-<section class="panel">
+  <section class="panel">
   <header class="panel__header">
     <span class="hide-mobile">
       <h2>
@@ -16,10 +16,11 @@
         <span class= "alert--notice">
           Etapa consolidada em
           <%= @process_step.consolidated_at.strftime("%d/%m/%y") %>
-        </span
->      <% else %>
-        <%= link_to "CONSOLIDAR ETAPA", selection_process_process_step_consolidate_path(@selection_process, @process_step), :class => "btn--primary", method: :post %>
-      <% end %> 
+        </span>      
+      <% else %>
+        <%= link_to "EDITAR ETAPA", edit_selection_process_process_step_path(@selection_process, @process_step), :class => "btn--primary" %>
+        <%= link_to "CONSOLIDAR ETAPA", selection_process_process_step_consolidate_path(@selection_process, @process_step), :class => "btn", method: :post %>
+      <% end %>
     </div>
   </header>
 
@@ -42,7 +43,6 @@
 </section>
     
 <script>
-
   $(document).ready(function(){
     hide_all_forms();
   });
