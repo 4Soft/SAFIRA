@@ -31,6 +31,7 @@
         <%= cand.name %>
         <%= cand.email %>
         <%= link_to_function "Avaliar", "show_evaluation_form(#{cand.id})", id: "action_#{cand.id}" %>
+        |   
         <%= link_to "Currículo", cand.curriculum.url %>
         <%= render "candidate_eval_form", cand: cand %>
       </li>
