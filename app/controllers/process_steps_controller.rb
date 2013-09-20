@@ -36,6 +36,10 @@ class ProcessStepsController < ApplicationController
     end
   end
 
+  def edit
+    @process_step = ProcessStep.find(params[:id])
+  end
+
   def consolidate_step
     @selection_process = SelectionProcess.find(params[:selection_process_id])
     @process_step = @selection_process.process_steps.find(params[:process_step_id])
