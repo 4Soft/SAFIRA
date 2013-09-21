@@ -8,7 +8,7 @@
       <% if @selection_process.consolidated? %>
         <span class= "alert--notice">
           Processo consolidado em
-          <%= @selection_process.consolidated_at.strftime("%d/%m/%y %H:%M") %>
+          <%= @selection_process.consolidated_at.strftime("%d/%m/%y") %>
         </span>
       <% else %>
         <% unless @selection_process.process_steps.exists?(:consolidated => nil) %>
