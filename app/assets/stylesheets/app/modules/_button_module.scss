@@ -41,7 +41,8 @@
         background: $color_red;    
     }
 
-    .btn--disabled {       
+    .btn--disabled {    
+        @extend .btn;   
         background: $color_gray;
         &:hover {
             background: shade($color_gray, 10%);

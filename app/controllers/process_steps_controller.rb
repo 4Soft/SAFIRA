@@ -20,7 +20,7 @@ class ProcessStepsController < ApplicationController
 
       last_step = @selection_process.process_steps.order(:order_number).last
 
-      if !last_step
+      unless  last_step
         @process_step.order_number = 1
       else
         @process_step.order_number = last_step.order_number + 1
