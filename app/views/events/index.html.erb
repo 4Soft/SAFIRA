@@ -1,27 +1,34 @@
-<h1>Listing events</h1>
+<section class="panel">
+  <header class="panel__header">
+    <span class="hide-mobile">
+      <h2>Eventos</h2>
+    </span>
+    <div class="pull-right">
+      <%= link_to "+ CRIAR EVENTO", new_event_path, :class => "btn--success" %>
+    </div>
+  </header>
 
-<table>
-  <tr>
-    <th>Name</th>
-    <th>Date</th>
-    <th>Description</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
-<% @events.each do |event| %>
-  <tr>
-    <td><%= event.name %></td>
-    <td><%= event.date %></td>
-    <td><%= event.description %></td>
-    <td><%= link_to 'Show', event %></td>
-    <td><%= link_to 'Edit', edit_event_path(event) %></td>
-    <td><%= link_to 'Destroy', event, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
-<% end %>
-</table>
-
-<br />
-
-<%= link_to 'New Event', new_event_path %>
+  <table class="table">
+    <tbody>
+      <% if @events.each do |ev| %>
+        <tr>
+          <td>
+            <%= link_to ev.name, ev, :class => "table__data-title" %>
+          </td>
+          <td class="hide-mobile">
+            <span class="table__label">
+              <strong>INÍCIO</strong><br>
+               <%= "#{ev.date.strftime("%d/%m/%y")}" %>
+               <%= "#{ev.date.strftime("às %I:%M%p")}" %>
+            </span>
+          </td>
+      <% end.empty? %>
+        <tr>
+          <td>
+            <p>Não há nenhum <strong>Evento</strong> cadastrado até o momento.</p>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</section>
