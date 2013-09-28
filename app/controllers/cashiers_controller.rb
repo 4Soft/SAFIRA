@@ -73,6 +73,8 @@ class CashiersController < ApplicationController
   # DELETE /cashiers/1.json
   def destroy
     @cashier = Cashier.find(params[:id])
+    @releases = @cashier.releases
+    @releases.destroy_all
     @cashier.destroy
 
     respond_to do |format|

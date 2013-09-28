@@ -11,8 +11,11 @@ class Enterprise < User
   has_one :cashier
 
   def init
-  	cashier = Cashier.create :opening_balance => 0, :enterprise => self
-  	cashier.save
+  	if self.cashier.nil?
+  		cashier = Cashier.create :opening_balance => 0, :enterprise => self
+  		cashier.save
+  	end  	
   end
 	 
 end
+

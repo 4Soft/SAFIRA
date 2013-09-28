@@ -1,10 +1,10 @@
 # -*- encoding : utf-8 -*-
 SIG::Application.routes.draw do
-  resources :releases
 
 
-  resources :cashiers
-
+  resources :cashiers do
+    resources :releases
+  end
 
   resources :reports, only: [:index]
 

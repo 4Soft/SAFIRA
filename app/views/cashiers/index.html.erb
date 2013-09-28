@@ -2,8 +2,7 @@
 
 <table>
   <tr>
-    <th>Opening balance</th>
-    <th>References</th>
+    <th>Opening balance</th>    
     <th></th>
     <th></th>
     <th></th>
@@ -11,15 +10,17 @@
 
 <% @cashiers.each do |cashier| %>
   <tr>
-    <td><%= cashier.opening_balance %></td>
-    <td><%= cashier.references %></td>
+    <td><%= cashier.opening_balance %></td>    
     <td><%= link_to 'Show', cashier %></td>
     <td><%= link_to 'Edit', edit_cashier_path(cashier) %></td>
     <td><%= link_to 'Destroy', cashier, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
+    <%= link_to 'new', new_cashier_release_path(cashier)%>      
+</tr>  
 <% end %>
+
+
+
 </table>
 
 <br />
 
-<%= link_to 'New Cashier', new_cashier_path %>

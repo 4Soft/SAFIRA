@@ -25,6 +25,7 @@ class ReleasesController < ApplicationController
   # GET /releases/new.json
   def new
     @release = Release.new
+    @cashier = Cashier.find(params[:cashier_id])
 
     respond_to do |format|
       format.html # new.html.erb
@@ -35,16 +36,18 @@ class ReleasesController < ApplicationController
   # GET /releases/1/edit
   def edit
     @release = Release.find(params[:id])
+    @cashier = @release.cashier
   end
 
   # POST /releases
   # POST /releases.json
   def create
-    @release = Release.new(params[:release])
-
+    @cashier = Cashier.find(params[:cashier_id])
+    @release = @cashier.releases.new(params[:release])
+    @release.date_release = post_date Date.today
     respond_to do |format|
       if @release.save
-        format.html { redirect_to @release, notice: 'Release was successfully created.' }
+        format.html { redirect_to cashier_release_path(@release.cashier, @release), notice: 'Release was successfully created.' }
         format.json { render json: @release, status: :created, location: @release }
       else
         format.html { render action: "new" }
@@ -71,12 +74,12 @@ class ReleasesController < ApplicationController
 
   # DELETE /releases/1
   # DELETE /releases/1.json
-  def destroy
-    @release = Release.find(params[:id])
+  def destroy    
+    @release = Release.find(params[:id])    
     @release.destroy
-
+    
     respond_to do |format|
-      format.html { redirect_to releases_url }
+      format.html { redirect_to cashier_path(params[:cashier_id]) }
       format.json { head :no_content }
     end
   end
