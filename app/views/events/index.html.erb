@@ -15,12 +15,20 @@
           <td>
             <%= link_to ev.name, ev, :class => "table__data-title" %>
           </td>
-          <td class="hide-mobile">
-            <span class="table__label">
-              <strong>INÍCIO</strong><br>
-               <%= "#{ev.date.strftime("%d/%m/%y")}" %>
-               <%= "#{ev.date.strftime("às %I:%M%p")}" %>
-            </span>
+            <td class="hide-mobile">
+              <span class="table__label">
+                <strong>INÍCIO</strong><br>
+                 <%= "#{ev.initial_date.strftime("%d/%m/%y")}" %>
+                 <%= "#{ev.initial_date.strftime("às %I:%M%p")}" %>
+              </span>
+            </td>
+            <td>
+              <span class="table__label">
+                <strong>FIM</strong><br>
+                 <%= "#{ev.final_date.strftime("%d/%m/%y")}" %>
+                 <%= "#{ev.final_date.strftime("às %I:%M%p")}" %>
+              </span>
+            </td>
           </td>
       <% end.empty? %>
         <tr>
