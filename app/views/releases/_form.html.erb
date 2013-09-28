@@ -1,0 +1,49 @@
+<%= form_for(@release) do |f| %>
+  <% if @release.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@release.errors.count, "error") %> prohibited this release from being saved:</h2>
+
+      <ul>
+      <% @release.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :type_release %><br />
+    <%= f.check_box :type_release %>
+  </div>
+  <div class="field">
+    <%= f.label :value %><br />
+    <%= f.text_field :value %>
+  </div>
+  <div class="field">
+    <%= f.label :description %><br />
+    <%= f.text_area :description %>
+  </div>
+  <div class="field">
+    <%= f.label :form_payment %><br />
+    <%= f.number_field :form_payment %>
+  </div>
+  <div class="field">
+    <%= f.label :date_release %><br />
+    <%= f.date_select :date_release %>
+  </div>
+  <div class="field">
+    <%= f.label :doc_number %><br />
+    <%= f.number_field :doc_number %>
+  </div>
+  <div class="field">
+    <%= f.label :doc_type %><br />
+    <%= f.number_field :doc_type %>
+  </div>
+  <div class="field">
+    <%= f.label :origin_destination %><br />
+    <%= f.number_field :origin_destination %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

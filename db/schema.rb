@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130910180525) do
+ActiveRecord::Schema.define(:version => 20130928133943) do
 
   create_table "admins", :force => true do |t|
     t.datetime "created_at", :null => false
@@ -45,6 +45,13 @@ ActiveRecord::Schema.define(:version => 20130910180525) do
 
   add_index "candidates_process_steps", ["candidate_id", "process_step_id"], :name => "candidate_id_on_process"
   add_index "candidates_process_steps", ["process_step_id"], :name => "index_candidates_process_steps_on_process_step_id"
+
+  create_table "cashiers", :force => true do |t|
+    t.integer  "opening_balance"
+    t.integer  "enterprise_id"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
+  end
 
   create_table "custom_infos", :force => true do |t|
     t.string   "name"
@@ -93,6 +100,20 @@ ActiveRecord::Schema.define(:version => 20130910180525) do
     t.integer  "selection_process_id"
     t.datetime "created_at",           :null => false
     t.datetime "updated_at",           :null => false
+  end
+
+  create_table "releases", :force => true do |t|
+    t.boolean  "type_release"
+    t.decimal  "value"
+    t.text     "description"
+    t.integer  "form_payment"
+    t.date     "date_release"
+    t.integer  "doc_number"
+    t.integer  "doc_type"
+    t.integer  "origin_destination"
+    t.integer  "cashier_id"
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
   end
 
   create_table "selection_processes", :force => true do |t|

@@ -20,4 +20,5 @@ class User < ActiveRecord::Base
     self.errors[:password_confirmation] << "does not match password" if password != password_confirmation
     password == password_confirmation && !password.blank?
   end
+
 end
