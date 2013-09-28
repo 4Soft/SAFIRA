@@ -4,4 +4,5 @@ class Entrepreneur < ActiveRecord::Base
 
   belongs_to :enterprise, class_name: "User"
   has_many :custom_infos, as: :custom_infoable
+  has_many :presences
 end

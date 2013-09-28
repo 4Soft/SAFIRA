@@ -1,5 +1,8 @@
 # -*- encoding : utf-8 -*-
 SIG::Application.routes.draw do
+  resources :presences
+
+
   resources :events
 
 
