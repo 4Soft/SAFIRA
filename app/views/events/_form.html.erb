@@ -1,33 +1,22 @@
-<%= form_for(@event) do |f| %>
-  <% if @event.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@event.errors.count, "error") %> prohibited this event from being saved:</h2>
+<div class="panel">
+  <%= form_for(:event, url: events_url, :html => { :class => "form", :id => "event_form"}) do |f| %>
+    <%= f.label "Nome" %>
+    <%= f.text_field :name, :required => true, :autofocus => true %><br/>
 
-      <ul>
-      <% @event.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
+    <%= f.label "Data de início" %>
+    <%= f.text_field :initial_date, :required => true %><br/>
+
+    <%= f.label "Data de encerramento" %>
+    <%= f.text_field :final_date, :required => true %><br/>
+
+    <%= f.label "Descrição" %>
+    <%= f.text_area :description, :required => true %><br/>
+
+    <div class="form-actions">
+      <center>
+        <%= f.submit "Criar Etapa", :class=> "btn--success" %>
+        <%= link_to "Cancelar", @event, :class => "btn" %>
+      </center>
     </div>
   <% end %>
-
-  <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
-  </div>
-  <div class="field">
-    <%= f.label :initial_date %><br />
-    <%= f.text_field :initial_date %>
-  </div>
-  <div class="field">
-    <%= f.label :final_date %><br />
-    <%= f.text_field :final_date %>
-  </div>
-  <div class="field">
-    <%= f.label :description %><br />
-    <%= f.text_area :description %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
+</div>

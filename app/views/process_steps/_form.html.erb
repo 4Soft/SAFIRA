@@ -1,16 +1,16 @@
 <div class="panel">
   <%= form_for(:process_step, url: selection_process_process_steps_url(@selection_process), :html => { :class => "form", :id => "process_step_form"}) do |f| %>
     <%= f.label "Nome" %>
-    <%= f.text_field :name %><br/>
+    <%= f.text_field :name, :required => true %><br/>
 
     <%= f.label "Descrição" %>
-    <%= f.text_area :description %><br/>
+    <%= f.text_area :description, :required => true %><br/>
 
     <%= f.label "Data de abertura" %>
-    <%= f.text_field :open_date %><br/>
+    <%= f.text_field :open_date, :required => true %><br/>
 
     <%= f.label "Data de fechamento" %>
-    <%= f.text_field :consolidated_at %><br/>
+    <%= f.text_field :consolidated_at, :required => true %><br/>
 
     <div class="form-actions">
       <center>
