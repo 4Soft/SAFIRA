@@ -1,3 +1,3 @@
 class Event < ActiveRecord::Base
-  attr_accessible :date, :description, :name
+  attr_accessible :description, :name, :initial_date, :final_date
 end
