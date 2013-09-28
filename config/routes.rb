@@ -1,5 +1,8 @@
 # -*- encoding : utf-8 -*-
 SIG::Application.routes.draw do
+  resources :events
+
+
   resources :reports, only: [:index]
 
   get "help" => "help#show"
@@ -29,7 +32,7 @@ SIG::Application.routes.draw do
 
     resources :candidates, except: [:create, :new]
 
-    resources :process_steps do
+  resources :process_steps do
       post "/feedback/:cand_id" => "feedback#eval_candidate", as: :eval_candidate
       put "/feedback/:cand_id" => "feedback#update_eval_candidate", as: :eval_candidate
 
