@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @event_presence.name %>
+</p>
+
+<p>
+  <b>Date:</b>
+  <%= @event_presence.date %>
+</p>
+
+
+<%= link_to 'Edit', edit_event_presence_path(@event_presence) %> |
+<%= link_to 'Back', event_presences_path %>

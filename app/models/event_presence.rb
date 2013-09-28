@@ -1,4 +1,4 @@
-class Event < ActiveRecord::Base
+class EventPresence < ActiveRecord::Base
   attr_accessible :date, :name
 
   has_many :entrepreneurs
