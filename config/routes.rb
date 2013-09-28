@@ -1,8 +1,5 @@
 # -*- encoding : utf-8 -*-
 SIG::Application.routes.draw do
-  resources :event_presences
-
-
   resources :reports, only: [:index]
 
   get "help" => "help#show"
