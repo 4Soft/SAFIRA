@@ -18,6 +18,7 @@ gem 'devise'
 gem 'simple_form'
 gem 'cancan'
 gem 'acts-as-taggable-on'
+gem 'mailcatcher'
 
 gem 'brazilian-rails'
 

@@ -1,22 +1,22 @@
-<h1>Listing cashiers</h1>
+<h1>Caixa</h1>
 
-<table>
+table>
   <tr>
     <th>Opening balance</th>    
-    <th></th>
+    <th><%= self.cashier.opening_balance %></th>
     <th></th>
     <th></th>
   </tr>
 
-<% @cashiers.each do |cashier| %>
+<!--<% @cashiers.each do |cashier| %>
   <tr>
     <td><%= cashier.opening_balance %></td>    
     <td><%= link_to 'Show', cashier %></td>
     <td><%= link_to 'Edit', edit_cashier_path(cashier) %></td>
     <td><%= link_to 'Destroy', cashier, method: :delete, data: { confirm: 'Are you sure?' } %></td>
     <%= link_to 'new', new_cashier_release_path(cashier)%>      
-</tr>  
-<% end %>
+  </tr>  
+<% end %>-->
 
 
 
