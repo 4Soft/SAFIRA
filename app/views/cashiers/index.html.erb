@@ -1,26 +1,67 @@
-<h1>Listing cashiers</h1>
+<section class="panel">
+  <header class="panel__header">
+    <span class="hide-mobile">
+      <h2>Cashier</h2>
+    </span>
+    <div class="pull-right">
+      <% @cashiers.each do |cashier| %>
+        <%= link_to '+ NEW RELEASE', new_cashier_release_path(cashier), :class => "btn--success" %>
+      <% end %>
+    </div> 
+  </header>
 
-<table>
-  <tr>
-    <th>Opening balance</th>    
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
+  <table class="table">
+    <tbody>
 
-<% @cashiers.each do |cashier| %>
-  <tr>
-    <td><%= cashier.opening_balance %></td>    
-    <td><%= link_to 'Show', cashier %></td>
-    <td><%= link_to 'Edit', edit_cashier_path(cashier) %></td>
-    <td><%= link_to 'Destroy', cashier, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-    <%= link_to 'new', new_cashier_release_path(cashier)%>      
-</tr>  
-<% end %>
+      <tr>
+        <th>Type release</th>
+        <th>Description</th>
+        <th>Form payment</th>
+        <th>Date release</th>
+        <th>Doc number</th>
+        <th>Doc type</th>
+        <th>Origin destination</th>
+        <th>Value</th>
+      </tr>
 
+      <!--how to access releases ?-->  
+      <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+      <%  @cashiers.each do |cashier| %>
+        <tr>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th><%= cashier.opening_balance %></th>
+        </tr>
+      <% end %>
 
+ <!--     <% @cashiers.each do |cashier| %>
 
-</table>
+        <tr>
+          <td><%= cashier.opening_balance %></td>
+          <td><%= link_to 'Show', cashier %></td>
+          <td><%= link_to 'Edit', edit_cashier_path(cashier) %></td>
+          <td><%= link_to 'Destroy', cashier, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
 
-<br />
+      <% end %>
+-->      
+    </tbody>
+  </table>
+
+</section>
+
 
