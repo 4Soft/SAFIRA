@@ -1,5 +1,9 @@
 require 'spec_helper'
 
 describe Cashier do
-  pending "add some examples to (or delete) #{__FILE__}"
+
+  it {should belongs_to :enterprise}
+
+  it {should has_many :releases}
+
 end
