@@ -24,17 +24,21 @@
         <th>Value</th>
       </tr>
 
-      <!--how to access releases ?-->  
-      <tr>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
+      <% Release.all.each do |r| %>
+        <tr>
+          <td><%= r.type_release %></td>
+          <td><%= r.description %></td>
+          <td><%= r.form_payment %></td>
+          <td><%= r.date_release %></td>
+          <td><%= r.doc_number %></td>
+          <td><%= r.doc_type %></td>
+          <td><%= r.origin_destination %></td>
+          <td><%= r.value %></td>
         </tr>
+      <%end%>
+
+      <!--how to access releases ?-->  
+      
       <%  @cashiers.each do |cashier| %>
         <tr>
           <th></th>

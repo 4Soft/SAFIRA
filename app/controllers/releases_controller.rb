@@ -44,10 +44,11 @@ class ReleasesController < ApplicationController
   def create
     @cashier = Cashier.find(params[:cashier_id])
     @release = @cashier.releases.new(params[:release])
-    @release.date_release = post_date Date.today
+    #@release.date_release = post_date Date.today
     respond_to do |format|
       if @release.save
-        format.html { redirect_to cashier_release_path(@release.cashier, @release), notice: 'Release was successfully created.' }
+        format.html { redirect_to cashiers_path, notice: 'Release was successfully created.' }
+        #format.html { redirect_to cashier_release_path(@release.cashier, @release), notice: 'Release was successfully created.' }
         format.json { render json: @release, status: :created, location: @release }
       else
         format.html { render action: "new" }
