@@ -44,6 +44,7 @@ class ReleasesController < ApplicationController
   def create
     @cashier = Cashier.find(params[:cashier_id])
     @release = @cashier.releases.new(params[:release])
+    @cashier.opening_balance = params[:value]
     #@release.date_release = post_date Date.today
     respond_to do |format|
       if @release.save

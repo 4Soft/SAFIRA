@@ -25,6 +25,7 @@ class CashiersController < ApplicationController
   # GET /cashiers/new.json
   def new
     @cashier = Cashier.new
+    @cashier.opening_balance = 0
 
     respond_to do |format|
       format.html # new.html.erb

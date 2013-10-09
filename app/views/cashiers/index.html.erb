@@ -27,7 +27,7 @@
       <% Release.all.each do |r| %>
         <tr>
           <td><%= r.type_release %></td>
-          <td><%= r.description %></td>
+          <th><%= r.description %></th>
           <td><%= r.form_payment %></td>
           <td><%= r.date_release %></td>
           <td><%= r.doc_number %></td>
@@ -41,14 +41,14 @@
       
       <%  @cashiers.each do |cashier| %>
         <tr>
-          <th></th>
-          <th></th>
-          <th></th>
-          <th></th>
-          <th></th>
-          <th></th>
-          <th></th>
-          <th><%= cashier.opening_balance %></th>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td><%= cashier.opening_balance %></td>
         </tr>
       <% end %>
 
