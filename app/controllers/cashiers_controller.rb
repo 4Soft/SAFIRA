@@ -25,7 +25,7 @@ class CashiersController < ApplicationController
   # GET /cashiers/new.json
   def new
     @cashier = Cashier.new
-    @cashier.opening_balance = 0
+    @cashier.opening_balance ||= 0
 
     respond_to do |format|
       format.html # new.html.erb
@@ -42,6 +42,7 @@ class CashiersController < ApplicationController
   # POST /cashiers.json
   def create
     @cashier = Cashier.new(params[:cashier])
+    
 
     respond_to do |format|
       if @cashier.save
@@ -81,6 +82,21 @@ class CashiersController < ApplicationController
     respond_to do |format|
       format.html { redirect_to cashiers_url }
       format.json { head :no_content }
+    end
+  end
+
+  def changeOpeningBalance (value)
+    @cashier = Cashier.find(params[:id])
+    
+
+    respond_to do |format|
+      if @cashier.opening_balance += value
+        format.html { redirect_to @cashier, notice: 'Cashier was successfully updated.' }
+        format.json { head :no_content }
+      else
+        format.html { render action: "edit" }
+        format.json { render json: @cashier.errors, status: :unprocessable_entity }
+      end
     end
   end
 end

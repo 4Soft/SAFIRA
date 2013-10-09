@@ -47,7 +47,7 @@ ActiveRecord::Schema.define(:version => 20130928133943) do
   add_index "candidates_process_steps", ["process_step_id"], :name => "index_candidates_process_steps_on_process_step_id"
 
   create_table "cashiers", :force => true do |t|
-    t.integer  "opening_balance"
+    t.decimal  "opening_balance"
     t.integer  "enterprise_id"
     t.datetime "created_at",      :null => false
     t.datetime "updated_at",      :null => false

@@ -1,8 +1,32 @@
 <%= simple_form_for([@cashier, @release], :html => { :class => 'form-horizontal' ,  :multipart => true }) do |f| %>
+  <% if @release.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@release.errors.count, "error") %> prohibited this release from being saved:</h2>
 
-  <%= f.input :value %>
+      <ul>
+      <% @release.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :value %><br />
+    <%= f.number_field :value %>
+  </div>
+  <div class="field">
+    <%= f.label :doc_number %><br />
+    <%= f.number_field :doc_number %>
+  </div>
+  <div class="field">
+    <%= f.label :description %><br />
+    <%= f.text_field :description, :input_html => {:style => 'width: 500px; height: 200px'} %>
+  </div>
+
+  <!--<%= f.input :value %>
   <%= f.input :doc_number%>
-  <%= f.input :description, :input_html => {:style => 'width: 500px; height: 200px'}%>
+  <%= f.input :description, :input_html => {:style => 'width: 500px; height: 200px'}%>-->
 
   <div class="actions">
     <%= f.submit %>
