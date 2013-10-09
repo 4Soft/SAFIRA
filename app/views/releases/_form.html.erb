@@ -1,4 +1,4 @@
-<%= simple_form_for([@cashier, @release], :html => { :class => 'form-horizontal' ,  :multipart => true }) do |f| %>
+<%= form_for([@cashier, @release]) do |f| %>
   <% if @release.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@release.errors.count, "error") %> prohibited this release from being saved:</h2>
@@ -21,17 +21,9 @@
   </div>
   <div class="field">
     <%= f.label :description %><br />
-    <%= f.text_field :description, :input_html => {:style => 'width: 500px; height: 200px'} %>
+    <%= f.text_area :description %>
   </div>
-
-  <!--<%= f.input :value %>
-  <%= f.input :doc_number%>
-  <%= f.input :description, :input_html => {:style => 'width: 500px; height: 200px'}%>-->
-
   <div class="actions">
     <%= f.submit %>
   </div>
-
-
-
 <% end %>
