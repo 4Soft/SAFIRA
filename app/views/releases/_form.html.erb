@@ -1,5 +1,5 @@
-
 <%= form_for([@cashier, @release], :html => { :class => 'form' ,  :multipart => true }) do |f| %>
+
   <% if @release.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@release.errors.count, "error") %> prohibited this release from being saved:</h2>
@@ -13,10 +13,6 @@
   <% end %>
 
 
-<!--How to make the field :type_released?-->
-
-    
-  
 
     <%= f.label "Valor" %>
     <%= f.text_field :value, 'data-behaviour' => 'number_field' %>
@@ -53,8 +49,5 @@
         <%= link_to "Cancelar", :back, :class => "btn--primary" %>
       </center>
     </div>
-
-
-
 
 <% end %>
