@@ -1,4 +1,5 @@
-<%= simple_form_for([@cashier, @release], :html => { :class => 'form-horizontal' ,  :multipart => true }) do |f| %>
+
+<%= form_for([@cashier, @release], :html => { :class => 'form' ,  :multipart => true }) do |f| %>
   <% if @release.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@release.errors.count, "error") %> prohibited this release from being saved:</h2>
@@ -11,26 +12,48 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :value %><br />
-    <%= f.number_field :value %>
-  </div>
-  <div class="field">
-    <%= f.label :doc_number %><br />
-    <%= f.number_field :doc_number %>
-  </div>
-  <div class="field">
-    <%= f.label :description %><br />
-    <%= f.text_field :description, :input_html => {:style => 'width: 500px; height: 200px'} %>
-  </div>
 
-  <!--<%= f.input :value %>
-  <%= f.input :doc_number%>
-  <%= f.input :description, :input_html => {:style => 'width: 500px; height: 200px'}%>-->
+<!--How to make the field :type_released?-->
 
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+    
+  
+
+    <%= f.label "Valor" %>
+    <%= f.text_field :value, 'data-behaviour' => 'number_field' %>
+
+    <%= f.label "Número do documento" %><br />
+    <%= f.text_field :doc_number, 'data-behaviour' => 'number_field' %>
+
+    <%= f.label "Data da nota fiscal" %><br />
+    <%= f.text_field :date_release, 'data-behaviour' => 'datepicker' %>    
+  
+    <%= f.label "Descrição" %><br />
+    <%= f.text_area :description   %>
+
+    <%= f.label "Forma de pagamento" %><br />
+    <%= f.text_field :form_payment, 'data-behaviour' => 'number_field' %>
+    
+    <%= f.label :doc_type %><br />
+    <%= f.text_field :doc_type, 'data-behaviour' => 'number_field' %>
+
+    <%= f.label :origin_destination %><br />
+    <%= f.text_field :origin_destination, 'data-behaviour' => 'number_field' %>
+
+
+    
+    
+
+    <br/><br/>
+
+
+
+  <div class="form-actions">
+      <center>
+        <%= f.submit "Cadastrar", :class => "btn--success" %>
+        <%= link_to "Cancelar", :back, :class => "btn--primary" %>
+      </center>
+    </div>
+
 
 
 
