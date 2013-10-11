@@ -50,6 +50,16 @@ class EventsController < ApplicationController
         format.html { render action: "new" }
         format.json { render json: @event.errors, status: :unprocessable_entity }
       end
+
+      @aux = Entrepreneur.all
+
+      @aux.each do |i|
+        @presence = Presence.new
+        @presence.entrepreneur_id = i.id
+        @presence.event_id = @event.id
+        @presence.save
+      end
+      
     end
   end
 
