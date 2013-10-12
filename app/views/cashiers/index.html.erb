@@ -1,0 +1,73 @@
+<p id="notice"><%= notice %></p>
+
+<section class="panel">
+  <header class="panel__header">
+    <span class="hide-mobile">
+      <h2>Cashier</h2>
+    </span>
+    <div class="pull-right">
+      <% @cashiers.each do |cashier| %>
+        <%= link_to '+ NEW RELEASE', new_cashier_release_path(cashier), :class => "btn--success" %>
+      <% end %>
+    </div> 
+  </header>
+
+  <table class="table">
+    <tbody>
+
+      <tr>
+        <th>Type release</th>
+        <th>Description</th>
+        <th>Form payment</th>
+        <th>Date release</th>
+        <th>Doc number</th>
+        <th>Doc type</th>
+        <th>Origin destination</th>
+        <th>Value</th>
+      </tr>
+
+      <% Release.all.each do |r| %>
+        <tr>
+          <td><%= r.type_release %></td>
+          <th><%= r.description %></th>
+          <td><%= r.form_payment %></td>
+          <td><%= r.date_release %></td>
+          <td><%= r.doc_number %></td>
+          <td><%= r.doc_type %></td>
+          <td><%= r.origin_destination %></td>
+          <td><%= r.value %></td>
+        </tr>
+      <%end%>
+
+      <!--how to access releases ?-->  
+      
+      <%  @cashiers.each do |cashier| %>
+        <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td><%= cashier.opening_balance %></td>
+        </tr>
+      <% end %>
+
+ <!--     <% @cashiers.each do |cashier| %>
+
+        <tr>
+          <td><%= cashier.opening_balance %></td>
+          <td><%= link_to 'Show', cashier %></td>
+          <td><%= link_to 'Edit', edit_cashier_path(cashier) %></td>
+          <td><%= link_to 'Destroy', cashier, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+
+      <% end %>
+-->      
+    </tbody>
+  </table>
+
+</section>
+
+

@@ -18,6 +18,7 @@ gem 'devise'
 gem 'simple_form'
 gem 'cancan'
 gem 'acts-as-taggable-on'
+gem 'mailcatcher'
 
 gem 'brazilian-rails'
 
@@ -36,6 +37,7 @@ group :test do
   gem 'database_cleaner'
   gem 'rspec-rails'
   gem 'factory_girl_rails'
+  gem 'shoulda'
 end
 
 group :development do

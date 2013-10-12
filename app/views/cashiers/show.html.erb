@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Opening balance:</b>
+  <%= @cashier.opening_balance %>
+</p>
+
+<p>
+  <b>References:</b>
+  <%= @cashier.references %>
+</p>
+
+
+<%= link_to 'Edit', edit_cashier_path(@cashier) %> |
+<%= link_to 'Back', cashiers_path %>

@@ -1,0 +1,45 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Type release:</b>
+  <%= @release.type_release %>
+</p>
+
+<p>
+  <b>Value:</b>
+  <%= @release.value %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= @release.description %>
+</p>
+
+<p>
+  <b>Form payment:</b>
+  <%= @release.form_payment %>
+</p>
+
+<p>
+  <b>Date release:</b>
+  <%= @release.date_release %>
+</p>
+
+<p>
+  <b>Doc number:</b>
+  <%= @release.doc_number %>
+</p>
+
+<p>
+  <b>Doc type:</b>
+  <%= @release.doc_type %>
+</p>
+
+<p>
+  <b>Origin destination:</b>
+  <%= @release.origin_destination %>
+</p>
+
+
+<%= link_to 'Edit', edit_release_path(@release) %> |
+<%= link_to 'Back', releases_path %>

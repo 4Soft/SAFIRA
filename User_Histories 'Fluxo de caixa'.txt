@@ -1,0 +1,29 @@
+User_Histories 'Fluxo de caixa'
+
+
+Criação de Cashier [Caixa da empresa]				DONE
+	
+	Relacionar Cashier a Enterprise <> 1..1			DONE
+
+	Inicializar Enterprise com um Cashier			DONE
+
+	RN: Cashier NÃO pode ser deletado
+
+
+Criação de Release [Notas fiscais no caixa]			DONE
+
+	Relacionar Release a Cashier <> N..1			DONE
+	
+	Implementar CRUD								STARTED
+		-Dentro de seu respectivo Cashier			   "
+
+		Inserir campo de upload de note fiscal
+			-[img, pdf, doc...] [Dropbox?]
+
+	Exibir últimas N entradas e N saídas
+
+	Exibir saldo atual
+
+	Exibir gráfico
+
+	
