@@ -2,10 +2,10 @@
 require 'spec_helper'
 
 describe Release do
-  before(:each) do
-  	Releases.any_instance.stub(:save_attached_files).and_return(true)
-  end
+  #before(:each) do
+  #	 Releases.any_instance.stub(:save_attached_files).and_return(true)
+  #end
   
-  it {should belongs_to :cashier}
+  it {should belong_to :cashier}
   
 end

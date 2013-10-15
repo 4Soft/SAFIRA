@@ -2,8 +2,8 @@ require 'spec_helper'
 
 describe Cashier do
 
-  it {should belongs_to :enterprise}
+  it {should belong_to :enterprise}
 
-  it {should has_many :releases}
+  it {should have_many :releases}
 
 end
