@@ -157,4 +157,11 @@ describe ReleasesController do
     end
   end
 
+  it 'should go to cashiers path after create a release' do
+    create(:release)
+
+    current_path.should == cashier_path
+
+  end
+
 end
