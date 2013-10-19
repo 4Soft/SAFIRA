@@ -6,12 +6,16 @@
 
     <div class="pull-right">
       <% if @selection_process.consolidated? %>
-        <span>
+        <span class= "alert--notice">
           Processo consolidado em
-          <%= @selection_process.consolidated_at.strftime("%d/%m/%y %H:%M") %>
+          <%= @selection_process.consolidated_at.strftime("%d/%m/%y") %>
         </span>
       <% else %>
-        <%= link_to "CONSOLIDAR PROCESSO SELETIVO", selection_process_consolidate_path(@selection_process), :class => "btn--primary", method: :post %>
+        <% unless @selection_process.process_steps.exists?(:consolidated => nil) %>
+          <%= link_to "CONSOLIDAR PROCESSO SELETIVO", selection_process_consolidate_path(@selection_process), :class => "btn--primary", method: :post %>
+        <% else %> 
+          <%= link_to "CONSOLIDAR PROCESSO SELETIVO", selection_process_consolidate_path(@selection_process), :class => "btn--disabled", :id => 'consolidar', :onclick => "$('consolidar').disabled = true;return false;"%>
+        <% end %>
       <% end %>
 
       <%= link_to "Formulário de inscrição", selection_process_register_form_path(@selection_process), :class => "btn" %>
@@ -19,7 +23,9 @@
   </header>
 
   <hr>
-    <%= link_to_function "ADICIONAR ETAPA", "show_process_steps_form()", :class=> "btn--success", :style => "margin-right:20px; float:right" %>
+    <% if !@selection_process.consolidated?%>
+    <%= link_to_function "+ ADICIONAR ETAPA", "show_process_steps_form()", :class=> "btn--success", :style => "margin-right:20px; float:right" %>
+    <% end %>
   <h3 style="margin-left:20px">
     Listagem de Etapas
   </h3>
@@ -43,20 +49,29 @@
           </td>
           <td>
             <%= link_to "Gerenciar etapa", [@selection_process, step], :class => "btn--primary" %>
-          <% if (step.open_date <=> Date.today) == 1 %>
-            <%= link_to "Excluir etapa", [@selection_process, step], method: :delete, :class => "btn btn--danger"%>
-          <% end %>
+            <% if step != @selection_process.process_steps.first %>
+              <% if (step.open_date <=> Date.today) == 1 %>              
+                <%= link_to "Excluir etapa", [@selection_process, step], method: :delete, :class => "btn btn--danger"%>
+              <% else %> 
+                <%= link_to "Excluir etapa", [@selection_process, step], :class => "btn--disabled", :id => 'excluir', :onclick => "$('excluir').disabled = true;return false;"%>
+              <% end %>
+            <% end %>
           </td>
         </tr>
       <% end %>
     </tbody>
   </table>
-  
+
+
+
+
   <div id="block_process_step_form" style="display: none">
     <hr/>
     <h3 style="margin-left:20px">Adicionar etapa</h3><br>
     <%= render 'process_steps/form' %>
   </div>
+
+  
 
   <% if @selection_process.consolidated? %>
     <h3 style="margin-left:20px">Aprovados:</h3>
@@ -68,7 +83,7 @@
           <td>Ninguém foi aprovado :(</td>
         <% end %>
       </tbody>
-    </table>
+    </table>  
   <% end %>
 </section>
 

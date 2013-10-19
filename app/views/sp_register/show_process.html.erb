@@ -3,45 +3,82 @@
     <span><%= @selection_process.enterprise.name %></span>
   </div>
   <header class="process-sign-up__header">
-    <h1><%= @selection_process.name %></h1>
-  </header>
-  <div class="process-sign-up__body">
-    <%= form_for(:candidate, url: selection_process_register_candidate_url(@selection_process), :html => { :class => "form process-sign-up__form"}) do |f| %>
-        <div class="field-box">
-          <%= f.label :name, "Meu Nome É" %>
-          <%= f.text_field :name, :required => true, :autofocus => true %>
-        </div>
-        
-        <div class="field-box">
-          <%= f.label :email, "Meu email é" %>
-          <%= f.email_field :email, :required => true %>
-        </div>
+    <h1><%= @selection_process.name %></h1>    
+  </header>  
+  
+  <% @registration_consolidated = @selection_process.process_steps[0].consolidated_at%>      
+  <% @registration_open = @selection_process.process_steps[0].open_date %>  
 
-        <div class="field-box">
-          <%= f.label :course, "Faço curso de" %>
-          <%= f.text_field :course, :required => true %>
-        </div>
-        
-        <div class="field-box">
-          <%= f.label :description, "Sobre mim" %>
-          <%= f.text_area :description %>
-        </div>
-
-        <div class="field-box">
-          <%= f.label "Currículo" %>
-          <%= f.file_field :curriculum, :required => true %>
-        </div>
+  <% if @registration_consolidated < Date.today and current_user == nil%>
+    <div class="process-sign-up__body" style="color: black; font-weight: bold; font-size: 24px">    
+      <center>
+      Desculpe, o prazo de inscrição foi encerrado!            
+      </center>      
     </div>
-    <div class="process-sign-up__footer">
-      <%= f.submit "Inscreva-se", :class => "btn--success btn--full-width" %>
+    <br>
+    <div class="process-sign-up__form">
+      <center>
+        <%= image_tag "late.jpg", style: "border-radius: 50%"%>
+        </center> 
+    </div>  
+  <% elsif @registration_open > Date.today and current_user == nil%>      
+    <div class="process-sign-up__body" style="color: black; font-weight: bold; font-size: 20px">
+      <center>
+        As inscrições ainda não estão abertas!
+        <p> Mas não fique triste, dia <%= post_date @registration_open %>
+        a espera vai acabar! </p>
+      </center>   
+    </div>
+    <div class="process-sign-up__form">
+      <center>
+        <%= image_tag "wait.jpg", style: "border-radius: 50%"%>
+      </center> 
+    </div>  
+  <% else %>
+    <div class="process-sign-up__body" style="color: black; font-weight: bold">    
+      <center>
+      <%= @selection_process.call%>
+      </center>
+    </div>
+    <br>
+    <div class="process-sign-up__body">
+      <%= form_for(:candidate, url: selection_process_register_candidate_url(@selection_process), :html => { :class => "form process-sign-up__form"}) do |f| %>
+          <div class="field-box">
+            <%= f.label :name, "Meu Nome É" %>
+            <%= f.text_field :name, :required => true, :autofocus => true %>
+          </div>
+          
+          <div class="field-box">
+            <%= f.label :email, "Meu email é" %>
+            <%= f.email_field :email, :required => true %>
+          </div>
+
+          <div class="field-box">
+            <%= f.label :course, "Faço curso de" %>
+            <%= f.text_field :course, :required => true %>
+          </div>
+          
+          <div class="field-box">
+            <%= f.label :description, "Sobre mim" %>
+            <%= f.text_area :description %>
+          </div>
+
+          <div class="field-box">
+            <%= f.label "Currículo" %>
+            <%= f.file_field :curriculum, :required => true %>
+          </div>
+      </div>
+      <div class="process-sign-up__footer">
+        <%= f.submit "Inscreva-se", :class => "btn--success btn--full-width" %>
+      </div>
+    <% end %>
+    <div class="process-sign-up__footer-notes">
+      <small>
+        POWERED BY SAFIRA <br>
+        2013 © 4SOFT
+      </small>
     </div>
   <% end %>
-  <div class="process-sign-up__footer-notes">
-    <small>
-      POWERED BY SAFIRA <br>
-      2013 © 4SOFT
-    </small>
-  </div>
 </div>
 
 

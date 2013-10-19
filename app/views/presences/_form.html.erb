@@ -1,0 +1,17 @@
+<%= form_for(@presence) do |f| %>
+  <% if @presence.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@presence.errors.count, "error") %> prohibited this presence from being saved:</h2>
+
+      <ul>
+      <% @presence.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

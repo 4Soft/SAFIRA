@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130910180525) do
+ActiveRecord::Schema.define(:version => 20131019131041) do
 
   create_table "admins", :force => true do |t|
     t.datetime "created_at", :null => false
@@ -69,6 +69,15 @@ ActiveRecord::Schema.define(:version => 20130910180525) do
     t.datetime "updated_at",         :null => false
   end
 
+  create_table "events", :force => true do |t|
+    t.string   "name"
+    t.datetime "initial_date"
+    t.datetime "final_date"
+    t.text     "description"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+  end
+
   create_table "feedbacks", :force => true do |t|
     t.text     "public"
     t.text     "private"
@@ -82,6 +91,12 @@ ActiveRecord::Schema.define(:version => 20130910180525) do
 
   add_index "feedbacks", ["candidate_id"], :name => "index_feedbacks_on_candidate_id"
   add_index "feedbacks", ["process_step_id"], :name => "index_feedbacks_on_process_step_id"
+
+  create_table "presences", :force => true do |t|
+    t.boolean  "present"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "process_steps", :force => true do |t|
     t.text     "description"

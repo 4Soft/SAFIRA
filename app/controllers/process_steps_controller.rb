@@ -10,8 +10,7 @@ class ProcessStepsController < ApplicationController
   end
 
   def create
-    @selection_process = SelectionProcess.find(params[:selection_process_id])
-
+    @selection_process = SelectionProcess.find(params[:selection_process_id])    
     if @selection_process.consolidated?
       redirect_to @selection_process, notice: "Processo já consolidado"
     else
@@ -21,7 +20,7 @@ class ProcessStepsController < ApplicationController
 
       last_step = @selection_process.process_steps.order(:order_number).last
 
-      if !last_step
+      unless  last_step
         @process_step.order_number = 1
       else
         @process_step.order_number = last_step.order_number + 1
@@ -35,6 +34,11 @@ class ProcessStepsController < ApplicationController
 
       redirect_to @selection_process, notice: "Etapa criada com sucesso"
     end
+  end
+
+  def edit
+    @selection_process = SelectionProcess.find(params[:selection_process_id ])
+    @process_step = @selection_process.process_steps.find(params[:id])
   end
 
   def consolidate_step
