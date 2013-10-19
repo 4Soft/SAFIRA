@@ -25,6 +25,7 @@ class EventsController < ApplicationController
   # GET /events/new.json
   def new
     @event = Event.new
+    @people = current_user.entrepreneurs
 
     respond_to do |format|
       format.html # new.html.erb
@@ -42,6 +43,7 @@ class EventsController < ApplicationController
   def create
     @event = Event.new(params[:event])
 
+
     respond_to do |format|
       if @event.save
         format.html { redirect_to @event, notice: 'Event was successfully created.' }
@@ -51,14 +53,6 @@ class EventsController < ApplicationController
         format.json { render json: @event.errors, status: :unprocessable_entity }
       end
 
-      @aux = Entrepreneur.all
-
-      @aux.each do |i|
-        @presence = Presence.new
-        @presence.entrepreneur_id = i.id
-        @presence.event_id = @event.id
-        @presence.save
-      end
       
     end
   end

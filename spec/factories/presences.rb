@@ -3,7 +3,5 @@
 FactoryGirl.define do
   factory :presence do
     present false
-    event nil
-    entrepreneur nil
   end
 end

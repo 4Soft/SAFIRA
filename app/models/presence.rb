@@ -1,5 +1,6 @@
 class Presence < ActiveRecord::Base
-  belongs_to :event
-  belongs_to :entrepreneur
   attr_accessible :present
+
+  belongs_to :entrepreneur
+  belongs_to :event
 end

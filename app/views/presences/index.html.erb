@@ -2,9 +2,6 @@
 
 <table>
   <tr>
-    <th>Present</th>
-    <th>Event</th>
-    <th>Entrepreneur</th>
     <th></th>
     <th></th>
     <th></th>
@@ -12,9 +9,6 @@
 
 <% @presences.each do |presence| %>
   <tr>
-    <td><%= presence.present %></td>
-    <td><%= presence.event %></td>
-    <td><%= presence.entrepreneur %></td>
     <td><%= link_to 'Show', presence %></td>
     <td><%= link_to 'Edit', edit_presence_path(presence) %></td>
     <td><%= link_to 'Destroy', presence, method: :delete, data: { confirm: 'Are you sure?' } %></td>

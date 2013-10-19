@@ -23,7 +23,7 @@ describe PresencesController do
   # This should return the minimal set of attributes required to create a valid
   # Presence. As you add validations to Presence, be sure to
   # adjust the attributes here as well.
-  let(:valid_attributes) { { "present" => "false" } }
+  let(:valid_attributes) { {  } }
 
   # This should return the minimal set of values that should be in the session
   # in order to pass any filters (e.g. authentication) defined in
@@ -85,14 +85,14 @@ describe PresencesController do
       it "assigns a newly created but unsaved presence as @presence" do
         # Trigger the behavior that occurs when invalid params are submitted
         Presence.any_instance.stub(:save).and_return(false)
-        post :create, {:presence => { "present" => "invalid value" }}, valid_session
+        post :create, {:presence => {  }}, valid_session
         assigns(:presence).should be_a_new(Presence)
       end
 
       it "re-renders the 'new' template" do
         # Trigger the behavior that occurs when invalid params are submitted
         Presence.any_instance.stub(:save).and_return(false)
-        post :create, {:presence => { "present" => "invalid value" }}, valid_session
+        post :create, {:presence => {  }}, valid_session
         response.should render_template("new")
       end
     end
@@ -106,8 +106,8 @@ describe PresencesController do
         # specifies that the Presence created on the previous line
         # receives the :update_attributes message with whatever params are
         # submitted in the request.
-        Presence.any_instance.should_receive(:update_attributes).with({ "present" => "false" })
-        put :update, {:id => presence.to_param, :presence => { "present" => "false" }}, valid_session
+        Presence.any_instance.should_receive(:update_attributes).with({ "these" => "params" })
+        put :update, {:id => presence.to_param, :presence => { "these" => "params" }}, valid_session
       end
 
       it "assigns the requested presence as @presence" do
@@ -128,7 +128,7 @@ describe PresencesController do
         presence = Presence.create! valid_attributes
         # Trigger the behavior that occurs when invalid params are submitted
         Presence.any_instance.stub(:save).and_return(false)
-        put :update, {:id => presence.to_param, :presence => { "present" => "invalid value" }}, valid_session
+        put :update, {:id => presence.to_param, :presence => {  }}, valid_session
         assigns(:presence).should eq(presence)
       end
 
@@ -136,7 +136,7 @@ describe PresencesController do
         presence = Presence.create! valid_attributes
         # Trigger the behavior that occurs when invalid params are submitted
         Presence.any_instance.stub(:save).and_return(false)
-        put :update, {:id => presence.to_param, :presence => { "present" => "invalid value" }}, valid_session
+        put :update, {:id => presence.to_param, :presence => {  }}, valid_session
         response.should render_template("edit")
       end
     end

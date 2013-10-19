@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131011182847) do
+ActiveRecord::Schema.define(:version => 20131019131041) do
 
   create_table "admins", :force => true do |t|
     t.datetime "created_at", :null => false
@@ -94,14 +94,9 @@ ActiveRecord::Schema.define(:version => 20131011182847) do
 
   create_table "presences", :force => true do |t|
     t.boolean  "present"
-    t.integer  "event_id"
-    t.integer  "entrepreneur_id"
-    t.datetime "created_at",      :null => false
-    t.datetime "updated_at",      :null => false
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
-
-  add_index "presences", ["entrepreneur_id"], :name => "index_presences_on_entrepreneur_id"
-  add_index "presences", ["event_id"], :name => "index_presences_on_event_id"
 
   create_table "process_steps", :force => true do |t|
     t.text     "description"

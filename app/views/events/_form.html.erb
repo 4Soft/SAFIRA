@@ -1,20 +1,19 @@
 <div class="panel">
-  <%= form_for(:event, url: events_url, :html => { :class => "form", :id => "event_form"}) do |f| %>
-    <%= f.label "Nome" %>
-    <%= f.text_field :name, :required => true, :autofocus => true %><br/>
+  <%= simple_form_for(@event, url: events_url, :html => { :class => "form", :id => "event_form"}) do |f| %>
+    <%= f.association :entrepreneurs, as: :check_boxes %><br /><br />
+    <%= f.input :name %>
 
-    <%= f.label "Data de início" %>
-    <%= f.text_field :initial_date, :required => true %><br/>
+    <%= f.label "Data de abertura das inscrições" %>
+    <%= f.text_field :initial_date, :required => true, 'data-behaviour' => 'datepicker' %><br/>
+    
+    <%= f.label "Data de fechamento das inscrições" %>
+    <%= f.text_field :final_date, :required => true, 'data-behaviour' => 'datepicker'%><br/>
 
-    <%= f.label "Data de encerramento" %>
-    <%= f.text_field :final_date, :required => true %><br/>
-
-    <%= f.label "Descrição" %>
-    <%= f.text_area :description, :required => true %><br/>
+    <%= f.input :description %>
 
     <div class="form-actions">
       <center>
-        <%= f.submit "Criar Etapa", :class=> "btn--success" %>
+        <%= f.submit "Criar Evento", :class=> "btn--success" %>
         <%= link_to "Cancelar", @event, :class => "btn" %>
       </center>
     </div>
