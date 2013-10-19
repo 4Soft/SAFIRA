@@ -1,0 +1,34 @@
+<%= form_for(Entrepreneur.new, url: human_resources_path, html: { class: "form" }) do |f| %>
+  <%= f.label "Nome" %>
+  <%= f.text_field :name %>
+
+  <%= f.label "Email pessoal" %>
+  <%= f.text_field :personal_email %>
+
+  <%= f.label "Email profissional" %>
+  <%= f.text_field :professional_email %>
+
+  <h4>Informações adicionais</h4>
+
+  <% f.fields_for :custom_info do |builder| %>
+    <%= render "custom_info_fields", f: builder %>
+  <% end %>
+
+  <p><%= link_to_add_fields "Nova informação", f, :custom_infos %>
+
+  <%= f.submit "Salvar", class: "btn--primary" %>
+<% end %>
+
+</section>
+
+<script>
+  function remove_fields(link) {
+    $(link).closest(".fields").remove();
+  }
+
+  function add_fields(link, association, content) {
+    var new_id = new Date().getTime();
+    var regexp = new RegExp("new_" + association, "g");
+    $(link).parent().before(content.replace(regexp, new_id));
+  }
+</script>

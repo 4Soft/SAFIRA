@@ -92,6 +92,17 @@ ActiveRecord::Schema.define(:version => 20131019131041) do
   add_index "feedbacks", ["candidate_id"], :name => "index_feedbacks_on_candidate_id"
   add_index "feedbacks", ["process_step_id"], :name => "index_feedbacks_on_process_step_id"
 
+  create_table "positions", :force => true do |t|
+    t.integer  "entrepreneur_id"
+    t.date     "start_date"
+    t.date     "end_date"
+    t.string   "name"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
+  end
+
+  add_index "positions", ["entrepreneur_id"], :name => "index_positions_on_entrepreneur_id"
+
   create_table "presences", :force => true do |t|
     t.boolean  "present"
     t.datetime "created_at", :null => false

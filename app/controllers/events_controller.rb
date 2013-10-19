@@ -25,7 +25,7 @@ class EventsController < ApplicationController
   # GET /events/new.json
   def new
     @event = Event.new
-    @people = current_user.entrepreneurs
+    @entrepreneurs = current_user.entrepreneurs
 
     respond_to do |format|
       format.html # new.html.erb
@@ -41,6 +41,8 @@ class EventsController < ApplicationController
   # POST /events
   # POST /events.json
   def create
+    rds\
+
     @event = Event.new(params[:event])
 
 
