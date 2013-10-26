@@ -105,8 +105,10 @@ ActiveRecord::Schema.define(:version => 20131019131041) do
 
   create_table "presences", :force => true do |t|
     t.boolean  "present"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.integer  "event_id"
+    t.integer  "entrepreneur_id"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
   end
 
   create_table "process_steps", :force => true do |t|
