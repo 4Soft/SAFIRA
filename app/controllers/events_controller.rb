@@ -41,7 +41,7 @@ class EventsController < ApplicationController
   # POST /events
   # POST /events.json
   def create
-    rds\
+    
 
     @event = Event.new(params[:event])
 

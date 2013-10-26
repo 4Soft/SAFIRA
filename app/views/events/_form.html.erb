@@ -1,14 +1,17 @@
 <div class="panel">
 
   <%= simple_form_for(@event, url: events_url, :html => { :class => "form", :id => "event_form"}) do |f| %>
-    <div style="display: inline-table; width: 100%; background: yellow; float: left;">
+    
+    <!-- <div style="display: inline-table; width: 100%; background: yellow; float: left;">
       <% @entrepreneurs.each do |en| %>
         <div style="display: table-cell">
           <input name='entrepreneurs[]' id="<%= "ent#{en.id}"%>" value="<%= "#{en.id}"%>" type="checkbox">
           <label style="float:none" for="<%= "ent#{en.id}"%>"><%= en.name %></label>
         </div>
       <% end %>
-    </div>
+    </div> -->
+
+    <%= f.association :entrepreneurs, as: :check_boxes, class: "checkbox" %>
 
     <%= f.input :name %>
  
