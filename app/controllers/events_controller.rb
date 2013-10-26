@@ -10,6 +10,16 @@ class EventsController < ApplicationController
     end
   end
 
+  def show_presences
+    @event = Event.find(params[:id])
+    @presences = @event.presences
+
+    respond_to do |format|
+      format.html # index.html.erb
+      format.json { render json: @presences }
+    end
+  end
+
   # GET /events/1
   # GET /events/1.json
   def show

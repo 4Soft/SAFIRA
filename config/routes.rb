@@ -2,8 +2,11 @@
 SIG::Application.routes.draw do
   resources :events
 
+  resources :presences
 
   resources :reports, only: [:index]
+
+  get "/event/presences", as: :show_presences
 
   get "help" => "help#show"
 

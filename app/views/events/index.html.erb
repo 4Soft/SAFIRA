@@ -30,6 +30,14 @@
               </span>
             </td>
           </td>
+          <td>
+            <div class="pull-right">
+              <% if ev.presences %>
+              <%= link_to "PRESENÇAS", show_presences(@ev), :class => "btn btn--small"%>
+              <% end %>
+            </div>
+          </td> 
+        </tr>
       <% end.empty? %>
         <tr>
           <td>
